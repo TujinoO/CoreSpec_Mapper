@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "corespec-mapper"
+version = "3.0.0"
+description = "Backend pipeline for SWIR alteration-mineral mapping of drill-core imagery"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+]
+
+[project.scripts]
+corespec = "corespec_mapper.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,143 @@
+{
+  "image": "F:\\NC-1-31_40\\2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1\\SWIR-20260702_164852-00000.dat",
+  "mask": "F:\\NC-1-31_40\\FILL\\mask.dat",
+  "analysis_image": "F:\\NC-1-31_40\\FILL\\SWIR_SG",
+  "analysis_mask": "F:\\NC-1-31_40\\FILL\\mask_SG",
+  "analysis_input_is_smoothed": true,
+  "baseline_image": "F:\\NC-1-31_40\\FILL\\SWIR_SG",
+  "baseline_mask": "F:\\NC-1-31_40\\FILL\\mask_SG",
+  "chunk_rows": 64,
+  "input_is_smoothed": false,
+  "sg_window": 11,
+  "sg_polyorder": 2,
+  "sg_candidates": [
+    {"window": 5, "polyorder": 2},
+    {"window": 7, "polyorder": 2},
+    {"window": 9, "polyorder": 2},
+    {"window": 11, "polyorder": 2},
+    {"window": 5, "polyorder": 3},
+    {"window": 7, "polyorder": 3}
+  ],
+  "mask_erosion": 0,
+  "groups": [
+    {
+      "name": "carbonates",
+      "library": "F:\\NC-1-31_40\\FILL\\Calcite_Dolomite.sli",
+      "sam_windows": [[2248, 2402]],
+      "windows": [[2250, 2400]],
+      "baseline_windows": [[2248, 2402]],
+      "diagnostic_windows": [
+        {"name": "full_spectrum", "windows": []},
+        {"name": "2250_2400", "windows": [[2250, 2400]]},
+        {"name": "nearest_outer_2248_2402", "windows": [[2248, 2402]]},
+        {"name": "outer_2241_2409", "windows": [[2241, 2409]]},
+        {"name": "2200_2400", "windows": [[2200, 2400]]},
+        {"name": "2100_2450", "windows": [[2100, 2450]]}
+      ],
+      "baseline_sam_threshold": 0.06,
+      "sam_threshold": 0.06,
+      "depth_threshold": 0.018,
+      "fit_threshold": 12.0,
+      "scale_min": 0.10,
+      "destripe": {"enabled": true, "radius": 2, "strength": 0.5, "sample_lines": 1024, "band_chunk": 16},
+      "stripe_filter": {
+        "enabled": true,
+        "vertical_window": 61,
+        "min_vertical_density": 0.18,
+        "column_ratio": 2.0,
+        "column_excess": 0.05,
+        "max_lateral_support": 2,
+        "remove_elongated": true,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0
+      },
+      "median_size": 1,
+      "min_component": 4,
+      "reference": {
+        "rule": "F:\\NC-1-31_40\\FILL\\SAM_Mask_Calcite_Dolomite_006_rule.dat",
+        "class": "F:\\NC-1-31_40\\FILL\\SAM_Mask_Calcite_Dolomite_006_class.dat"
+      }
+    },
+    {
+      "name": "sulfates",
+      "library": "F:\\NC-1-31_40\\FILL\\Anhydrite_Gypsum.sli",
+      "sam_windows": [[1350, 1800], [1850, 2351]],
+      "windows": [[1350, 1800], [1850, 2300]],
+      "baseline_windows": [[1350, 1800], [1850, 2351]],
+      "diagnostic_windows": [
+        {"name": "full_spectrum", "windows": []},
+        {"name": "1350_1800", "windows": [[1350, 1800]]},
+        {"name": "nearest_1351_1796", "windows": [[1350, 1796]]},
+        {"name": "dual_inner", "windows": [[1350, 1800], [1850, 2350]]},
+        {"name": "envi_exact", "windows": [[1350, 1800], [1850, 2351]]},
+        {"name": "dual_nearest", "windows": [[1350, 1804], [1847, 2351]]},
+        {"name": "continuous_1350_2350", "windows": [[1350, 2350]]}
+      ],
+      "baseline_sam_threshold": 0.05,
+      "sam_threshold": 0.06,
+      "depth_threshold": 0.03,
+      "fit_threshold": 30.0,
+      "scale_min": 0.10,
+      "destripe": {"enabled": true, "radius": 2, "strength": 0.5, "sample_lines": 1024, "band_chunk": 16},
+      "stripe_filter": {
+        "enabled": true,
+        "vertical_window": 61,
+        "min_vertical_density": 0.15,
+        "column_ratio": 1.8,
+        "column_excess": 0.04,
+        "max_lateral_support": 2,
+        "remove_elongated": true,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0
+      },
+      "median_size": 1,
+      "min_component": 6,
+      "reference": {
+        "rule": "F:\\NC-1-31_40\\FILL\\SAM_Mask_Anhydrite_Gypsum_005_rule.dat",
+        "class": "F:\\NC-1-31_40\\FILL\\SAM_Mask_Anhydrite_Gypsum_005_class.dat"
+      }
+    },
+    {
+      "name": "clays",
+      "library": "F:\\NC-1-31_40\\FILL\\Illite_Montmorillonite_Kaolinite.sli",
+      "sam_windows": [[2100, 2256]],
+      "windows": [[2100, 2300]],
+      "baseline_windows": [[2100, 2256]],
+      "diagnostic_windows": [
+        {"name": "full_spectrum", "windows": []},
+        {"name": "2100_2250", "windows": [[2100, 2250]]},
+        {"name": "envi_exact", "windows": [[2100, 2256]]},
+        {"name": "nearest_2102_2249", "windows": [[2102, 2249]]},
+        {"name": "2100_2300", "windows": [[2100, 2300]]},
+        {"name": "nearest_2102_2300", "windows": [[2102, 2300]]},
+        {"name": "2000_2450", "windows": [[2000, 2450]]}
+      ],
+      "baseline_sam_threshold": 0.025,
+      "sam_threshold": 0.03,
+      "depth_threshold": 0.015,
+      "fit_threshold": 5.0,
+      "scale_min": 0.06,
+      "destripe": {"enabled": true, "radius": 2, "strength": 0.5, "sample_lines": 1024, "band_chunk": 16},
+      "stripe_filter": {
+        "enabled": true,
+        "vertical_window": 61,
+        "min_vertical_density": 0.30,
+        "column_ratio": 3.0,
+        "column_excess": 0.10,
+        "max_lateral_support": 2,
+        "remove_elongated": true,
+        "min_line_height": 20,
+        "max_line_width": 3,
+        "min_aspect": 5.0
+      },
+      "median_size": 1,
+      "min_component": 3,
+      "reference": {
+        "rule": "F:\\NC-1-31_40\\FILL\\SAM_Mask_Illite_Montmorillonite_Kaolinite_0025_rule.dat",
+        "class": "F:\\NC-1-31_40\\FILL\\SAM_Mask_Illite_Montmorillonite_Kaolinite_0025_class.dat"
+      }
+    }
+  ]
+}
