@@ -1,0 +1,278 @@
+{
+  "version": "4.0.0",
+  "global_reject_patterns": [
+    "\\b(?:bearing|shale|marble|limestone|dolostone|rock|soil|mixture|mixed)\\b"
+  ],
+  "experts": {
+    "swir_reflectance": {
+      "display_name": "SWIR Reflectance Expert",
+      "implemented": true,
+      "data_physics": ["reflectance"],
+      "nominal_domain": "swir"
+    },
+    "vnir_reflectance": {
+      "display_name": "VNIR Reflectance Expert",
+      "implemented": false,
+      "data_physics": ["reflectance"],
+      "nominal_domain": "vnir"
+    },
+    "tir_emissivity": {
+      "display_name": "TIR Emissivity Expert",
+      "implemented": false,
+      "data_physics": ["emissivity"],
+      "nominal_domain": "tir"
+    }
+  },
+  "groups": {
+    "carbonates": {
+      "display_name": "Carbonates",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [[2248, 2402]],
+      "classification_windows_nm": [[2200, 2450]],
+      "features": [
+        {"id": "carbonate_center_nm", "type": "center_nm", "window_nm": [2280, 2360]},
+        {"id": "carbonate_short_ratio", "type": "depth_ratio", "window_nm": [2280, 2320]},
+        {"id": "carbonate_long_ratio", "type": "depth_ratio", "window_nm": [2320, 2360]}
+      ],
+      "score_weights": {"shape": 0.60, "derivative": 0.25, "features": 0.15},
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {"column_percentile": 0.04, "absolute_sam_threshold_rad": 0.10, "minimum_absorption_depth": 0.08, "minimum_margin": 0.0, "confidence_threshold": 0.58},
+        "balanced": {"column_percentile": 0.08, "absolute_sam_threshold_rad": 0.12, "minimum_absorption_depth": 0.06, "minimum_margin": 0.0, "confidence_threshold": 0.45},
+        "sensitive": {"column_percentile": 0.12, "absolute_sam_threshold_rad": 0.15, "minimum_absorption_depth": 0.04, "minimum_margin": 0.0, "confidence_threshold": 0.30}
+      },
+      "spatial_cleanup": {"vertical_window": 61, "min_vertical_density": 0.12, "column_ratio": 2.0, "column_excess": 0.04, "max_lateral_support": 2, "min_line_height": 15, "max_line_width": 3, "min_aspect": 5.0, "min_component": 2, "strong_evidence_protection": 0.72}
+    },
+    "sulfates": {
+      "display_name": "Hydrated and Anhydrous Sulfates",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [[1350, 1800], [1850, 2351]],
+      "classification_windows_nm": [[1350, 2400]],
+      "features": [
+        {"id": "water_1450_ratio", "type": "depth_ratio", "window_nm": [1410, 1490]},
+        {"id": "water_1750_ratio", "type": "depth_ratio", "window_nm": [1720, 1785]},
+        {"id": "water_1940_ratio", "type": "depth_ratio", "window_nm": [1880, 1995]},
+        {"id": "sulfate_2200_ratio", "type": "depth_ratio", "window_nm": [2140, 2250]},
+        {"id": "water_1940_center_nm", "type": "center_nm", "window_nm": [1880, 1995]}
+      ],
+      "score_weights": {"shape": 0.55, "derivative": 0.15, "features": 0.30},
+      "domain_calibration_strength": 0.90,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {"column_percentile": 0.04, "absolute_sam_threshold_rad": 0.12, "minimum_absorption_depth": 0.016, "minimum_margin": 0.0, "confidence_threshold": 0.58},
+        "balanced": {"column_percentile": 0.08, "absolute_sam_threshold_rad": 0.15, "minimum_absorption_depth": 0.012, "minimum_margin": 0.0, "confidence_threshold": 0.44},
+        "sensitive": {"column_percentile": 0.12, "absolute_sam_threshold_rad": 0.18, "minimum_absorption_depth": 0.008, "minimum_margin": 0.0, "confidence_threshold": 0.28}
+      },
+      "spatial_cleanup": {"vertical_window": 61, "min_vertical_density": 0.10, "column_ratio": 1.8, "column_excess": 0.03, "max_lateral_support": 2, "min_line_height": 15, "max_line_width": 3, "min_aspect": 5.0, "min_component": 2, "strong_evidence_protection": 0.72}
+    },
+    "clays": {
+      "display_name": "Al-OH Clay Minerals",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [[2100, 2256]],
+      "classification_windows_nm": [[2100, 2380]],
+      "features": [
+        {"id": "kaolin_2160_ratio", "type": "depth_ratio", "window_nm": [2145, 2180]},
+        {"id": "aloh_2200_ratio", "type": "depth_ratio", "window_nm": [2180, 2235]},
+        {"id": "clay_long_ratio", "type": "depth_ratio", "window_nm": [2300, 2380]},
+        {"id": "aloh_center_nm", "type": "center_nm", "window_nm": [2160, 2235]}
+      ],
+      "score_weights": {"shape": 0.45, "derivative": 0.20, "features": 0.35},
+      "domain_calibration_strength": 0.75,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {"column_percentile": 0.035, "absolute_sam_threshold_rad": 0.08, "minimum_absorption_depth": 0.012, "minimum_margin": 0.0, "confidence_threshold": 0.56},
+        "balanced": {"column_percentile": 0.07, "absolute_sam_threshold_rad": 0.10, "minimum_absorption_depth": 0.008, "minimum_margin": 0.0, "confidence_threshold": 0.42},
+        "sensitive": {"column_percentile": 0.10, "absolute_sam_threshold_rad": 0.13, "minimum_absorption_depth": 0.005, "minimum_margin": 0.0, "confidence_threshold": 0.26}
+      },
+      "spatial_cleanup": {"vertical_window": 61, "min_vertical_density": 0.08, "column_ratio": 2.0, "column_excess": 0.025, "max_lateral_support": 2, "min_line_height": 15, "max_line_width": 3, "min_aspect": 5.0, "min_component": 2, "strong_evidence_protection": 0.70}
+    },
+    "other_al_oh": {
+      "display_name": "Other Al-OH Minerals",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [[2050, 2250]],
+      "classification_windows_nm": [[2050, 2400]],
+      "features": [
+        {"id": "aloh_center_nm", "type": "center_nm", "window_nm": [2120, 2240]},
+        {"id": "aloh_primary_ratio", "type": "depth_ratio", "window_nm": [2140, 2240]},
+        {"id": "aloh_long_ratio", "type": "depth_ratio", "window_nm": [2300, 2400]}
+      ],
+      "score_weights": {"shape": 0.55, "derivative": 0.20, "features": 0.25},
+      "domain_calibration_strength": 0.50,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {"column_percentile": 0.03, "absolute_sam_threshold_rad": 0.08, "minimum_absorption_depth": 0.015, "minimum_margin": 0.02, "confidence_threshold": 0.60},
+        "balanced": {"column_percentile": 0.06, "absolute_sam_threshold_rad": 0.11, "minimum_absorption_depth": 0.010, "minimum_margin": 0.01, "confidence_threshold": 0.46},
+        "sensitive": {"column_percentile": 0.10, "absolute_sam_threshold_rad": 0.14, "minimum_absorption_depth": 0.006, "minimum_margin": 0.0, "confidence_threshold": 0.30}
+      },
+      "spatial_cleanup": {"vertical_window": 61, "min_vertical_density": 0.10, "column_ratio": 2.0, "column_excess": 0.03, "max_lateral_support": 2, "min_line_height": 15, "max_line_width": 3, "min_aspect": 5.0, "min_component": 2, "strong_evidence_protection": 0.72}
+    },
+    "mg_oh": {
+      "display_name": "Mg-OH Minerals",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [[2200, 2400]],
+      "classification_windows_nm": [[2100, 2450]],
+      "features": [
+        {"id": "mgoh_center_nm", "type": "center_nm", "window_nm": [2230, 2390]},
+        {"id": "mgoh_primary_ratio", "type": "depth_ratio", "window_nm": [2230, 2390]}
+      ],
+      "score_weights": {"shape": 0.60, "derivative": 0.20, "features": 0.20},
+      "domain_calibration_strength": 0.40,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {"column_percentile": 0.03, "absolute_sam_threshold_rad": 0.08, "minimum_absorption_depth": 0.015, "minimum_margin": 0.0, "confidence_threshold": 0.60},
+        "balanced": {"column_percentile": 0.06, "absolute_sam_threshold_rad": 0.11, "minimum_absorption_depth": 0.010, "minimum_margin": 0.0, "confidence_threshold": 0.46},
+        "sensitive": {"column_percentile": 0.10, "absolute_sam_threshold_rad": 0.14, "minimum_absorption_depth": 0.006, "minimum_margin": 0.0, "confidence_threshold": 0.30}
+      },
+      "spatial_cleanup": {"vertical_window": 61, "min_vertical_density": 0.10, "column_ratio": 2.0, "column_excess": 0.03, "max_lateral_support": 2, "min_line_height": 15, "max_line_width": 3, "min_aspect": 5.0, "min_component": 2, "strong_evidence_protection": 0.72}
+    },
+    "alunites": {
+      "display_name": "Alunite Group",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [[1400, 1800], [2050, 2250]],
+      "classification_windows_nm": [[1350, 2300]],
+      "features": [
+        {"id": "alunite_1480_ratio", "type": "depth_ratio", "window_nm": [1430, 1520]},
+        {"id": "alunite_1760_ratio", "type": "depth_ratio", "window_nm": [1710, 1810]},
+        {"id": "alunite_2170_center_nm", "type": "center_nm", "window_nm": [2130, 2220]}
+      ],
+      "score_weights": {"shape": 0.55, "derivative": 0.15, "features": 0.30},
+      "domain_calibration_strength": 0.40,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {"column_percentile": 0.03, "absolute_sam_threshold_rad": 0.10, "minimum_absorption_depth": 0.015, "minimum_margin": 0.0, "confidence_threshold": 0.60},
+        "balanced": {"column_percentile": 0.06, "absolute_sam_threshold_rad": 0.13, "minimum_absorption_depth": 0.010, "minimum_margin": 0.0, "confidence_threshold": 0.46},
+        "sensitive": {"column_percentile": 0.10, "absolute_sam_threshold_rad": 0.16, "minimum_absorption_depth": 0.006, "minimum_margin": 0.0, "confidence_threshold": 0.30}
+      },
+      "spatial_cleanup": {"vertical_window": 61, "min_vertical_density": 0.10, "column_ratio": 2.0, "column_excess": 0.03, "max_lateral_support": 2, "min_line_height": 15, "max_line_width": 3, "min_aspect": 5.0, "min_component": 2, "strong_evidence_protection": 0.72}
+    },
+    "iron_oxides": {
+      "display_name": "Iron Oxides and Hydroxides",
+      "expert": "vnir_reflectance",
+      "detection_windows_nm": [[450, 1000]],
+      "classification_windows_nm": [[400, 1050]],
+      "features": [{"id": "iron_center_nm", "type": "center_nm", "window_nm": [700, 1000]}],
+      "score_weights": {"shape": 0.70, "derivative": 0.15, "features": 0.15},
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {"column_percentile": 0.03},
+        "balanced": {"column_percentile": 0.06},
+        "sensitive": {"column_percentile": 0.10}
+      },
+      "spatial_cleanup": {}
+    },
+    "silicates_tir": {
+      "display_name": "TIR Silicates",
+      "expert": "tir_emissivity",
+      "detection_windows_nm": [[7500, 14000]],
+      "classification_windows_nm": [[7500, 14000]],
+      "features": [{"id": "reststrahlen_center_nm", "type": "center_nm", "window_nm": [8000, 12500]}],
+      "score_weights": {"shape": 0.75, "derivative": 0.15, "features": 0.10},
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {"column_percentile": 0.03},
+        "balanced": {"column_percentile": 0.06},
+        "sensitive": {"column_percentile": 0.10}
+      },
+      "spatial_cleanup": {}
+    }
+  },
+  "minerals": {
+    "calcite": {
+      "display_name_en": "Calcite", "display_name_zh": "方解石", "formula": "CaCO3", "group": "carbonates",
+      "name_patterns": ["\\bcalcite\\b"], "reject_patterns": [], "confusers": ["dolomite"],
+      "canonical_anchors": ["jpl_lib\\jpl3.sli#25", "usgs_min\\usgs_min.sli#71", "jhu_lib\\minerals.sli#57", "usgs_min\\usgs_min.sli#72"],
+      "support_level": "validated_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[2248, 2402]], "minimum_valid_bands": 12, "maximum_effective_fwhm_nm": 25, "feature_gate": {"center_feature": "carbonate_center_nm", "center_window_nm": [2325, 2360], "minimum_absorption_depth_by_policy": {"conservative": 0.20, "balanced": 0.16, "sensitive": 0.08}}}}
+    },
+    "dolomite": {
+      "display_name_en": "Dolomite", "display_name_zh": "白云石", "formula": "CaMg(CO3)2", "group": "carbonates",
+      "name_patterns": ["\\bdolomit(?:e|ic)?\\b"], "reject_patterns": ["dolomitic"], "confusers": ["calcite"],
+      "canonical_anchors": ["usgs_min\\usgs_min.sli#132", "jhu_lib\\minerals.sli#79", "jpl_lib\\jpl3.sli#46", "jhu_lib\\minerals.sli#85"],
+      "support_level": "validated_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[2248, 2402]], "minimum_valid_bands": 12, "maximum_effective_fwhm_nm": 25, "feature_gate": {"center_feature": "carbonate_center_nm", "center_window_nm": [2288, 2330], "center_window_nm_by_policy": {"sensitive": [2285, 2336]}, "minimum_absorption_depth_by_policy": {"conservative": 0.10, "balanced": 0.08, "sensitive": 0.05}}}}
+    },
+    "anhydrite": {
+      "display_name_en": "Anhydrite", "display_name_zh": "硬石膏", "formula": "CaSO4", "group": "sulfates",
+      "name_patterns": ["\\banhydrit(?:e|ic)?\\b"], "reject_patterns": [], "confusers": ["gypsum"],
+      "canonical_anchors": ["jpl_lib\\jpl1.sli#9", "jpl_lib\\jpl2.sli#7", "jpl_lib\\jpl3.sli#7", "usgs_min\\usgs_min.sli#37"], "support_level": "validated_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[1350, 1800], [1850, 2300]], "minimum_valid_bands": 60, "maximum_effective_fwhm_nm": 25}}
+    },
+    "gypsum": {
+      "display_name_en": "Gypsum", "display_name_zh": "石膏", "formula": "CaSO4·2H2O", "group": "sulfates",
+      "name_patterns": ["\\bgypsum\\b"], "reject_patterns": [], "confusers": ["anhydrite"],
+      "canonical_anchors": ["jpl_lib\\jpl1.sli#71", "usgs_min\\usgs_min.sli#172", "jpl_lib\\jpl2.sli#61", "jpl_lib\\jpl3.sli#61"], "support_level": "validated_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[1350, 1800], [1850, 2300]], "minimum_valid_bands": 60, "maximum_effective_fwhm_nm": 25}}
+    },
+    "illite": {
+      "display_name_en": "Illite", "display_name_zh": "伊利石", "formula": "K-Al mica clay", "group": "clays",
+      "name_patterns": ["\\billite\\b"], "reject_patterns": ["smec|illsmec|illite\\s*[-+/]\\s*smect"], "confusers": ["montmorillonite", "kaolinite"],
+      "canonical_anchors": ["usgs_min\\usgs_min.sli#215", "jpl_lib\\jpl1.sli#79", "usgs_min\\usgs_min.sli#217", "usgs_min\\usgs_min.sli#218"], "support_level": "validated_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[2100, 2256]], "minimum_valid_bands": 12, "maximum_effective_fwhm_nm": 25}}
+    },
+    "montmorillonite": {
+      "display_name_en": "Montmorillonite", "display_name_zh": "蒙脱石", "formula": "Smectite clay", "group": "clays",
+      "name_patterns": ["\\bmontmorillonite\\b", "\\bmontmor\\w*\\b"], "reject_patterns": ["\\+\\s*illi|with\\s+illi"], "confusers": ["illite", "kaolinite"],
+      "canonical_anchors": ["jpl_lib\\jpl1.sli#98", "usgs_min\\usgs_min.sli#288", "usgs_min\\usgs_min.sli#290", "usgs_min\\usgs_min.sli#294"], "support_level": "validated_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[2100, 2256]], "minimum_valid_bands": 12, "maximum_effective_fwhm_nm": 25}}
+    },
+    "kaolinite": {
+      "display_name_en": "Kaolinite", "display_name_zh": "高岭石", "formula": "Al2Si2O5(OH)4", "group": "clays",
+      "name_patterns": ["\\bkaolinite\\b", "\\bkaolini\\w*\\b"], "reject_patterns": ["halloysite"], "confusers": ["illite", "montmorillonite", "halloysite"],
+      "canonical_anchors": ["usgs_min\\usgs_min.sli#239", "igcp264\\igcp_4.sli#18", "jpl_lib\\jpl1.sli#83", "usgs_min\\usgs_min.sli#238"], "support_level": "validated_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[2140, 2225]], "minimum_valid_bands": 10, "maximum_effective_fwhm_nm": 20, "feature_gate": {"minimum_feature_values": {"kaolin_2160_ratio": 0.08}}}}
+    },
+    "muscovite": {
+      "display_name_en": "Muscovite", "display_name_zh": "白云母", "formula": "KAl2(AlSi3O10)(OH)2", "group": "other_al_oh",
+      "name_patterns": ["\\bmuscovite\\b"], "reject_patterns": ["bearing|schist"], "confusers": ["illite", "pyrophyllite"],
+      "canonical_anchors": [], "support_level": "experimental_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[2100, 2250]], "minimum_valid_bands": 12, "maximum_effective_fwhm_nm": 25}}
+    },
+    "pyrophyllite": {
+      "display_name_en": "Pyrophyllite", "display_name_zh": "叶蜡石", "formula": "Al2Si4O10(OH)2", "group": "other_al_oh",
+      "name_patterns": ["\\bpyrophyllite\\b"], "reject_patterns": ["bearing"], "confusers": ["muscovite", "kaolinite"],
+      "canonical_anchors": [], "support_level": "experimental_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[2100, 2250]], "minimum_valid_bands": 12, "maximum_effective_fwhm_nm": 25}}
+    },
+    "chlorite": {
+      "display_name_en": "Chlorite", "display_name_zh": "绿泥石", "formula": "Mg-Fe phyllosilicate", "group": "mg_oh",
+      "name_patterns": ["\\bchlorite\\b"], "reject_patterns": ["bearing|schist"], "confusers": ["serpentine", "biotite"],
+      "canonical_anchors": [], "support_level": "experimental_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[2200, 2400]], "minimum_valid_bands": 15, "maximum_effective_fwhm_nm": 25}}
+    },
+    "alunite": {
+      "display_name_en": "Alunite", "display_name_zh": "明矾石", "formula": "KAl3(SO4)2(OH)6", "group": "alunites",
+      "name_patterns": ["\\balunite\\b"], "reject_patterns": ["bearing"], "confusers": ["kaolinite", "jarosite"],
+      "canonical_anchors": [], "support_level": "experimental_swir",
+      "experts": {"swir_reflectance": {"required_windows_nm": [[1400, 1800], [2050, 2250]], "minimum_valid_bands": 35, "maximum_effective_fwhm_nm": 25}}
+    },
+    "hematite": {
+      "display_name_en": "Hematite", "display_name_zh": "赤铁矿", "formula": "Fe2O3", "group": "iron_oxides",
+      "name_patterns": ["\\bhematite\\b"], "reject_patterns": ["bearing|mixture"], "confusers": ["goethite"],
+      "canonical_anchors": [], "support_level": "planned_vnir",
+      "experts": {"vnir_reflectance": {"required_windows_nm": [[450, 1000]], "minimum_valid_bands": 30, "maximum_effective_fwhm_nm": 20}}
+    },
+    "goethite": {
+      "display_name_en": "Goethite", "display_name_zh": "针铁矿", "formula": "FeO(OH)", "group": "iron_oxides",
+      "name_patterns": ["\\bgoethite\\b"], "reject_patterns": ["bearing|mixture"], "confusers": ["hematite"],
+      "canonical_anchors": [], "support_level": "planned_vnir",
+      "experts": {"vnir_reflectance": {"required_windows_nm": [[450, 1000]], "minimum_valid_bands": 30, "maximum_effective_fwhm_nm": 20}}
+    },
+    "quartz": {
+      "display_name_en": "Quartz", "display_name_zh": "石英", "formula": "SiO2", "group": "silicates_tir",
+      "name_patterns": ["\\bquartz\\b"], "reject_patterns": ["bearing|mixture|sand"], "confusers": ["feldspar"],
+      "canonical_anchors": [], "support_level": "planned_tir",
+      "experts": {"tir_emissivity": {"required_windows_nm": [[7500, 14000]], "minimum_valid_bands": 30, "maximum_effective_fwhm_nm": 250}}
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "analysis_image": "F:\\NC-1-31_40\\FILL\\SWIR_SG",
+  "analysis_mask": "F:\\NC-1-31_40\\FILL\\mask_SG",
+  "analysis_input_is_smoothed": true,
+  "chunk_rows": 64,
+  "sg_window": 11,
+  "sg_polyorder": 2,
+  "v4": {
+    "project_name": "NC1_SWIR_v1",
+    "data_physics": "reflectance",
+    "spectral_library_root": "E:\\Code\\CoreSpec_Mapper\\spec_lib",
+    "requested_minerals": [
+      "calcite",
+      "dolomite",
+      "anhydrite",
+      "gypsum",
+      "illite",
+      "montmorillonite",
+      "kaolinite"
+    ],
+    "mask_bands": [20, 106, 190],
+    "minimum_mask_pixels": 1000,
+    "preprocessing": {
+      "sg_window": 11,
+      "sg_polyorder": 2
+    },
+    "sampling": {
+      "blocks": 12,
+      "block_rows": 64,
+      "minimum_valid_pixels_per_block": 128,
+      "minimum_column_samples": 20
+    },
+    "library_ensemble": {
+      "maximum_representatives_per_mineral": 6,
+      "dedup_angle_rad": 0.02
+    },
+    "artifact_control": {
+      "edge_width": 2,
+      "column_spectral_correction": {
+        "enabled": true,
+        "strength": 0.70,
+        "radius": 2
+      }
+    },
+    "policy_overrides": {}
+  }
+}

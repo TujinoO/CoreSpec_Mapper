@@ -4,16 +4,32 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "corespec-mapper"
-version = "3.0.0"
-description = "Backend pipeline for SWIR alteration-mineral mapping of drill-core imagery"
+version = "4.0.0"
+description = "Adaptive mineral-evidence mapping for drill-core hyperspectral imagery"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
   "numpy>=1.24",
 ]
 
+[project.optional-dependencies]
+desktop = [
+  "PySide6>=6.5",
+]
+test = [
+  "pytest>=7",
+]
+
 [project.scripts]
 corespec = "corespec_mapper.cli:main"
+corespec-desktop = "corespec_mapper.desktop:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+corespec_mapper = ["resources/*.json", "resources/*.png", "resources/*.ico"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
