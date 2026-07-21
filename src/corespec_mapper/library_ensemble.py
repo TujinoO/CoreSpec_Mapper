@@ -338,7 +338,11 @@ def _score_scene_compatibility(
 
 
 def _angle_matrix(embeddings: np.ndarray) -> np.ndarray:
-    cosine = np.clip(embeddings @ embeddings.T, -1.0, 1.0)
+    cosine = np.clip(
+        np.einsum("ij,kj->ik", embeddings, embeddings, optimize=False),
+        -1.0,
+        1.0,
+    )
     return np.arccos(cosine)
 
 

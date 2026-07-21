@@ -26,12 +26,21 @@ def _solve_small_system(matrix: np.ndarray, target: np.ndarray) -> np.ndarray:
 def _savgol_weights(window_length: int, polyorder: int) -> np.ndarray:
     half = window_length // 2
     offsets = np.arange(-half, half + 1, dtype=np.float64)
-    design = np.column_stack([offsets**power for power in range(polyorder + 1)])
-    normal = design.T @ design
+    # Build the tiny normal matrix explicitly.  Besides avoiding a BLAS call
+    # for a handful of values, this works around a Windows NumPy/OpenBLAS
+    # access violation observed for an 11 x 3 design matrix.
+    powers = [offsets**power for power in range(2 * polyorder + 1)]
+    normal = np.asarray([
+        [np.sum(powers[row + column]) for column in range(polyorder + 1)]
+        for row in range(polyorder + 1)
+    ], dtype=np.float64)
     target = np.zeros(polyorder + 1, dtype=np.float64)
     target[0] = 1.0
     coefficients = _solve_small_system(normal, target)
-    return design @ coefficients
+    return np.sum(
+        np.vstack([coefficients[power] * powers[power] for power in range(polyorder + 1)]),
+        axis=0,
+    )
 
 
 def savgol_smooth(spectra: np.ndarray, window_length: int = 5, polyorder: int = 2) -> np.ndarray:
@@ -45,8 +54,19 @@ def savgol_smooth(spectra: np.ndarray, window_length: int = 5, polyorder: int = 
     pad_width = [(0, 0)] * spectra.ndim
     pad_width[-1] = (half, half)
     padded = np.pad(spectra, pad_width, mode="edge")
-    windows = np.lib.stride_tricks.sliding_window_view(padded, window_length, axis=-1)
-    return np.sum(windows * weights, axis=-1)
+    # ``sliding_window_view(padded) * weights`` materialises one value per
+    # input value *and* window position.  A 12 x 64 x 320 x 212 audit sample
+    # with an 11-band window can therefore create several GiB of temporary
+    # memory.  Accumulating one offset at a time is numerically equivalent and
+    # keeps peak memory proportional to the input cube instead of the window.
+    result = np.zeros_like(spectra, dtype=np.float64)
+    band_count = spectra.shape[-1]
+    for offset, weight in enumerate(weights):
+        # Keep the temporary to a single input-sized slice.  Using an ``out``
+        # buffer directly with a non-contiguous sliding slice triggers an
+        # access violation in some Windows NumPy builds (observed with 2.4.x).
+        result += padded[..., offset : offset + band_count] * weight
+    return result
 
 
 def spectral_angles(pixels: np.ndarray, endmembers: np.ndarray) -> np.ndarray:
@@ -57,8 +77,12 @@ def spectral_angles(pixels: np.ndarray, endmembers: np.ndarray) -> np.ndarray:
     pixel_norm = np.linalg.norm(pixels, axis=1)
     endmember_norm = np.linalg.norm(endmembers, axis=1)
     denominator = pixel_norm[:, None] * endmember_norm[None, :]
+    # ``einsum(..., optimize=False)`` avoids a platform BLAS crash seen with
+    # several valid tall-by-short matrices in the Windows runtime while still
+    # executing the contraction in compiled NumPy code.
+    dot = np.einsum("ij,kj->ik", pixels, endmembers, optimize=False)
     cosine = np.divide(
-        pixels @ endmembers.T,
+        dot,
         denominator,
         out=np.full((pixels.shape[0], endmembers.shape[0]), np.nan, dtype=np.float64),
         where=denominator > 0,
@@ -111,6 +135,67 @@ def continuum_remove(spectra: np.ndarray, wavelengths_nm: np.ndarray, epsilon: f
     return result[0] if squeeze else result
 
 
+def continuum_remove_linear(
+    spectra: np.ndarray,
+    wavelengths_nm: np.ndarray,
+    epsilon: float = 1e-12,
+    *,
+    gap_factor: float = 4.0,
+) -> np.ndarray:
+    """Remove a segmented straight-line continuum, vectorised over spectra.
+
+    Large wavelength gaps split disjoint diagnostic windows into independent
+    segments.  This is the high-throughput V5 path; ``continuum_remove`` stays
+    available as the exact upper-hull compatibility method used by V4.
+    """
+    values = np.asarray(spectra, dtype=np.float64)
+    wavelengths = np.asarray(wavelengths_nm, dtype=np.float64)
+    if values.ndim == 1:
+        values = values[None, :]
+        squeeze = True
+    else:
+        squeeze = False
+    if values.ndim != 2 or values.shape[1] != wavelengths.size:
+        raise ValueError("Spectra must have shape (n, bands) matching wavelengths")
+    if wavelengths.size < 2 or np.any(np.diff(wavelengths) <= 0):
+        raise ValueError("At least two strictly increasing wavelengths are required")
+    if gap_factor <= 1.0:
+        raise ValueError("gap_factor must be greater than one")
+
+    spacing = np.diff(wavelengths)
+    typical_spacing = float(np.median(spacing))
+    split_after = np.flatnonzero(spacing > gap_factor * max(typical_spacing, epsilon))
+    starts = np.r_[0, split_after + 1]
+    stops = np.r_[split_after + 1, wavelengths.size]
+    result = np.full_like(values, np.nan, dtype=np.float64)
+    row_valid = np.all(np.isfinite(values) & (values > 0), axis=1)
+    if not np.any(row_valid):
+        return result[0] if squeeze else result
+
+    selected = values[row_valid]
+    selected_result = np.full_like(selected, np.nan, dtype=np.float64)
+    for start, stop in zip(starts, stops):
+        width = int(stop - start)
+        if width == 1:
+            selected_result[:, start] = 1.0
+            continue
+        local_wavelengths = wavelengths[start:stop]
+        fraction = (local_wavelengths - local_wavelengths[0]) / (
+            local_wavelengths[-1] - local_wavelengths[0]
+        )
+        left = selected[:, start][:, None]
+        right = selected[:, stop - 1][:, None]
+        continuum = left + (right - left) * fraction[None, :]
+        selected_result[:, start:stop] = np.divide(
+            selected[:, start:stop],
+            continuum,
+            out=np.full_like(continuum, np.nan),
+            where=np.abs(continuum) > epsilon,
+        )
+    result[row_valid] = selected_result
+    return result[0] if squeeze else result
+
+
 @dataclass(frozen=True)
 class SffResult:
     scale: np.ndarray
@@ -124,7 +209,7 @@ def spectral_feature_fit(pixel_absorption: np.ndarray, reference_absorption: np.
     if pixels.ndim != 2 or references.ndim != 2 or pixels.shape[1] != references.shape[1]:
         raise ValueError("Pixel and reference absorptions must be 2D with matching feature counts")
     reference_energy = np.sum(references * references, axis=1)
-    dot = pixels @ references.T
+    dot = np.einsum("ij,kj->ik", pixels, references, optimize=False)
     scale = np.divide(dot, reference_energy[None, :], out=np.zeros_like(dot), where=reference_energy[None, :] > 0)
     pixel_energy = np.sum(pixels * pixels, axis=1)[:, None]
     residual_energy = pixel_energy - 2.0 * scale * dot + scale * scale * reference_energy[None, :]
@@ -205,14 +290,26 @@ def robust_column_bias(cube: np.ndarray, mask: np.ndarray, radius: int = 2) -> n
         raise ValueError("Cube must have shape (lines, samples, bands) matching the mask")
     if radius < 1:
         raise ValueError("Column-bias radius must be at least one")
-    masked = np.where(mask[..., None], cube, np.nan)
-    padded = np.pad(masked, ((0, 0), (radius, radius), (0, 0)), constant_values=np.nan)
-    windows = np.lib.stride_tricks.sliding_window_view(padded, 2 * radius + 1, axis=1)
+    # Estimate a robust full-depth spectrum for each detector column first,
+    # then compare that compact ``samples x bands`` profile with neighbouring
+    # columns.  The previous implementation formed a
+    # ``lines x samples x bands x window`` view and ``nanmedian`` workspace,
+    # which exceeded 9 GiB on the real 212-band audit data.  Column-profile
+    # residuals retain the intended fixed-detector signal while avoiding any
+    # full-cube neighbourhood tensor.
+    column_profile = np.full((cube.shape[1], cube.shape[2]), np.nan, dtype=np.float64)
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", category=RuntimeWarning)
-        local = np.nanmedian(windows, axis=-1)
-        residual = masked - local
-        bias = np.nanmedian(residual, axis=0)
+        for column in range(cube.shape[1]):
+            selected = cube[mask[:, column], column, :]
+            if selected.size:
+                column_profile[column] = np.nanmedian(selected, axis=0)
+        local = np.full_like(column_profile, np.nan)
+        for column in range(cube.shape[1]):
+            lower = max(0, column - radius)
+            upper = min(cube.shape[1], column + radius + 1)
+            local[column] = np.nanmedian(column_profile[lower:upper], axis=0)
+        bias = column_profile - local
         center = np.nanmedian(bias, axis=0)
     bias = bias - center[None, :]
     return np.nan_to_num(bias, nan=0.0, posinf=0.0, neginf=0.0)

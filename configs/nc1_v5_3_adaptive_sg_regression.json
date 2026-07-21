@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "application_version": "5.3.0",
+  "project": {
+    "name": "NC1_V5_3_Adaptive_SG_Regression",
+    "description": "NC-1 same-preprocessing-domain adaptive regression",
+    "non_destructive": true
+  },
+  "inputs": {
+    "analysis_image": "F:/NC-1-31_40/FILL/SWIR_SG",
+    "analysis_domain": "swir",
+    "data_physics": "reflectance",
+    "input_is_smoothed": true,
+    "rgb": "F:/NC-1-31_40/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1/RGB-20260702_164852-00000.dat",
+    "nir": "F:/NC-1-31_40/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1/NIR-20260702_164856-00000.hdr",
+    "swir": "F:/NC-1-31_40/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1/SWIR-20260702_164852-00000.dat"
+  },
+  "mask": {
+    "mode": "external",
+    "engine": "auto",
+    "path": "F:/NC-1-31_40/FILL/mask_SG",
+    "minimum_component_pixels": 64,
+    "minimum_mask_fraction": 0.05,
+    "minimum_interior_pixel_fraction": 0.65,
+    "edge_guard_pixels": 2,
+    "approval": {
+      "required": true,
+      "approved": true,
+      "reviewer": "NC-1 regression baseline",
+      "reviewed_at": "2026-07-21",
+      "notes": "Frozen same-grid mask and harmonized SG cube used for algorithm isolation."
+    }
+  },
+  "minerals": {
+    "requested": ["calcite", "dolomite", "anhydrite", "gypsum", "illite", "montmorillonite", "kaolinite"],
+    "include_internal_confusers": true
+  },
+  "mode": {
+    "engine": "adaptive_v5",
+    "profile": "balanced",
+    "automatic": true,
+    "write_all_profiles": true
+  },
+  "advanced": {
+    "user_overrides_enabled": false,
+    "preprocessing": {"sg_window": 11, "sg_polyorder": 2},
+    "sampling": {"blocks": 12, "block_rows": 64, "maximum_sample_rows": 128},
+    "execution": {"chunk_rows": 64},
+    "library_ensemble": {"maximum_representatives_per_mineral": 4},
+    "artifact_control": {"edge_width": 2},
+    "project_calibration": {
+      "enabled": true,
+      "role": "human_reviewed_high_confidence_project_weak_labels",
+      "baseline_root": "F:/NC-1-31_40/Result/CoreSpec_Mapper_V3_Balanced",
+      "holdout_block_rows": 256,
+      "holdout_modulo": 5,
+      "minimum_pixels_per_mineral": 100
+    },
+    "validation": {
+      "weak_label_root": "F:/NC-1-31_40/Result/CoreSpec_Mapper_V3_Balanced",
+      "role": "human_reviewed_project_weak_labels",
+      "use_for_regression_only": true
+    }
+  }
+}

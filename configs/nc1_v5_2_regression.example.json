@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "description": "NC-1 V5.2 release gate. Replace CANDIDATE_RUN with the run directory being evaluated.",
+  "mask": {
+    "reference": "F:/NC-1-31_40/FILL/mask_SG",
+    "candidate": "CANDIDATE_RUN/capability/material_mask.dat",
+    "gate": {
+      "minimum_iou": 0.90,
+      "minimum_precision": 0.90,
+      "minimum_recall": 0.95,
+      "maximum_area_difference_fraction": 0.05
+    }
+  },
+  "classifications": [
+    {
+      "name": "carbonates_balanced",
+      "reference": "F:/NC-1-31_40/Result/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1_result/Result_Balanced/carbonates/v3_final_classes.dat",
+      "candidate": "CANDIDATE_RUN/groups/carbonate_2300/final_balanced.dat",
+      "minerals": ["Calcite", "Dolomite"],
+      "domain": "reference_mask"
+    },
+    {
+      "name": "sulfates_balanced",
+      "reference": "F:/NC-1-31_40/Result/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1_result/Result_Balanced/sulfates/v3_final_classes.dat",
+      "candidate": "CANDIDATE_RUN/groups/calcium_sulfates/final_balanced.dat",
+      "minerals": ["Anhydrite", "Gypsum"],
+      "domain": "reference_mask"
+    },
+    {
+      "name": "clays_balanced",
+      "reference": "F:/NC-1-31_40/Result/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1_result/Result_Balanced/clays/v3_final_classes.dat",
+      "candidate": "CANDIDATE_RUN/groups/white_mica_illite/final_balanced.dat",
+      "minerals": ["Illite"],
+      "domain": "reference_mask"
+    }
+  ]
+}

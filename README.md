@@ -1,308 +1,314 @@
 # CoreSpec Mapper
 
-- **当前版本：** V4.0.0 Adaptive Mineral Evidence Engine
-- **版本日期：** 2026-07-19
-- **定位：** 可复用、可审计的 SWIR 岩心高光谱矿物填图桌面工具与后端
+> 当前稳定版本：**V5.3.0 Stable**（2026-07-21）
+> Windows 10/11 x64 · 当前用户安装 · CPU 独立运行 · 144 项自动化测试通过
 
-CoreSpec Mapper 是面向岩心 SWIR 高光谱影像的可配置、可复现、可审计矿物填图软件。它不依赖 ENVI 运行环境，可完成 ENVI 影像读取、岩心掩膜恢复、传感器能力审计、自动标准谱筛选与重采样、SG 预处理、组级 SAM、连续统形态与 SFF、相似矿物竞争、条带伪影控制、三档 ENVI 分类导出和质量验收。
+## 版本与下载
 
-V4 在 V3 的 NC-1 工程验证基础上增加自适应能力卡、Catalog 驱动的矿物扩展、全深度分层标定、严格/平衡/宽松三档共享证据、非覆盖式运行目录、质量发布门禁和 PySide6 桌面 MVP。VNIR 与 TIR 专家已注册但尚未实现，软件不会把不具备波段与数据物理条件的矿物强行分类。V3 命令与历史配置继续保留。
-
-完整桌面操作、输出目录、质量报告和 ENVI 查看说明见：
-
-```text
-docs/CoreSpec_Mapper_V4_桌面版使用说明指南_2026-07-19.md
-```
-
-## V4 核心能力
-
-- 根据真实波长、FWHM、坏波段、数据物理和参考谱数量生成 Sensor Capability Card。
-- 从完整光谱库自动筛选典型纯矿物谱，保留来源可追溯的锚点与代表谱集成清单。
-- 使用 8-16 个非相邻全深度块自动估计场景噪声、列偏差和组级 SAM 阈值。
-- 公共光谱证据只计算一次，并派生 `conservative`、`balanced`、`sensitive` 三档嵌套结果。
-- 子类竞争使用未做列形态修正的 SG 光谱，避免去条带过程扭曲吸收中心和连续统形态。
-- 对固定列、方向性细条带、狭长连通域、边缘和饱和风险分别审计，并保护强证据细脉。
-- 每次运行创建独立 `run_id` 目录，输出 ENVI 栅格、JSON/CSV、预览图、HTML/Markdown 质量报告和输入指纹。
-- CLI 与桌面端调用同一 V4 服务层；任务支持结构化进度和安全取消。
-
-## V3 兼容基线
-
-V3 不再依赖人工挑选并预先重采样的小型 7 类标准谱库，而是从 `spec_lib` 下的 ENVI 光谱库自动构建目标矿物参考集：
-
-- 自动扫描 `usgs_min`、`jpl_lib`、`jhu_lib`、`igcp264` 等库目录。
-- 按纯矿物名称、波长覆盖、重采样质量、诊断吸收特征、近重复程度和来源多样性筛选标准谱。
-- 每种目标矿物保留 4 条代表谱，避免不同矿物因参考谱数量不同产生先验偏置。
-- 修正 JHU 光谱库微米单位读取问题，按 ENVI 头文件 `wavelength units = Micrometers` 转为纳米。
-- 先按碳酸盐、硫酸盐和黏土三个大组进行列分布校准后的 SAM 候选检测，再在组内进行解锁的矿物子类判别。
-- 用完整 5,446 行数据估计每个探测器列的 SAM 分布，降低固定列竖向条带进入候选池的概率。
-- 同时输出校准前后矿物分数、列阈值、条带噪声掩膜、空间清理前结果和最终 ENVI Classification，便于审计。
-
-V3 解决了 V2 中“先由 SAM 锁死子类，后续 SFF 只能验收或拒绝”的结构性问题。通过大组候选和基本吸收深度检查的像元，会在目标矿物内根据综合分数选择类别，不再把相似矿物压成单一输出。
-
-## 目标矿物
-
-| 大组 | 矿物 |
+| 项目 | 内容 |
 |---|---|
-| 碳酸盐 | Calcite 方解石、Dolomite 白云石 |
-| 硫酸盐 | Anhydrite 硬石膏、Gypsum 石膏 |
-| 黏土 | Illite 伊利石、Montmorillonite 蒙脱石、Kaolinite 高岭石 |
+| 当前版本 | `5.3.0 Stable` |
+| Git 标签 | [`v5.3.0`](https://github.com/TujinoO/CoreSpec_Mapper/releases/tag/v5.3.0) |
+| Windows 安装包 | [`CoreSpec_Mapper_V5.3.0_Stable_Setup.exe`](https://github.com/TujinoO/CoreSpec_Mapper/releases/download/v5.3.0/CoreSpec_Mapper_V5.3.0_Stable_Setup.exe) |
+| SHA256 文件 | [`CoreSpec_Mapper_V5.3.0_Stable_Setup.sha256`](https://github.com/TujinoO/CoreSpec_Mapper/releases/download/v5.3.0/CoreSpec_Mapper_V5.3.0_Stable_Setup.sha256) |
+| 安装包大小 | 约 206.96 MiB |
+| SHA256 | `DC4E190B6285A5A715D1FF4CE2641BF3365A587BAF0E9F9852115A3428EBB3A2` |
 
-## 代码结构
+普通用户请从 [GitHub Releases](https://github.com/TujinoO/CoreSpec_Mapper/releases) 下载安装包，不需要克隆源码，也不需要安装 Python、Conda、PySide6 或 Torch。当前安装包尚未进行商业代码签名，Windows SmartScreen 可能显示“未知发布者”；请先核对 SHA256，再选择“更多信息 → 仍要运行”。
+
+V5.3 当前自适应技术路线采用“三段式阈值职责”：大类 SAM 仅负责宽松、高召回地发现候选域；SFF、矿物诊断特征、参考谱一致性和相似矿物竞争负责后续严格细分；末端再按多深度段重复、固定探测器列风险与横向/斜向地质支撑清理条带噪声。Conservative、Balanced、Sensitive 使用同一连续证据排序，但分别解析独立且严格嵌套的项目证据门，不再共用一张布尔 QDA 掩膜。
+
+NC-1 全景回归 `project_calibrated_v14_dominant_corridor_20260721` 使用 332,814 像元人工批准材料掩膜，质量 B、`publishable=true`。平衡档七类矿物均非零；逐矿物、多岩心段重复窄列、主导重复走廊和可剔除像元数均为 0。终检会把相距不超过 7 列的重复峰联合审查，避免同一条窄走廊内的相邻列互相提供伪地质支撑。
+
+CoreSpec Mapper V5.3.0 是面向岩心高光谱影像的可配置、可复现、可审计矿物证据填图软件。V5.3 提供九步状态化桌面流程、应用内置智能岩心前景模型、标准谱独立确认、可编辑阈值联合试算、掩膜人工批准门、实时 ETA 和中文成果视图。
+
+V5.3 的阈值优选不再只看组级 SAM：它在 Catalog 安全边界内联合评价分层场景证据、覆盖率、空间支持、固定列/边缘/孤立伪影风险，以及矿物特征门的可通过像元数。试算结果可在桌面端调整并重算，运行阶段会在全图上重新验证后才使用。无独立 XRD、拉曼、薄片或点光谱真值时，该流程不把无标签代理目标解释为矿物学准确率。
+
+当项目提供同网格、人工复核的历史高可信分类时，V5.3 可启用项目级校准：按交错连续深度块划分训练与留出集，只学习组级检测阈值、矿物分数偏置、物理特征窗和紧凑证据门，不复制历史分类像元。伊利石、蒙脱石和高岭石在独立发现后还会进入共享跨组竞争，确保同一像元只保留一个粘土类胜者。
+
+NC-1 项目提供 `validated_v3` 已验证配方路线：在 5,446 × 320 × 212 全景数据上，平衡/敏感两档共 14 个“档位×矿物”结果与冻结历史流程逐像元一致。该基准用于证明算法与参数回归等价，不能替代 XRD、拉曼、薄片或点光谱真值。
+
+当前生产专家为 SWIR 反射率专家。软件能够对 24 个 SWIR 目标完成传感器条件检查、标准谱优选和后端配置，其中 7 个为桌面默认的已验证 SWIR 目标，17 个为实验级可选目标。赤铁矿/针铁矿仅保留 Fe 氧化物族资源，矿物级分相尚未实现；石英因无 TIR 数据和兼容发射率库而关闭。
+
+## V5 核心能力
+
+- 内置 `corespec_spectral_v5.sqlite3`：27 个源库、1,783 条测量、1,143 个样品、27 个 Catalog 目标、428 条纯相 eligible 候选。
+- 24 个可运行 SWIR 目标：7 个已验证默认目标；原有 6 个及新增黄钾铁矾、绿脱石、滑石、透闪石、阳起石、黑云母、金云母、菱铁矿、海泡石、蛭石、水铵长石共 17 个实验级可选目标。
+- `mineral_recognition_reserve_v5.json` 保留另外 241 个待专家复核矿相标签和 914 条纯相测量，全部禁用，不会仅凭名称自动开放识别。
+- 一级矿物族、二级矿物的前端分类，以及面向相似谱形竞争的后端光谱族。
+- 主分析立方体与可选 RGB/NIR/SWIR 伴随数据角色；未配准数据不会被强行融合。
+- 自动材料掩膜只使用应用内置智能岩心前景模型；模型资产或 RGB 输入不完整时明确阻断，不再静默切换其他引擎。掩膜对过小、近全幅、碎片化和轮廓/裂缝型结果做质量门禁，并要求人工批准。
+- 全深度分层抽样、Sensor Capability Card、SG 平滑和稳健列光谱偏差。
+- 按样品去重的传感器适配标准谱；robust medoid 加谱形/来源/测量几何多样性优选。
+- 组级 SAM、Catalog 有界自适应阈值、向量化分段线性连续统和相似矿物特征竞争。
+- Conservative、Balanced、Sensitive 三档共享证据，并使用深度、特征、间隔、参考谱共识、稳定性和置信度门禁。
+- 固定列、方向性细条带、狭长弱证据、小连通域、边缘和饱和风险控制。
+- ENVI 栅格、标准谱曲线、阈值候选/最终值、拒绝瀑布、Al-OH 波长亚型、可缩放预览、CSV、JSON/Markdown/HTML 报告和完整 Manifest。
+- 审计快照在同一进程内复用，避免同一次桌面流程重复审计和重复选谱。
+
+## 能力边界
+
+| 层级 | 矿物 | 状态 |
+|---|---|---|
+| 已验证 SWIR，默认勾选 | 方解石、白云石、硬石膏、石膏、伊利石、蒙脱石、高岭石 | 启用；仍需当前传感器能力门禁 |
+| 实验级 SWIR | 白云母、地开石、叶蜡石、绿泥石、明矾石、绿帘石、黄钾铁矾、绿脱石、滑石、透闪石、阳起石、黑云母、金云母、菱铁矿、海泡石、蛭石、水铵长石 | 启用但不默认；需专项真值验收 |
+| Fe 氧化物族 | 赤铁矿、针铁矿 | 当前 NIR 从 691 nm 开始且 RGB 非校准高光谱，矿物级关闭 |
+| TIR 硅酸盐 | 石英 | 无 TIR 和兼容发射率参考谱，关闭 |
+
+质量等级 A/B/C/D 衡量输入、输出完整性、三档嵌套、空间支持和伪影风险，不是矿物学准确率。现有工程运行和 NC-1 历史弱标签回归均没有像元级 XRD、拉曼、薄片或点光谱真值。
+
+## 安装
+
+### Windows 安装包（推荐）
+
+1. 打开 [`v5.3.0` 发布页](https://github.com/TujinoO/CoreSpec_Mapper/releases/tag/v5.3.0)。
+2. 下载 `CoreSpec_Mapper_V5.3.0_Stable_Setup.exe` 和同名 `.sha256` 文件。
+3. 在下载目录打开 PowerShell，校验安装包：
+
+```powershell
+Get-FileHash .\CoreSpec_Mapper_V5.3.0_Stable_Setup.exe -Algorithm SHA256
+```
+
+输出必须为：
 
 ```text
-configs/                 NC-1 配置，包括 V3 balanced / relaxed 参数
-docs/                    V4 桌面版使用、复核和交付说明
-scripts/                 审计、阈值扫描和诊断脚本
-spec_lib/                ENVI 光谱库输入
-src/corespec_mapper/     后端包源码
-tests/                   单元、ENVI I/O、真实数据、V3 回归、V4 与桌面冒烟测试
-output/                  本地运行输出，默认不纳入 Git 版本库
+DC4E190B6285A5A715D1FF4CE2641BF3365A587BAF0E9F9852115A3428EBB3A2
 ```
 
-## 环境与安装
+4. 双击安装包，保持“创建桌面快捷方式”选中，然后完成安装。
+5. 从桌面或开始菜单启动 `CoreSpec Mapper V5.3`。
 
-项目当前后端依赖保持轻量，运行期核心依赖为 NumPy。
+默认安装目录为 `%LOCALAPPDATA%\Programs\CoreSpec Mapper V5.3`。安装内容包括桌面/开始菜单快捷方式、卸载程序、CPU 运行时、光谱数据库、矿物 Catalog、智能掩膜模型、技术文档和用户指南。升级安装不会删除用户项目和识别成果；卸载可使用 Windows“已安装的应用”或开始菜单卸载项。
+
+### 源码开发安装
+
+仅开发源码时要求 Python 3.10 或更高版本：
 
 ```powershell
-cd E:\Code\CoreSpec_Mapper
+git clone https://github.com/TujinoO/CoreSpec_Mapper.git
+cd CoreSpec_Mapper
+git lfs pull
 python -m pip install -e ".[desktop,test]"
+```
+
+只使用源码目录时：
+
+```powershell
 $env:PYTHONPATH = "src"
+python -m corespec_mapper --help
 ```
 
-如果不安装为 editable package，也可以仅设置 `PYTHONPATH=src` 后运行 `python -m corespec_mapper ...`。
-
-## 常用命令
-
-V4 项目能力与光谱库审计：
-
-```powershell
-corespec v4-audit --config configs/nc1_v4.json --output output/nc1_v4_audit.json
-```
-
-V4 完整运行（三档结果一次生成）：
-
-```powershell
-corespec v4-run --config configs/nc1_v4.json --output-root output --run-id nc1_v4_full_5446_final
-```
-
-启动桌面端：
+## 启动桌面端
 
 ```powershell
 corespec-desktop
 ```
 
-也可通过 CLI 子命令启动桌面端：
+等价命令：
 
 ```powershell
 corespec desktop
 ```
 
-未安装 editable package 时，可在项目根目录设置 `PYTHONPATH=src` 后运行：
+V4 兼容桌面：
+
+```powershell
+corespec-desktop-v4
+corespec desktop-v4
+```
+
+## V5 配置
+
+仓库提供 `configs/v5_default.json`、`configs/v5_3dssz_validation.json` 和 `configs/v5_zkh3_validation.json`。最小结构如下，不含任何光谱库路径：
+
+```json
+{
+  "schema_version": 2,
+  "application_version": "5.3.0",
+  "project": {
+    "name": "CoreSpec_V5_Project",
+    "non_destructive": true
+  },
+  "inputs": {
+    "analysis_image": "D:/Project/SWIR.dat",
+    "analysis_domain": "swir",
+    "data_physics": "reflectance",
+    "input_is_smoothed": false,
+    "rgb": null,
+    "nir": null,
+    "swir": "D:/Project/SWIR.dat"
+  },
+  "mask": {
+    "mode": "automatic",
+    "engine": "auto",
+    "path": null,
+    "minimum_component_pixels": 64,
+    "minimum_mask_fraction": 0.05,
+    "minimum_interior_pixel_fraction": 0.65,
+    "edge_guard_pixels": 2,
+    "approval": {
+      "required": true,
+      "approved": false
+    }
+  },
+  "minerals": {
+    "requested": [
+      "calcite",
+      "dolomite",
+      "anhydrite",
+      "gypsum",
+      "illite",
+      "montmorillonite",
+      "kaolinite"
+    ],
+    "include_internal_confusers": true
+  }
+}
+```
+
+若使用人工掩膜，把 `mask.mode` 改为 `external` 并填写与主立方体同网格的 `mask.path`。完成预览检查后再将 `mask.approval.approved` 设为 `true`；桌面端可直接勾选批准。
+
+NC-1 全景验证配置为 `configs/nc1_v5_2_validation.json`。它保留通用自适应引擎，同时用 `mode.engine=validated_v3` 明确选择项目验证配方。
+
+## CLI
+
+查看 V5 Catalog、能力和数据库统计：
+
+```powershell
+corespec v5-catalog
+corespec v5-catalog --output output/v5_catalog.json
+```
+
+执行冻结基准比较：
+
+```powershell
+corespec v5-validate --config configs/nc1_v5_2_regression.example.json --output output/regression.json
+```
+
+审计输入、掩膜、传感器和内置标准谱：
+
+```powershell
+corespec v5-audit --config configs/v5_default.json --output output/v5_audit.json
+```
+
+导出本次传感器的标准谱选择：
+
+```powershell
+corespec v5-library --config configs/v5_default.json --output output/v5_library.json
+```
+
+完整运行：
+
+```powershell
+corespec v5-run `
+  --config configs/v5_default.json `
+  --output-root output `
+  --run-id core_v5_run
+```
+
+也可用 `--start-line` 和 `--stop-line` 裁剪写出行范围；当前组级 SAM 与阈值标定仍扫描全幅，因此这不是高效 ROI 加速模式。
+
+V3/V4 命令继续保留，便于历史复算：
+
+```powershell
+corespec v4-audit --config configs/nc1_v4.json --output output/v4_audit.json
+corespec v4-run --config configs/nc1_v4.json --output-root output --run-id legacy_v4
+corespec v3-pilot --config configs/nc1_v3.json --output output/v3_pilot
+```
+
+## 标准输出
+
+每次运行创建：
+
+`<output_root>/<project_name>/<run_id>/`
+
+主要内容：
+
+| 路径 | 内容 |
+|---|---|
+| `project.csmproj` | 项目、运行和主数据身份 |
+| `config.resolved.json` | 用户配置与解析后的 Runtime 配置 |
+| `audit.json` | 输入、掩膜、能力、标准谱和风险 |
+| `capability/` | 能力卡、材料掩膜、样本计划和矿物可观测性 |
+| `library_ensemble/` | 入选标准谱、候选/拒绝审计和 ENVI 光谱库 |
+| `groups/<group>/` | 三档分类、分数、阈值、特征、置信度、稳定性、拒绝原因和伪影图 |
+| `confidence/` | 跨组置信度、稳定性和拒绝原因 |
+| `thresholds.json` | 全部候选目标与最终阈值 |
+| `previews/` | 三档比较、各组叠加、1600 nm 背景、材料掩膜、条带和 Al-OH 亚型预览 |
+| `tables/mineral_counts.csv` | 各档矿物像元计数 |
+| `reports/` | 工程质量报告 |
+| `run_manifest.json` | 输入指纹、资源哈希、标准谱、阈值、质量、耗时和输出清单 |
+
+优先把 `final_balanced.dat` 作为解释主图，`final_conservative.dat` 检查高可信核心，`final_sensitive.dat` 检查潜在漏识别。零检出会作为警告保留，不会通过矿物配额制造结果。
+
+## 四组实测运行
+
+以下结果直接来自指定运行 Manifest。平衡档计数按“碳酸盐 / 钙硫酸盐 / 白云母—伊利石 / 蒙皂石 / 高岭石双峰族”列出，是各组计数而非跨组去重像元。
+
+| 运行 | 主立方体 | 掩膜 | 平衡档组计数 | 总耗时 | 状态 |
+|---|---|---|---|---:|---|
+| `validation_runs/V5_Final_Raw_Validation/3dssz_raw_v5_final` | 5663×320×212 | 外部，12.2938% | 1495 / 303 / 587 / 0 / 0 | 293.375 s | B / Warning |
+| `validation_runs/V5_Final_Raw_Validation/zkh3_raw_v5_final` | 4341×320×212 | 自动，37.5671% | 802 / 3464 / 213 / 0 / 0 | 243.000 s | B / Warning |
+| `validation_runs/V5_Final_Validation/3dssz_lowres_v5_final2` | 293×160×367 | 自动，19.8976% | 0 / 220 / 3 / 0 / 0 | 12.484 s | B / Warning |
+| `validation_runs/V5_Final_Validation/zkh3_lowres_v5_final2` | 297×158×367 | 自动，47.5387% | 223 / 528 / 221 / 0 / 0 | 14.000 s | B / Warning |
+
+四组均完成 312 个 Manifest 输出项和 24 个预览资产（23 张 PNG + 1 个 `legend.json`），材料掩膜与 Al-OH 亚型 PNG 均存在；同时均报告 FWHM 缺失和无像元级真值。这些运行证明端到端工程链路可完成，不证明矿物准确率。
+
+最终 3DSSZ 原始外部掩膜保留 159 个连通域，ZKH3 原始自动掩膜保留 263 个连通域，均触发碎片化警告；正式地质解释前仍需复核掩膜。
+
+## 测试
 
 ```powershell
 $env:PYTHONPATH = "src"
-python -m corespec_mapper desktop
-```
-
-基础审计：
-
-```powershell
-$env:PYTHONPATH = "src"
-python -m corespec_mapper audit --config configs/nc1.json --output output/audit.json
-```
-
-历史 ENVI SAM 回归：
-
-```powershell
-python -m corespec_mapper sam-baseline --config configs/nc1.json --group carbonates --output output/sam_baseline_carbonates
-```
-
-V2 风格前 800 行试运行：
-
-```powershell
-python -m corespec_mapper pilot --config configs/nc1.json --start-line 0 --stop-line 800 --output output/pilot_0000_0800
-```
-
-V3 平衡版前 800 行验证：
-
-```powershell
-python -m corespec_mapper v3-pilot --config configs/nc1_v3.json --start-line 0 --stop-line 800 --output output/v3_balanced_optimized_0000_0800
-```
-
-V3 宽松版前 800 行验证：
-
-```powershell
-python -m corespec_mapper v3-pilot --config configs/nc1_v3_relaxed.json --start-line 0 --stop-line 800 --output output/v3_relaxed_optimized_0000_0800
-```
-
-V3 完整 5,446 行生产运行：
-
-```powershell
-python -m corespec_mapper v3-pilot --config configs/nc1_v3.json --start-line 0 --output F:\NC-1-31_40\Result\CoreSpec_Mapper_V3_Balanced
-python -m corespec_mapper v3-pilot --config configs/nc1_v3_relaxed.json --start-line 0 --output F:\NC-1-31_40\Result\CoreSpec_Mapper_V3_Relaxed
-```
-
-运行自动化测试：
-
-```powershell
-$env:PYTHONPATH = "src"
-python -m unittest discover -s tests -v
-```
-
-也可运行：
-
-```powershell
 python -m pytest -q
 ```
 
-## V4 标准输出
+桌面测试需要 PySide6；无显示环境可设置：
 
-每个运行目录包含 `project.csmproj`、`config.resolved.json`、`audit.json`、`summary.json`、`run_manifest.json`，以及以下子目录：
+```powershell
+$env:QT_QPA_PLATFORM = "offscreen"
+python -m pytest -q
+```
 
-| 目录 | 主要内容 |
-|---|---|
-| `capability/` | 传感器能力卡、矿物可识别性、抽样计划、列光谱偏差 |
-| `library_ensemble/` | 入选/拒绝参考谱、重采样光谱库与选谱审计 |
-| `groups/<group>/` | 三档分类、置信度、SFF、吸收深度、拒绝原因和伪影风险图 |
-| `confidence/` | 跨矿物组最大置信度、稳定性和拒绝原因 |
-| `previews/` | 三档叠加对比、条带清理和各组预览 |
-| `reports/` | JSON、Markdown 与 HTML 质量报告 |
-
-ENVI 中优先打开各组的 `final_balanced.dat` 作为主解释图，使用 `final_sensitive.dat` 检查潜在漏识别，并结合 `confidence.dat`、`stripe_noise_mask.dat` 和质量报告复核。
-
-## V4 验收结果
-
-NC-1 V4 最终验收运行：
+## 代码结构
 
 ```text
-output/NC1_SWIR_v1/nc1_v4_full_5446_final
+configs/                         V3/V4/V5 配置
+docs/                            V5 设计、数据库和使用迁移文档
+scripts/                         数据库构建与验证分析脚本
+spec_lib/                        27 个原始 ENVI 光谱库资产
+src/corespec_mapper/
+  desktop_v5.py                  V5.3 九步状态化桌面
+  foreground_model.py            应用内置智能岩心前景模型
+  v5_threshold_trial.py          场景阈值联合试算与复核值生成
+  v5_service.py                  V5 审计、运行与 Manifest
+  masking.py                     材料掩膜
+  spectral_v5.py                 来源、名称、纯度解析
+  spectral_db.py                 私有 SQLite 数据库
+  v5_library.py                  传感器适配标准谱优选
+  v5_calibration.py              自适应阈值
+  resources/                     Catalog、数据库、图标
+tests/                           单元、CLI、桌面、数据库和服务测试
+validation_runs/                 四组 V5 实测验收成果
 ```
 
-完整影像信息：
+## 文档
 
-| 项目 | 结果 |
-|---|---:|
-| 行数 | 5,446 |
-| 列数 | 320 |
-| 波段数 | 212 |
-| 波长范围 | 978.571-2518.460 nm |
-| 有效掩膜像元 | 332,815 |
-| 掩膜比例 | 19.0974% |
-| 分层样本块 | 12 |
-| 分层样本有效像元 | 61,649 |
-| 估计 SNR | 720.83 |
+- [V5.3 GitHub 下载、安装与升级指南](docs/INSTALL_V5.3.md)
+- [V5.3 稳定版技术方法与系统设计](docs/CoreSpec_Mapper_V5_3_稳定版技术方法与系统设计_2026-07-21.md)
+- [V5.3 稳定版用户使用指南](docs/CoreSpec_Mapper_V5_3_稳定版用户使用指南_2026-07-21.md)
+- [V5 软件总体设计方案](docs/CoreSpec_Mapper_V5_自适应矿物证据引擎_软件总体设计方案_2026-07-20.md)
+- [V5 私有光谱数据库清单与识别能力](docs/CoreSpec_Mapper_V5_私有光谱数据库清单与识别能力_2026-07-20.md)
+- [V5 桌面版使用与 V4 迁移指南](docs/CoreSpec_Mapper_V5_桌面版使用与V4迁移指南_2026-07-20.md)
+- [V4 桌面版使用说明](docs/CoreSpec_Mapper_V4_桌面版使用说明指南_2026-07-19.md)
 
-七类矿物最终像元数：
+## 已知限制与后续接口
 
-| 矿物 | 严格版 | 平衡版 | 宽松版 |
-|---|---:|---:|---:|
-| 方解石 Calcite | 601 | 2,407 | 8,862 |
-| 白云石 Dolomite | 43 | 462 | 11,266 |
-| 硬石膏 Anhydrite | 0 | 425 | 1,672 |
-| 石膏 Gypsum | 1,036 | 15,067 | 34,195 |
-| 伊利石 Illite | 193 | 2,831 | 5,742 |
-| 蒙脱石 Montmorillonite | 3 | 554 | 2,913 |
-| 高岭石 Kaolinite | 203 | 1,324 | 2,721 |
-| 三组分类像元合计 | 2,079 | 23,070 | 67,371 |
-
-最终验收状态：
-
-- 质量等级：`B`
-- 状态：`Warning`
-- 自动发布门禁：Passed
-- 发布建议：可发布，但需注明 FWHM 与无真值限制
-- 平衡版七类矿物：全部非零
-- 固定列残余警告：无
-- 可复现性：两次完整 5,446 行复算，9 个最终分类文件哈希完全一致
-- 最终自动化测试：`34 passed`
-
-平衡版建议作为地质解释主图，宽松版用于检查潜在漏识别，严格版用于提取高可信核心。
-
-## V3 输出文件
-
-每个大组目录 `carbonates`、`sulfates`、`clays` 均包含以下核心成果：
-
-| 文件 | 含义 |
-|---|---|
-| `column_calibrated_candidates.dat` | 完整深度列分位校准后的大组候选 |
-| `group_sam_score.dat` | 大组最佳 SAM 角，单位 rad |
-| `column_sam_threshold.dat` | 每列使用的 SAM 分位阈值 |
-| `v3_raw_mineral_scores.dat` | 域校准前矿物分数，越低越好 |
-| `v3_mineral_scores.dat` | 域校准后矿物分数，越低越好 |
-| `v3_classes_before_spatial.dat` | 空间清理前子类结果 |
-| `stripe_noise_mask.dat` | 被判为方向性条带的像元 |
-| `v3_final_classes.dat` | 最终 ENVI Classification 结果 |
-| `summary.json` | 参数、计数、阈值、参考谱和诊断统计 |
-
-ENVI 中建议直接打开三个大组目录下的 `v3_final_classes.dat`。输出类别包含 `Unclassified`、目标矿物类别和 `Masked Pixels`，并写入颜色表。
-
-## V3 验证结果
-
-### 前 800 行 V3 平衡版与宽松版
-
-| 矿物 | 平衡版最终像元 | 宽松版最终像元 |
-|---|---:|---:|
-| 方解石 Calcite | 978 | 3,717 |
-| 白云石 Dolomite | 83 | 200 |
-| 硬石膏 Anhydrite | 111 | 250 |
-| 石膏 Gypsum | 1,549 | 2,595 |
-| 伊利石 Illite | 267 | 313 |
-| 蒙脱石 Montmorillonite | 134 | 183 |
-| 高岭石 Kaolinite | 373 | 515 |
-
-前 800 行两版均输出 `800 x 320` ENVI Classification，七种目标矿物均有非零像元。平衡版更适合作为下一轮地质审查默认基线；宽松版用于检查弱蚀变和脉体外围漏检。
-
-### 完整 5,446 行生产成果
-
-| 矿物 | 平衡版最终像元 | 宽松版最终像元 |
-|---|---:|---:|
-| 方解石 Calcite | 3,199 | 10,427 |
-| 白云石 Dolomite | 1,556 | 14,844 |
-| 硬石膏 Anhydrite | 423 | 886 |
-| 石膏 Gypsum | 22,757 | 34,496 |
-| 伊利石 Illite | 5,759 | 6,869 |
-| 蒙脱石 Montmorillonite | 3,692 | 5,260 |
-| 高岭石 Kaolinite | 4,025 | 4,275 |
-
-完整影像两版共 6 幅最终分类栅格均通过项目 ENVI 读取器二次打开校验：
-
-- 尺寸：`5446 lines x 320 samples x 1 band`
-- 处理行范围：`0-5446`
-- 两版 `previews/comparison_final.png` 均覆盖完整深度，像素尺寸为 `1280 x 5446`
-- 项目自动化测试：`20 passed`
-
-## 结果边界
-
-V4 当前是 SWIR 光谱证据分类软件，不是丰度解混或实验室真值精度报告。在没有 XRD、薄片、拉曼或点位光谱真值之前，不应把像元数直接解释为真实矿物含量，也不应把质量等级 A/B/C/D 理解为矿物学准确率。
-
-正式解释建议：
-
-- 以 V4 平衡版作为主图。
-- 以 V4 宽松版作为漏识别检查图。
-- 以 V4 严格版提取高可信核心。
-- 针对具体深度段和矿物类别做地质复核。
-- 后续参数调整应基于空间位置反馈，不建议继续无方向地全局放宽阈值。
-
-## 版本管理
-
-本仓库使用 Git 标签标注可回退版本。V4 发布标签建议使用：
-
-```powershell
-git tag -a v4.0.0 -m "CoreSpec Mapper V4.0.0 Adaptive Mineral Evidence Engine"
-git push origin main
-git push origin v4.0.0
-```
-
-回退或新建回退分支：
-
-```powershell
-git checkout v4.0.0
-git switch -c restore-v4 v4.0.0
-```
-
-查看版本历史：
-
-```powershell
-git log --oneline --decorate --graph --all
-git tag --list
-```
+- RGB/NIR/SWIR 伴随数据当前只做来源审计；自动配准与像元融合未实现。
+- Quick Calibration 控件因缺少像元真值而禁用并强制为 false；监督式 ROI/点位标定尚未接入。
+- 三档输出固定启用；`mode.profile` 仅控制结果页默认查看偏好，不改变科学运行。
+- `--start-line/--stop-line` 只裁剪输出，当前不会避免全幅组级 SAM 与阈值标定。
+- 用户 overlay 数据库协议已定义，但 5.3.0 尚未合并外部 overlay。
+- VNIR Fe 族专家和 TIR 发射率专家未实现。
+- 27 个源库的许可状态当前均为 `unverified`，对外分发数据库前必须完成许可核查。
+- 没有矿物学真值时，不应把像元数、质量等级或空间聚集解释为准确率。

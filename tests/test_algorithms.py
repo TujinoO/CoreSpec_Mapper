@@ -5,6 +5,7 @@ import numpy as np
 from corespec_mapper.algorithms import (
     absorption_feature_metrics,
     continuum_remove,
+    continuum_remove_linear,
     directional_stripe_mask,
     remove_elongated_components,
     robust_column_bias,
@@ -27,6 +28,27 @@ class AlgorithmTests(unittest.TestCase):
         spectrum = np.array([1.0, 0.5, 1.0])
         removed = continuum_remove(spectrum, wavelengths)
         np.testing.assert_allclose(removed, [1.0, 0.5, 1.0])
+
+    def test_linear_continuum_is_vectorized_and_preserves_absorption_center(self):
+        wavelengths = np.linspace(2100.0, 2300.0, 101)
+        continuum = 0.35 + 0.0004 * (wavelengths - wavelengths[0])
+        absorption = 1.0 - 0.18 * np.exp(-0.5 * ((wavelengths - 2206.0) / 8.0) ** 2)
+        spectra = np.vstack([continuum * absorption, 1.7 * continuum * absorption])
+
+        removed = continuum_remove_linear(spectra, wavelengths)
+
+        self.assertEqual(removed.shape, spectra.shape)
+        centers = wavelengths[np.argmin(removed, axis=1)]
+        np.testing.assert_allclose(centers, [2206.0, 2206.0], atol=2.0)
+        np.testing.assert_allclose(removed[0], removed[1], atol=1e-12)
+
+    def test_linear_continuum_splits_large_wavelength_gaps(self):
+        wavelengths = np.array([1000.0, 1010.0, 1020.0, 2000.0, 2010.0, 2020.0])
+        spectrum = np.array([1.0, 0.8, 1.0, 3.0, 2.4, 3.0])
+
+        removed = continuum_remove_linear(spectrum, wavelengths)
+
+        np.testing.assert_allclose(removed, [1.0, 0.8, 1.0, 1.0, 0.8, 1.0])
 
     def test_sff_self_fit(self):
         reference = np.array([[0.0, 0.2, 0.0]])

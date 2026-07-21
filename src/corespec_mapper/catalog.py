@@ -248,3 +248,9 @@ def _windows(values: Sequence[Sequence[float]]) -> tuple[tuple[float, float], ..
 
 def default_catalog_path() -> Path:
     return Path(__file__).parent / "resources" / "mineral_catalog_v4.json"
+
+
+def default_v5_runtime_catalog_path() -> Path:
+    """Return the packaged V5 expert catalog without changing the V4 default."""
+
+    return Path(__file__).parent / "resources" / "mineral_catalog_v5_runtime.json"

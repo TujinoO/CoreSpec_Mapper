@@ -85,19 +85,39 @@ def read_sample_blocks(
     plan: SamplePlan,
     *,
     bands: Sequence[int] | None = None,
+    maximum_rows: int | None = None,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Return vertically concatenated sample blocks and their original line indices."""
+    """Return sampled block rows and their original line indices.
+
+    ``SamplePlan`` records the full calibration regions used for score
+    percentiles.  Reading every spectral row from those regions is unnecessary
+    for sensor quality, library selection, and detector-column estimation and
+    can consume several GiB.  ``maximum_rows`` keeps an evenly distributed,
+    deterministic subset for those spectral statistics while leaving the plan
+    itself unchanged.
+    """
     valid = np.asarray(mask, dtype=bool)
     if valid.shape != (dataset.info.lines, dataset.info.samples):
         raise ValueError("Dataset and mask dimensions do not match")
-    cubes: list[np.ndarray] = []
-    masks: list[np.ndarray] = []
-    line_indices: list[np.ndarray] = []
-    for block in plan.blocks:
-        cubes.append(np.asarray(dataset.read_rows(block.start_line, block.stop_line, bands=bands)))
-        masks.append(valid[block.start_line : block.stop_line])
-        line_indices.append(np.arange(block.start_line, block.stop_line, dtype=np.int32))
-    return np.concatenate(cubes, axis=0), np.concatenate(masks, axis=0), np.concatenate(line_indices)
+    available = np.concatenate([
+        np.arange(block.start_line, block.stop_line, dtype=np.int32) for block in plan.blocks
+    ])
+    if maximum_rows is not None and available.size > int(maximum_rows):
+        limit = max(int(maximum_rows), len(plan.blocks))
+        selected_parts: list[np.ndarray] = []
+        remaining = limit
+        for index, block in enumerate(plan.blocks):
+            block_lines = np.arange(block.start_line, block.stop_line, dtype=np.int32)
+            blocks_left = len(plan.blocks) - index
+            quota = max(1, remaining // blocks_left)
+            quota = min(quota, block_lines.size)
+            positions = np.linspace(0, block_lines.size - 1, quota, dtype=np.int64)
+            selected_parts.append(block_lines[np.unique(positions)])
+            remaining -= selected_parts[-1].size
+        available = np.concatenate(selected_parts)
+    cubes = [np.asarray(dataset.read_rows(int(line), int(line) + 1, bands=bands)) for line in available]
+    sampled_mask = valid[available]
+    return np.concatenate(cubes, axis=0), sampled_mask, available
 
 
 def iter_plan_blocks(plan: SamplePlan) -> Iterable[tuple[int, int]]:

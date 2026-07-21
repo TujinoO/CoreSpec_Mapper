@@ -17,24 +17,33 @@ def make_v4_previews(
     group_ids: Sequence[str],
     start: int,
     stop: int,
+    *,
+    material_mask: np.ndarray | None = None,
 ) -> dict[str, str]:
     run = Path(run_dir)
     output = run / "previews"
     output.mkdir(parents=True, exist_ok=True)
     image = EnviDataset(config["analysis_image"])
-    mask_dataset = EnviDataset(config["analysis_mask"])
+    mask_dataset = EnviDataset(config["analysis_mask"]) if material_mask is None else None
     try:
         wavelengths = image.info.wavelengths_nm
         if wavelengths is None:
             raise ValueError("Image wavelength vector is required for previews")
         band = int(np.argmin(np.abs(wavelengths - 1600.0)))
-        default_bands = [
-            min(20, mask_dataset.info.bands - 1),
-            min(mask_dataset.info.bands // 2, mask_dataset.info.bands - 1),
-            min(190, mask_dataset.info.bands - 1),
-        ]
-        mask_bands = sorted(set(int(item) for item in config.get("v4", {}).get("mask_bands", default_bands)))
-        mask = derive_mask(mask_dataset, bands=mask_bands, start=start, stop=stop)
+        if material_mask is None:
+            assert mask_dataset is not None
+            default_bands = [
+                min(20, mask_dataset.info.bands - 1),
+                min(mask_dataset.info.bands // 2, mask_dataset.info.bands - 1),
+                min(190, mask_dataset.info.bands - 1),
+            ]
+            mask_bands = sorted(set(int(item) for item in config.get("v4", {}).get("mask_bands", default_bands)))
+            mask = derive_mask(mask_dataset, bands=mask_bands, start=start, stop=stop)
+        else:
+            full_mask = np.asarray(material_mask, dtype=bool)
+            if full_mask.shape != (image.info.lines, image.info.samples):
+                raise ValueError("Material mask and preview image dimensions do not match")
+            mask = full_mask[start:stop]
         reflectance = image.read_rows(start, stop, bands=[band])[..., 0]
         gray = _stretched_gray(reflectance, mask)
         background = np.repeat(gray[..., None], 3, axis=2)
@@ -94,4 +103,5 @@ def make_v4_previews(
         return paths
     finally:
         image.close()
-        mask_dataset.close()
+        if mask_dataset is not None:
+            mask_dataset.close()

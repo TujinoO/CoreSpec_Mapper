@@ -1,0 +1,3507 @@
+{
+  "schema_version": 1,
+  "database_release": "5.1.0",
+  "generated_on": "2026-07-20",
+  "status": "disabled_reserve_only",
+  "purpose": "Complete name-level reserve for future expert-reviewed recognition targets; entries are intentionally unavailable to the runtime and desktop selector.",
+  "activation_contract": {
+    "required_fields": [
+      "expert_id",
+      "taxonomy_group",
+      "spectral_family",
+      "primary_aliases",
+      "required_windows_nm",
+      "key_features_nm",
+      "confusers",
+      "feature_gate",
+      "validation_record"
+    ],
+    "required_actions": [
+      "expert_review",
+      "catalog_and_runtime_definition",
+      "reference_qc",
+      "confuser_competition_test",
+      "sensor_coverage_test",
+      "ground_truth_or_geological_acceptance"
+    ]
+  },
+  "summary": {
+    "reserved_phase_count": 241,
+    "reserved_measurement_count": 914,
+    "reserved_independent_sample_count_sum": 552
+  },
+  "entries": [
+    {
+      "phase_id": "olivine",
+      "measurement_count": 46,
+      "independent_sample_count": 30,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "topaz",
+      "measurement_count": 31,
+      "independent_sample_count": 23,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hypersthene",
+      "measurement_count": 13,
+      "independent_sample_count": 11,
+      "source_count": 3,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "almandine",
+      "measurement_count": 12,
+      "independent_sample_count": 8,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "microcline",
+      "measurement_count": 12,
+      "independent_sample_count": 8,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "smectite",
+      "measurement_count": 12,
+      "independent_sample_count": 3,
+      "source_count": 6,
+      "source_ids": [
+        "igcp264/igcp_1.sli",
+        "igcp264/igcp_2.sli",
+        "igcp264/igcp_3.sli",
+        "igcp264/igcp_4.sli",
+        "igcp264/igcp_5.sli",
+        "jhu_lib/minerals.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "beryl",
+      "measurement_count": 11,
+      "independent_sample_count": 5,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "grossular",
+      "measurement_count": 11,
+      "independent_sample_count": 7,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "labradorite",
+      "measurement_count": 11,
+      "independent_sample_count": 5,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "lepidolite",
+      "measurement_count": 11,
+      "independent_sample_count": 7,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "orthoclase",
+      "measurement_count": 11,
+      "independent_sample_count": 5,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pyrite",
+      "measurement_count": 11,
+      "independent_sample_count": 7,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "antigorite",
+      "measurement_count": 10,
+      "independent_sample_count": 8,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "augite",
+      "measurement_count": 10,
+      "independent_sample_count": 6,
+      "source_count": 3,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "diopside",
+      "measurement_count": 10,
+      "independent_sample_count": 6,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "tourmaline",
+      "measurement_count": 10,
+      "independent_sample_count": 4,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "fluorite",
+      "measurement_count": 9,
+      "independent_sample_count": 3,
+      "source_count": 4,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "galena",
+      "measurement_count": 9,
+      "independent_sample_count": 7,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "halloysite",
+      "measurement_count": 9,
+      "independent_sample_count": 5,
+      "source_count": 6,
+      "source_ids": [
+        "igcp264/igcp_1.sli",
+        "igcp264/igcp_2.sli",
+        "igcp264/igcp_3.sli",
+        "igcp264/igcp_4.sli",
+        "igcp264/igcp_5.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "sanidine",
+      "measurement_count": 9,
+      "independent_sample_count": 5,
+      "source_count": 3,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "andradite",
+      "measurement_count": 8,
+      "independent_sample_count": 6,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "anorthite",
+      "measurement_count": 8,
+      "independent_sample_count": 5,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "magnetite",
+      "measurement_count": 8,
+      "independent_sample_count": 4,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "natrolite",
+      "measurement_count": 8,
+      "independent_sample_count": 4,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "rhodonite",
+      "measurement_count": 8,
+      "independent_sample_count": 4,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "riebeckite",
+      "measurement_count": 8,
+      "independent_sample_count": 4,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "rutile",
+      "measurement_count": 8,
+      "independent_sample_count": 4,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "sphalerite",
+      "measurement_count": 8,
+      "independent_sample_count": 6,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "albite",
+      "measurement_count": 7,
+      "independent_sample_count": 5,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "barite",
+      "measurement_count": 7,
+      "independent_sample_count": 3,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cordierite",
+      "measurement_count": 7,
+      "independent_sample_count": 3,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "enstatite",
+      "measurement_count": 7,
+      "independent_sample_count": 3,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "nepheline",
+      "measurement_count": 7,
+      "independent_sample_count": 3,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "spodumene",
+      "measurement_count": 7,
+      "independent_sample_count": 3,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "vesuvianite",
+      "measurement_count": 7,
+      "independent_sample_count": 3,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "wollastonite",
+      "measurement_count": 7,
+      "independent_sample_count": 3,
+      "source_count": 5,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cerussite",
+      "measurement_count": 6,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cookeite",
+      "measurement_count": 6,
+      "independent_sample_count": 4,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hemimorphite",
+      "measurement_count": 6,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "heulandite",
+      "measurement_count": 6,
+      "independent_sample_count": 4,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hornblende",
+      "measurement_count": 6,
+      "independent_sample_count": 4,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "lizardite",
+      "measurement_count": 6,
+      "independent_sample_count": 5,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "prehnite",
+      "measurement_count": 6,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "rectorite",
+      "measurement_count": 6,
+      "independent_sample_count": 3,
+      "source_count": 5,
+      "source_ids": [
+        "igcp264/igcp_1.sli",
+        "igcp264/igcp_3.sli",
+        "igcp264/igcp_4.sli",
+        "igcp264/igcp_5.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "sodalite",
+      "measurement_count": 6,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "spessartine",
+      "measurement_count": 6,
+      "independent_sample_count": 5,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "acmite",
+      "measurement_count": 5,
+      "independent_sample_count": 4,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chalcopyrite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "datolite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hedenbergite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "oligoclase",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pectolite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pyrrhotite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 3,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "rhodochrosite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "richterite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "saponite",
+      "measurement_count": 5,
+      "independent_sample_count": 4,
+      "source_count": 3,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "serpentine",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "stilbite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "ulexite",
+      "measurement_count": 5,
+      "independent_sample_count": 3,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "analcime",
+      "measurement_count": 4,
+      "independent_sample_count": 3,
+      "source_count": 3,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "andalusite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "andesine",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "anthophyllite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "arsenopyrite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "azurite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "brucite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cassiterite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "celestite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chabazite",
+      "measurement_count": 4,
+      "independent_sample_count": 3,
+      "source_count": 3,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chromite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "clinochlore",
+      "measurement_count": 4,
+      "independent_sample_count": 4,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "clinochlore_fe",
+      "measurement_count": 4,
+      "independent_sample_count": 4,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "clinozoisite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "colemanite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "corrensite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "corundum",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cummingtonite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "glauconite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "glaucophane",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "halite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "howlite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "ilmenite",
+      "measurement_count": 4,
+      "independent_sample_count": 3,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "jadeite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "malachite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "mizzonite",
+      "measurement_count": 4,
+      "independent_sample_count": 4,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "monticellite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "mordenite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pyrope",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "sillimanite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "staurolite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "strontianite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "sulfur",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "thuringite",
+      "measurement_count": 4,
+      "independent_sample_count": 4,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "tincalconite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "trona",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "witherite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "zircon",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 4,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "zoisite",
+      "measurement_count": 4,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "amblygonite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "anglesite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "antlerite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "apatite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "aphthitalite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "aragonite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jhu_lib/minerals.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "atacamite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "borax",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "bornite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "bustamite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jhu_lib/minerals.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chalcocite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "columbite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cryolite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "desert_varnish",
+      "measurement_count": 3,
+      "independent_sample_count": 3,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "elbaite",
+      "measurement_count": 3,
+      "independent_sample_count": 3,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "erionite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jhu_lib/minerals.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "fayalite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "ferroaxinite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "gahnite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "gibbsite",
+      "measurement_count": 3,
+      "independent_sample_count": 3,
+      "source_count": 2,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "glauberite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "graphite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hydroxyapophyllite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "johannsenite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "kernite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "kyanite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jhu_lib/minerals.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "leucite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jhu_lib/minerals.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "magnesiochromite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "magnesite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "marcasite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "mimetite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "molybdenite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "montebrasite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "natrojarosite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "palygorskite",
+      "measurement_count": 3,
+      "independent_sample_count": 3,
+      "source_count": 2,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "plumbojarosite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "prochlorite",
+      "measurement_count": 3,
+      "independent_sample_count": 3,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pyrolusite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "realgar",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "scheelite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "scorodite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "smithsonite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "stibnite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "titanite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "triphylite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "tschermigite",
+      "measurement_count": 3,
+      "independent_sample_count": 1,
+      "source_count": 3,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "jpl_lib/jpl2.sli",
+        "jpl_lib/jpl3.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "annite",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "bytownite",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jpl_lib/jpl1.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "carnallite",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chrysotile",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 2,
+      "source_ids": [
+        "jhu_lib/minerals.sli",
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "clinoptilolite",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hectorite",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "mascagnite",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "meionite",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "opal",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "thenardite",
+      "measurement_count": 2,
+      "independent_sample_count": 2,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "adularia",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "allanite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "ammonio_jarosite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "ammonio_smectite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "ammonioalunite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "ammonium_chloride",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "amphibole",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "anatase",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jpl_lib/jpl1.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "axinite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "bassanite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "bloedite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "bronzite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "brookite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "butlerite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "carbon_black",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "celsian",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chalcedony",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chert",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chlorapatite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "chrysocolla",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cinnabar",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "clintonite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cobaltite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "copiapite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "coquimbite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "covellite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cristobalite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jpl_lib/jpl1.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cronstedtite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "cuprite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "diaspore",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "dipyre",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "dumortierite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "endellite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "epsomite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "eugsterite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "europium_oxide",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "fassaite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "ferrihydrite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "fluorapatite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "forsterite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jpl_lib/jpl1.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "gaylussite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "h2o_ice",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "holmquistite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hornblende_fe",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hornblende_mg",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hydrogrossular",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "hydroxyl_apatite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "kainite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "kerogen",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "laumontite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "lazurite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "lepidocrosite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "limonite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "maghemite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "manganite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "margarite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "marialite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "mirabilite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "monazite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "nacrite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "neodymium_oxide",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "nephrite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "niter",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "paragonite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "periclase",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jpl_lib/jpl1.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "perthite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pigeonite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pinnoite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pitch_limonite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "polyhalite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "praseodymium_oxide",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "psilomelane",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "pyroxene",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "rivadavite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "roscoelite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "samarium_oxide",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "sauconite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "scolecite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "siderophyllite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "smaragdite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "sodium_bicarbonate",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "sphene",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "syngenite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "tephroite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "uralite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "uvarovite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "usgs_min/usgs_min.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    },
+    {
+      "phase_id": "zincite",
+      "measurement_count": 1,
+      "independent_sample_count": 1,
+      "source_count": 1,
+      "source_ids": [
+        "jpl_lib/jpl1.sli"
+      ],
+      "status": "reserved_expert_required",
+      "recognition_enabled": false,
+      "required_expert_definition": true,
+      "review_note": "Automatically parsed primary label; mineral identity, aliases, spectral windows, confusers, gates, and truth validation are still required."
+    }
+  ]
+}

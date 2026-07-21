@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterator, Sequence
+from typing import Any, Iterator, Mapping, Sequence
 import re
 
 import numpy as np
@@ -311,6 +311,67 @@ def _format_list(values: Sequence[Any]) -> str:
     return "{\n  " + ", ".join(str(value) for value in values) + "}"
 
 
+def _format_header_value(value: Any) -> str:
+    if isinstance(value, (list, tuple, np.ndarray)):
+        return _format_list(value)
+    if isinstance(value, str):
+        text = value.strip()
+        return text if text.startswith("{") and text.endswith("}") else "{" + text + "}"
+    return str(value)
+
+
+def subset_spatial_metadata(
+    info: EnviInfo,
+    *,
+    start_line: int = 0,
+    start_sample: int = 0,
+) -> dict[str, Any]:
+    """Return georeferencing metadata adjusted for a spatial subset."""
+    metadata = info.metadata
+    result = {
+        key: metadata[key]
+        for key in (
+            "coordinate system string",
+            "projection info",
+            "rpc info",
+            "geo points",
+        )
+        if key in metadata
+    }
+    map_info = metadata.get("map info")
+    if isinstance(map_info, list) and len(map_info) >= 7:
+        adjusted = list(map_info)
+        try:
+            reference_sample = float(adjusted[1])
+            reference_line = float(adjusted[2])
+            map_x = float(adjusted[3])
+            map_y = float(adjusted[4])
+            pixel_x = float(adjusted[5])
+            pixel_y = float(adjusted[6])
+            adjusted[1] = 1.0
+            adjusted[2] = 1.0
+            adjusted[3] = map_x + (start_sample + 1.0 - reference_sample) * pixel_x
+            adjusted[4] = map_y - (start_line + 1.0 - reference_line) * pixel_y
+        except (TypeError, ValueError):
+            # Retain the source record when a vendor-specific map-info layout
+            # cannot be interpreted safely.
+            pass
+        result["map info"] = adjusted
+    if "x start" in metadata:
+        try:
+            result["x start"] = int(metadata["x start"]) + int(start_sample)
+        except (TypeError, ValueError):
+            result["x start"] = metadata["x start"]
+    if "y start" in metadata:
+        try:
+            result["y start"] = int(metadata["y start"]) + int(start_line)
+        except (TypeError, ValueError):
+            result["y start"] = metadata["y start"]
+    result["corespec source start line"] = int(start_line)
+    result["corespec source start sample"] = int(start_sample)
+    return result
+
+
 def classification_palette(class_names: Sequence[str]) -> list[int]:
     fallback = [
         (31, 119, 180),
@@ -356,6 +417,7 @@ def write_envi(
     description: str | None = None,
     class_names: Sequence[str] | None = None,
     class_lookup: Sequence[int] | None = None,
+    metadata: Mapping[str, Any] | None = None,
 ) -> tuple[Path, Path]:
     data_path = Path(data_path)
     data_path.parent.mkdir(parents=True, exist_ok=True)
@@ -414,5 +476,15 @@ def write_envi(
         lines_out.append("wavelength units = Unknown")
         if not band_names:
             lines_out.append("band names = " + _format_list(["CoreSpec classification"]))
+    reserved = {
+        "description", "samples", "lines", "bands", "header offset", "file type",
+        "data type", "interleave", "byte order", "band names", "classes",
+        "class lookup", "class names",
+    }
+    for key, value in (metadata or {}).items():
+        normalized = str(key).strip().casefold()
+        if not normalized or normalized in reserved or value is None:
+            continue
+        lines_out.append(f"{normalized} = {_format_header_value(value)}")
     header_path.write_text("\n".join(lines_out) + "\n", encoding="utf-8")
     return data_path, header_path

@@ -87,7 +87,12 @@ def audit_v4_project(
             block_rows=int(sampling.get("block_rows", 64)),
             min_valid_pixels=int(sampling.get("minimum_valid_pixels_per_block", 128)),
         )
-        sample_cube, sample_mask, _ = read_sample_blocks(image, mask, plan)
+        sample_cube, sample_mask, _ = read_sample_blocks(
+            image,
+            mask,
+            plan,
+            maximum_rows=int(sampling.get("maximum_sample_rows", 256)),
+        )
         token.raise_if_cancelled()
         emit("sampling", 0.38, f"Read {len(plan.blocks)} full-depth calibration blocks")
         input_is_smoothed = bool(config.get("analysis_input_is_smoothed", False))

@@ -255,7 +255,6 @@ def _deduplicate(candidates: list[V4LibraryCandidate], threshold: float) -> list
             (
                 other
                 for other in kept
-                if not (candidate.anchor and other.anchor)
                 if float(spectral_angles(candidate.embedding[None, :], other.embedding[None, :])[0, 0]) <= threshold
             ),
             None,
@@ -271,39 +270,32 @@ def _deduplicate(candidates: list[V4LibraryCandidate], threshold: float) -> list
 def _select_representatives(candidates: list[V4LibraryCandidate], maximum: int) -> list[V4LibraryCandidate]:
     if not candidates:
         return []
-    desired = min(maximum, max(1, int(np.ceil(np.sqrt(len(candidates))))))
-    anchor_count = min(sum(candidate.anchor for candidate in candidates), maximum)
-    desired = max(desired, anchor_count)
-    if anchor_count >= 4:
-        desired = anchor_count
+    desired = min(maximum, len(candidates), max(3, int(np.ceil(np.sqrt(len(candidates))))))
     for candidate in candidates:
         candidate.selection_score = float(np.clip(
-            0.25 * candidate.intrinsic_quality
-            + 0.20 * candidate.diagnostic_quality
+            0.30 * candidate.intrinsic_quality
+            + 0.25 * candidate.diagnostic_quality
             + 0.20 * (candidate.confuser_separability if np.isfinite(candidate.confuser_separability) else 0.5)
-            + 0.15 * (candidate.scene_support if np.isfinite(candidate.scene_support) else 0.5)
+            # Scene similarity is deliberately weak: it is useful for
+            # diagnosing domain mismatch but must not let background or an
+            # absent target choose the scientific standard spectrum.
+            + 0.05 * (candidate.scene_support if np.isfinite(candidate.scene_support) else 0.5)
             + 0.10 * 0.75
             + 0.10 * 0.5
-            - 0.20 * (candidate.fixed_column_risk if np.isfinite(candidate.fixed_column_risk) else 0.0)
-            - 0.10 * (candidate.edge_risk if np.isfinite(candidate.edge_risk) else 0.0),
+            - 0.10 * (candidate.fixed_column_risk if np.isfinite(candidate.fixed_column_risk) else 0.0)
+            - 0.05 * (candidate.edge_risk if np.isfinite(candidate.edge_risk) else 0.0),
             0.0,
             1.0,
         ))
-    if anchor_count:
-        useful_non_anchors = sum(
-            (not candidate.anchor)
-            and (
-                not np.isfinite(candidate.fixed_column_risk)
-                or candidate.fixed_column_risk < 0.80
-                or (np.isfinite(candidate.scene_support) and candidate.scene_support >= 0.35)
-            )
-            for candidate in candidates
-        )
-        desired = min(desired, anchor_count + useful_non_anchors)
+    # Anchors protect regression continuity, but no more than two may occupy
+    # the ensemble.  The remaining positions are chosen from the complete
+    # curated pool so automatic selection is real rather than a four-anchor
+    # fallback for every validated mineral.
+    anchor_limit = min(2, desired, sum(candidate.anchor for candidate in candidates))
     selected = sorted(
         [candidate for candidate in candidates if candidate.anchor],
         key=lambda item: (-item.selection_score, item.identifier.casefold()),
-    )[:desired]
+    )[:anchor_limit]
     families = {candidate.source_family for candidate in selected}
     while len(selected) < desired:
         remaining = [candidate for candidate in candidates if candidate not in selected]

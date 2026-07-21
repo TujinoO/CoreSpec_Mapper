@@ -1,0 +1,29 @@
+{
+  "model_name": "CoreMaskUNet",
+  "model_version": "v2.0.0-finetuned-integrated",
+  "task": "drill-core foreground segmentation",
+  "framework": "pytorch",
+  "num_classes": 2,
+  "weights": "weights.pth",
+  "input": {
+    "channels": 3,
+    "image_size": 512,
+    "mean": [53.7393, 53.329227, 52.893757],
+    "std": [12.786107, 14.0913315, 15.2901]
+  },
+  "inference": {
+    "threshold": 0.5,
+    "tile_size": 512,
+    "overlap": 0.25,
+    "device": "auto"
+  },
+  "postprocess": {
+    "minimum_component_pixels": 100
+  },
+  "provenance": {
+    "source_model": "locally supplied CoreMaskUNet v2 package",
+    "training_samples": 2,
+    "training_epochs": 30,
+    "review_required": true
+  }
+}

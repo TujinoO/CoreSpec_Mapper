@@ -20,10 +20,20 @@ dist/
 
 # Local run outputs and large generated rasters
 output/
+validation_runs/
+.codex_runs/
+.codex_audit/
+artifacts/
 *.aux.xml
+
+# Local packaging runtimes and generated release trees
+tools/
+release/staging*/
+release/*.exe
 
 # Editor and OS files
 .DS_Store
 Thumbs.db
+~$*.docx
 .idea/
 .vscode/

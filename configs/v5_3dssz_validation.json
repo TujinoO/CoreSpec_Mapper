@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "application_version": "5.3.0",
+  "project": {
+    "name": "V5_3DSSZ_Validation",
+    "description": "3DSSZ RGB/NIR/SWIR full-resolution validation",
+    "non_destructive": true
+  },
+  "inputs": {
+    "analysis_image": "E:/Code/GeoCoreFusion/data/2023_09_04_14_34_41-3DSSZ-1-16-267.0_276.0-532.0_552.0/SWIR-20230904_143441-00000.dat",
+    "analysis_domain": "swir",
+    "data_physics": "reflectance",
+    "input_is_smoothed": false,
+    "rgb": "E:/Code/GeoCoreFusion/data/2023_09_04_14_34_41-3DSSZ-1-16-267.0_276.0-532.0_552.0/RGB-20230904_143441-00000.dat",
+    "nir": "E:/Code/GeoCoreFusion/data/2023_09_04_14_34_41-3DSSZ-1-16-267.0_276.0-532.0_552.0/NIR-20230904_143445-00000.dat",
+    "swir": "E:/Code/GeoCoreFusion/data/2023_09_04_14_34_41-3DSSZ-1-16-267.0_276.0-532.0_552.0/SWIR-20230904_143441-00000.dat"
+  },
+  "mask": {
+    "mode": "external",
+    "path": "E:/Code/GeoCoreFusion/data/2023_09_04_14_34_41-3DSSZ-1-16-267.0_276.0-532.0_552.0/maak.dat",
+    "minimum_component_pixels": 64,
+    "edge_guard_pixels": 2
+  },
+  "minerals": {
+    "requested": ["calcite", "dolomite", "anhydrite", "gypsum", "illite", "montmorillonite", "kaolinite"],
+    "include_internal_confusers": true
+  },
+  "mode": {"profile": "balanced", "automatic": true, "write_all_profiles": true},
+  "advanced": {
+    "preprocessing": {"sg_window": 11, "sg_polyorder": 2},
+    "sampling": {"blocks": 12, "block_rows": 64, "maximum_sample_rows": 128},
+    "execution": {"chunk_rows": 64},
+    "library_ensemble": {"maximum_representatives_per_mineral": 4},
+    "artifact_control": {"edge_width": 2}
+  }
+}

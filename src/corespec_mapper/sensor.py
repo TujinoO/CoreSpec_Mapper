@@ -228,7 +228,11 @@ def resolve_mineral_support(
             if reference_counts is not None and reference_count < 1:
                 reasons.append("no usable pure reference spectrum")
             snr_score = 0.65 if card.estimated_snr is None else min(1.0, card.estimated_snr / 150.0)
-            reference_score = 0.0 if reference_counts is not None and reference_count == 0 else min(1.0, max(reference_count, 1) / 3.0)
+            reference_score = (
+                0.50
+                if reference_counts is None
+                else 0.0 if reference_count == 0 else min(1.0, reference_count / 3.0)
+            )
             score = 0.30 * coverage + 0.20 * sampling_score + 0.20 * snr_score + 0.15 * 0.75 + 0.15 * reference_score
             hard_pass = coverage >= 0.97 and valid_bands >= minimum_bands and (reference_counts is None or reference_count > 0)
             if card.fwhm_median_nm is not None:
@@ -241,6 +245,10 @@ def resolve_mineral_support(
                 level = SupportLevel.CONDITIONAL
             else:
                 level = SupportLevel.UNSUPPORTED
+            if reference_counts is None and level == SupportLevel.SUPPORTED:
+                level = SupportLevel.CONDITIONAL
+            if reference_counts is None and level != SupportLevel.UNSUPPORTED:
+                reasons.append("reference library availability has not yet been audited")
         if level == SupportLevel.SUPPORTED and not reasons:
             reasons.append("required diagnostic coverage, sampling, data physics, and references are available")
         result[mineral.mineral_id] = MineralSupport(

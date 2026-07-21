@@ -1,0 +1,3085 @@
+{
+  "version": "5.1.0",
+  "schema_version": 1,
+  "catalog_role": "runtime_expert_catalog",
+  "knowledge_catalog": "mineral_catalog_v5.json",
+  "description": "CoreSpec Mapper V5.1 runtime expert configuration with 24 runnable SWIR targets and explicit experimental phase gates.",
+  "global_reject_patterns": [
+    "(?<![A-Za-z0-9])(?:bearing|mixture|mixed|intergrowth|composite|synthetic mixture)(?![A-Za-z0-9])",
+    "(?<![A-Za-z0-9])(?:monzonite|granite|granodiorite|diorite|gabbro|basalt|andesite|rhyolite|shale|mudstone|siltstone|sandstone|limestone|dolostone|marble)(?![A-Za-z0-9])"
+  ],
+  "experts": {
+    "swir_reflectance": {
+      "display_name": "V5 SWIR Reflectance Expert",
+      "implemented": true,
+      "data_physics": [
+        "reflectance"
+      ],
+      "nominal_domain": "swir"
+    },
+    "rgb_nir_fe_oxide": {
+      "display_name": "RGB-NIR Iron-Oxide Family Evidence",
+      "implemented": false,
+      "data_physics": [
+        "reflectance"
+      ],
+      "nominal_domain": "rgb+nir",
+      "limitation": "The field NIR starts at 691 nm and RGB is not a calibrated hyperspectral VNIR observation, so hematite-goethite separation is not implemented."
+    },
+    "vnir_reflectance": {
+      "display_name": "Full VNIR Reflectance Expert",
+      "implemented": false,
+      "data_physics": [
+        "reflectance"
+      ],
+      "nominal_domain": "vnir"
+    },
+    "tir_emissivity": {
+      "display_name": "TIR Emissivity Expert",
+      "implemented": false,
+      "data_physics": [
+        "emissivity"
+      ],
+      "nominal_domain": "tir",
+      "limitation": "No TIR sensor or compatible emissivity reference collection is available."
+    }
+  },
+  "taxonomy_groups": {
+    "carbonates": {
+      "members": [
+        "calcite",
+        "dolomite",
+        "siderite"
+      ]
+    },
+    "sulfates": {
+      "members": [
+        "anhydrite",
+        "gypsum",
+        "alunite",
+        "jarosite"
+      ]
+    },
+    "phyllosilicates": {
+      "members": [
+        "illite",
+        "muscovite",
+        "montmorillonite",
+        "kaolinite",
+        "dickite",
+        "pyrophyllite",
+        "chlorite",
+        "nontronite",
+        "talc",
+        "biotite",
+        "phlogopite",
+        "sepiolite",
+        "vermiculite"
+      ]
+    },
+    "hydrothermal_silicates": {
+      "members": [
+        "epidote"
+      ]
+    },
+    "iron_oxides": {
+      "members": [
+        "hematite",
+        "goethite"
+      ]
+    },
+    "anhydrous_silicates": {
+      "members": [
+        "quartz"
+      ]
+    },
+    "amphiboles": {
+      "members": [
+        "tremolite",
+        "actinolite"
+      ]
+    },
+    "ammonium_minerals": {
+      "members": [
+        "buddingtonite"
+      ]
+    }
+  },
+  "spectral_families": {
+    "carbonate_2300": {
+      "competition_members": [
+        "calcite",
+        "dolomite",
+        "siderite"
+      ]
+    },
+    "calcium_sulfates": {
+      "competition_members": [
+        "anhydrite",
+        "gypsum"
+      ]
+    },
+    "white_mica_illite": {
+      "competition_members": [
+        "illite",
+        "muscovite"
+      ]
+    },
+    "smectites": {
+      "competition_members": [
+        "montmorillonite",
+        "nontronite",
+        "sepiolite",
+        "vermiculite"
+      ]
+    },
+    "kaolin_2170_2205": {
+      "competition_members": [
+        "kaolinite",
+        "dickite"
+      ]
+    },
+    "al_oh_2165": {
+      "competition_members": [
+        "pyrophyllite"
+      ]
+    },
+    "mg_fe_oh": {
+      "competition_members": [
+        "chlorite",
+        "talc",
+        "biotite",
+        "phlogopite"
+      ]
+    },
+    "acid_sulfates": {
+      "competition_members": [
+        "alunite",
+        "jarosite"
+      ]
+    },
+    "epidote_family": {
+      "competition_members": [
+        "epidote"
+      ]
+    },
+    "fe_oxide_family": {
+      "competition_members": [
+        "hematite",
+        "goethite"
+      ]
+    },
+    "silicate_tir": {
+      "competition_members": [
+        "quartz"
+      ]
+    },
+    "amphibole_mg_fe_oh": {
+      "competition_members": [
+        "tremolite",
+        "actinolite"
+      ]
+    },
+    "ammonium_feldspar": {
+      "competition_members": [
+        "buddingtonite"
+      ]
+    }
+  },
+  "groups": {
+    "carbonate_2300": {
+      "display_name": "2.3 µm Carbonate Competition",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          2248,
+          2402
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          1880,
+          2010
+        ],
+        [
+          2200,
+          2450
+        ]
+      ],
+      "features": [
+        {
+          "id": "carbonate_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2285,
+            2360
+          ]
+        },
+        {
+          "id": "carbonate_primary_depth",
+          "type": "depth",
+          "window_nm": [
+            2285,
+            2360
+          ]
+        },
+        {
+          "id": "carbonate_short_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2285,
+            2326
+          ]
+        },
+        {
+          "id": "carbonate_long_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2326,
+            2360
+          ]
+        },
+        {
+          "id": "carbonate_1945_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1880,
+            2010
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.48,
+        "derivative": 0.17,
+        "features": 0.25,
+        "fit": 0.1
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.02,
+          "absolute_sam_threshold_rad": 0.085,
+          "minimum_absorption_depth": 0.04,
+          "minimum_margin": 0.014,
+          "confidence_threshold": 0.62,
+          "minimum_reference_consensus": 0.66,
+          "minimum_evidence_stability": 0.7
+        },
+        "balanced": {
+          "column_percentile": 0.06,
+          "absolute_sam_threshold_rad": 0.115,
+          "minimum_absorption_depth": 0.025,
+          "minimum_margin": 0.008,
+          "confidence_threshold": 0.52,
+          "minimum_reference_consensus": 0.5,
+          "minimum_evidence_stability": 0.55
+        },
+        "sensitive": {
+          "column_percentile": 0.12,
+          "absolute_sam_threshold_rad": 0.15,
+          "minimum_absorption_depth": 0.015,
+          "minimum_margin": 0.004,
+          "confidence_threshold": 0.42,
+          "minimum_reference_consensus": 0.34,
+          "minimum_evidence_stability": 0.4
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.12,
+        "column_ratio": 1.9,
+        "column_excess": 0.035,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.76
+      }
+    },
+    "calcium_sulfates": {
+      "display_name": "Calcium Sulfate Competition",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          1350,
+          1800
+        ],
+        [
+          1850,
+          2300
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          1350,
+          2300
+        ]
+      ],
+      "features": [
+        {
+          "id": "sulfate_1450_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1405,
+            1510
+          ]
+        },
+        {
+          "id": "sulfate_1750_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1715,
+            1790
+          ]
+        },
+        {
+          "id": "sulfate_1940_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1875,
+            1995
+          ]
+        },
+        {
+          "id": "sulfate_2200_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2140,
+            2250
+          ]
+        },
+        {
+          "id": "sulfate_1940_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            1875,
+            1995
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.43,
+        "derivative": 0.12,
+        "features": 0.3,
+        "fit": 0.15
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.015,
+          "absolute_sam_threshold_rad": 0.105,
+          "minimum_absorption_depth": 0.02,
+          "minimum_margin": 0.014,
+          "confidence_threshold": 0.64,
+          "minimum_reference_consensus": 0.66,
+          "minimum_evidence_stability": 0.7
+        },
+        "balanced": {
+          "column_percentile": 0.05,
+          "absolute_sam_threshold_rad": 0.14,
+          "minimum_absorption_depth": 0.012,
+          "minimum_margin": 0.008,
+          "confidence_threshold": 0.53,
+          "minimum_reference_consensus": 0.5,
+          "minimum_evidence_stability": 0.55
+        },
+        "sensitive": {
+          "column_percentile": 0.1,
+          "absolute_sam_threshold_rad": 0.18,
+          "minimum_absorption_depth": 0.007,
+          "minimum_margin": 0.004,
+          "confidence_threshold": 0.42,
+          "minimum_reference_consensus": 0.34,
+          "minimum_evidence_stability": 0.4
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.1,
+        "column_ratio": 1.8,
+        "column_excess": 0.03,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.76
+      }
+    },
+    "white_mica_illite": {
+      "display_name": "White Mica–Illite Competition and Al-OH Subtypes",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          2100,
+          2250
+        ],
+        [
+          2300,
+          2380
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          2050,
+          2400
+        ]
+      ],
+      "features": [
+        {
+          "id": "aloh_2200_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2188,
+            2225
+          ]
+        },
+        {
+          "id": "aloh_2200_depth",
+          "type": "depth",
+          "window_nm": [
+            2188,
+            2225
+          ]
+        },
+        {
+          "id": "white_mica_2345_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2320,
+            2370
+          ]
+        }
+      ],
+      "subtype_axis": {
+        "feature_id": "aloh_2200_center_nm",
+        "classes": [
+          {
+            "id": "short_wave_aloh",
+            "upper_exclusive_nm": 2201
+          },
+          {
+            "id": "medium_wave_aloh",
+            "lower_inclusive_nm": 2201,
+            "upper_exclusive_nm": 2209
+          },
+          {
+            "id": "long_wave_aloh",
+            "lower_inclusive_nm": 2209
+          }
+        ],
+        "interpretation": "The subtype is a spectral-composition descriptor and must not be presented as certain illite-versus-muscovite phase separation."
+      },
+      "score_weights": {
+        "shape": 0.42,
+        "derivative": 0.18,
+        "features": 0.3,
+        "fit": 0.1
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.02,
+          "absolute_sam_threshold_rad": 0.075,
+          "minimum_absorption_depth": 0.018,
+          "minimum_margin": 0.025,
+          "confidence_threshold": 0.66,
+          "minimum_reference_consensus": 0.66,
+          "minimum_evidence_stability": 0.72
+        },
+        "balanced": {
+          "column_percentile": 0.055,
+          "absolute_sam_threshold_rad": 0.105,
+          "minimum_absorption_depth": 0.011,
+          "minimum_margin": 0.015,
+          "confidence_threshold": 0.56,
+          "minimum_reference_consensus": 0.5,
+          "minimum_evidence_stability": 0.58
+        },
+        "sensitive": {
+          "column_percentile": 0.11,
+          "absolute_sam_threshold_rad": 0.14,
+          "minimum_absorption_depth": 0.006,
+          "minimum_margin": 0.008,
+          "confidence_threshold": 0.46,
+          "minimum_reference_consensus": 0.34,
+          "minimum_evidence_stability": 0.42
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.09,
+        "column_ratio": 1.9,
+        "column_excess": 0.028,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.75
+      }
+    },
+    "smectites": {
+      "display_name": "Smectite Family",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          1350,
+          1455
+        ],
+        [
+          1850,
+          1985
+        ],
+        [
+          2100,
+          2420
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          1350,
+          2420
+        ]
+      ],
+      "features": [
+        {
+          "id": "smectite_1400_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1370,
+            1455
+          ]
+        },
+        {
+          "id": "smectite_1900_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1850,
+            1985
+          ]
+        },
+        {
+          "id": "smectite_aloh_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2185,
+            2235
+          ]
+        },
+        {
+          "id": "smectite_aloh_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2185,
+            2235
+          ]
+        },
+        {
+          "id": "smectite_2290_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2250,
+            2335
+          ]
+        },
+        {
+          "id": "smectite_2290_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2250,
+            2335
+          ]
+        },
+        {
+          "id": "smectite_2390_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2350,
+            2420
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.42,
+        "derivative": 0.15,
+        "features": 0.33,
+        "fit": 0.1
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.015,
+          "absolute_sam_threshold_rad": 0.08,
+          "minimum_absorption_depth": 0.022,
+          "minimum_margin": 0.02,
+          "confidence_threshold": 0.66,
+          "minimum_reference_consensus": 0.7,
+          "minimum_evidence_stability": 0.74
+        },
+        "balanced": {
+          "column_percentile": 0.05,
+          "absolute_sam_threshold_rad": 0.115,
+          "minimum_absorption_depth": 0.013,
+          "minimum_margin": 0.012,
+          "confidence_threshold": 0.56,
+          "minimum_reference_consensus": 0.54,
+          "minimum_evidence_stability": 0.6
+        },
+        "sensitive": {
+          "column_percentile": 0.1,
+          "absolute_sam_threshold_rad": 0.155,
+          "minimum_absorption_depth": 0.007,
+          "minimum_margin": 0.006,
+          "confidence_threshold": 0.45,
+          "minimum_reference_consensus": 0.38,
+          "minimum_evidence_stability": 0.44
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.09,
+        "column_ratio": 1.9,
+        "column_excess": 0.028,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.75
+      }
+    },
+    "kaolin_2170_2205": {
+      "display_name": "Kaolinite–Dickite Doublet Competition",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          2120,
+          2240
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          2100,
+          2380
+        ]
+      ],
+      "features": [
+        {
+          "id": "kaolin_short_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2145,
+            2190
+          ]
+        },
+        {
+          "id": "kaolin_long_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2188,
+            2228
+          ]
+        },
+        {
+          "id": "kaolin_short_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2145,
+            2190
+          ]
+        },
+        {
+          "id": "kaolin_long_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2188,
+            2228
+          ]
+        },
+        {
+          "id": "kaolin_2380_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2340,
+            2380
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.37,
+        "derivative": 0.2,
+        "features": 0.33,
+        "fit": 0.1
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.015,
+          "absolute_sam_threshold_rad": 0.07,
+          "minimum_absorption_depth": 0.022,
+          "minimum_margin": 0.022,
+          "confidence_threshold": 0.68,
+          "minimum_reference_consensus": 0.66,
+          "minimum_evidence_stability": 0.72
+        },
+        "balanced": {
+          "column_percentile": 0.045,
+          "absolute_sam_threshold_rad": 0.095,
+          "minimum_absorption_depth": 0.013,
+          "minimum_margin": 0.013,
+          "confidence_threshold": 0.58,
+          "minimum_reference_consensus": 0.5,
+          "minimum_evidence_stability": 0.58
+        },
+        "sensitive": {
+          "column_percentile": 0.09,
+          "absolute_sam_threshold_rad": 0.125,
+          "minimum_absorption_depth": 0.007,
+          "minimum_margin": 0.006,
+          "confidence_threshold": 0.47,
+          "minimum_reference_consensus": 0.34,
+          "minimum_evidence_stability": 0.42
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.08,
+        "column_ratio": 2.0,
+        "column_excess": 0.025,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.76
+      }
+    },
+    "al_oh_2165": {
+      "display_name": "Short-Wavelength Al-OH Family",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          2100,
+          2225
+        ],
+        [
+          2280,
+          2350
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          2050,
+          2380
+        ]
+      ],
+      "features": [
+        {
+          "id": "pyrophyllite_2165_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2135,
+            2205
+          ]
+        },
+        {
+          "id": "pyrophyllite_2165_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2135,
+            2205
+          ]
+        },
+        {
+          "id": "pyrophyllite_2315_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2280,
+            2350
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.5,
+        "derivative": 0.2,
+        "features": 0.3,
+        "fit": 0.0
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.015,
+          "absolute_sam_threshold_rad": 0.07,
+          "minimum_absorption_depth": 0.022,
+          "minimum_margin": 0.012,
+          "confidence_threshold": 0.66,
+          "minimum_reference_consensus": 0.66,
+          "minimum_evidence_stability": 0.72
+        },
+        "balanced": {
+          "column_percentile": 0.045,
+          "absolute_sam_threshold_rad": 0.1,
+          "minimum_absorption_depth": 0.013,
+          "minimum_margin": 0.007,
+          "confidence_threshold": 0.56,
+          "minimum_reference_consensus": 0.5,
+          "minimum_evidence_stability": 0.58
+        },
+        "sensitive": {
+          "column_percentile": 0.09,
+          "absolute_sam_threshold_rad": 0.135,
+          "minimum_absorption_depth": 0.007,
+          "minimum_margin": 0.003,
+          "confidence_threshold": 0.45,
+          "minimum_reference_consensus": 0.34,
+          "minimum_evidence_stability": 0.42
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.09,
+        "column_ratio": 1.9,
+        "column_excess": 0.028,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.76
+      }
+    },
+    "mg_fe_oh": {
+      "display_name": "Mg-Fe-OH Phyllosilicates",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          2200,
+          2490
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          2100,
+          2490
+        ]
+      ],
+      "features": [
+        {
+          "id": "chlorite_2250_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2220,
+            2285
+          ]
+        },
+        {
+          "id": "chlorite_2325_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2295,
+            2360
+          ]
+        },
+        {
+          "id": "chlorite_2325_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2295,
+            2360
+          ]
+        },
+        {
+          "id": "chlorite_2370_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2350,
+            2410
+          ]
+        },
+        {
+          "id": "mgfe_2325_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2280,
+            2360
+          ]
+        },
+        {
+          "id": "mgfe_2325_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2280,
+            2360
+          ]
+        },
+        {
+          "id": "mgfe_2380_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2350,
+            2420
+          ]
+        },
+        {
+          "id": "mgfe_2465_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2420,
+            2490
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.5,
+        "derivative": 0.2,
+        "features": 0.3,
+        "fit": 0.0
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.015,
+          "absolute_sam_threshold_rad": 0.08,
+          "minimum_absorption_depth": 0.022,
+          "minimum_margin": 0.022,
+          "confidence_threshold": 0.66,
+          "minimum_reference_consensus": 0.7,
+          "minimum_evidence_stability": 0.74
+        },
+        "balanced": {
+          "column_percentile": 0.05,
+          "absolute_sam_threshold_rad": 0.115,
+          "minimum_absorption_depth": 0.013,
+          "minimum_margin": 0.013,
+          "confidence_threshold": 0.56,
+          "minimum_reference_consensus": 0.54,
+          "minimum_evidence_stability": 0.6
+        },
+        "sensitive": {
+          "column_percentile": 0.1,
+          "absolute_sam_threshold_rad": 0.155,
+          "minimum_absorption_depth": 0.007,
+          "minimum_margin": 0.006,
+          "confidence_threshold": 0.45,
+          "minimum_reference_consensus": 0.38,
+          "minimum_evidence_stability": 0.44
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.1,
+        "column_ratio": 1.9,
+        "column_excess": 0.03,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.76
+      }
+    },
+    "acid_sulfates": {
+      "display_name": "Acid Sulfates",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          1400,
+          1530
+        ],
+        [
+          1715,
+          1900
+        ],
+        [
+          2050,
+          2300
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          1350,
+          2320
+        ]
+      ],
+      "features": [
+        {
+          "id": "alunite_1480_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1430,
+            1525
+          ]
+        },
+        {
+          "id": "alunite_1760_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1710,
+            1810
+          ]
+        },
+        {
+          "id": "alunite_2170_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2130,
+            2225
+          ]
+        },
+        {
+          "id": "alunite_2170_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2130,
+            2225
+          ]
+        },
+        {
+          "id": "jarosite_1470_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1430,
+            1515
+          ]
+        },
+        {
+          "id": "jarosite_1850_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1810,
+            1900
+          ]
+        },
+        {
+          "id": "jarosite_2265_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2215,
+            2300
+          ]
+        },
+        {
+          "id": "jarosite_2265_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2215,
+            2300
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.48,
+        "derivative": 0.17,
+        "features": 0.35,
+        "fit": 0.0
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.015,
+          "absolute_sam_threshold_rad": 0.085,
+          "minimum_absorption_depth": 0.022,
+          "minimum_margin": 0.022,
+          "confidence_threshold": 0.66,
+          "minimum_reference_consensus": 0.7,
+          "minimum_evidence_stability": 0.74
+        },
+        "balanced": {
+          "column_percentile": 0.05,
+          "absolute_sam_threshold_rad": 0.12,
+          "minimum_absorption_depth": 0.013,
+          "minimum_margin": 0.013,
+          "confidence_threshold": 0.56,
+          "minimum_reference_consensus": 0.54,
+          "minimum_evidence_stability": 0.6
+        },
+        "sensitive": {
+          "column_percentile": 0.1,
+          "absolute_sam_threshold_rad": 0.165,
+          "minimum_absorption_depth": 0.007,
+          "minimum_margin": 0.006,
+          "confidence_threshold": 0.45,
+          "minimum_reference_consensus": 0.38,
+          "minimum_evidence_stability": 0.44
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.09,
+        "column_ratio": 1.9,
+        "column_excess": 0.028,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.77
+      }
+    },
+    "epidote_family": {
+      "display_name": "Epidote Family",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          1500,
+          1585
+        ],
+        [
+          2200,
+          2360
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          1450,
+          2400
+        ]
+      ],
+      "features": [
+        {
+          "id": "epidote_1545_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1500,
+            1585
+          ]
+        },
+        {
+          "id": "epidote_2250_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2215,
+            2290
+          ]
+        },
+        {
+          "id": "epidote_2330_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2295,
+            2360
+          ]
+        },
+        {
+          "id": "epidote_2330_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2295,
+            2360
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.48,
+        "derivative": 0.2,
+        "features": 0.32,
+        "fit": 0.0
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.012,
+          "absolute_sam_threshold_rad": 0.08,
+          "minimum_absorption_depth": 0.024,
+          "minimum_margin": 0.012,
+          "confidence_threshold": 0.68,
+          "minimum_reference_consensus": 0.66,
+          "minimum_evidence_stability": 0.72
+        },
+        "balanced": {
+          "column_percentile": 0.04,
+          "absolute_sam_threshold_rad": 0.11,
+          "minimum_absorption_depth": 0.014,
+          "minimum_margin": 0.007,
+          "confidence_threshold": 0.57,
+          "minimum_reference_consensus": 0.5,
+          "minimum_evidence_stability": 0.58
+        },
+        "sensitive": {
+          "column_percentile": 0.085,
+          "absolute_sam_threshold_rad": 0.145,
+          "minimum_absorption_depth": 0.008,
+          "minimum_margin": 0.003,
+          "confidence_threshold": 0.46,
+          "minimum_reference_consensus": 0.34,
+          "minimum_evidence_stability": 0.42
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.09,
+        "column_ratio": 1.9,
+        "column_excess": 0.028,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 2,
+        "strong_evidence_protection": 0.77
+      }
+    },
+    "fe_oxide_family": {
+      "display_name": "Iron-Oxide Family (Unavailable Mineral-Level Expert)",
+      "expert": "rgb_nir_fe_oxide",
+      "detection_windows_nm": [
+        [
+          450,
+          1000
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          450,
+          1000
+        ]
+      ],
+      "features": [
+        {
+          "id": "fe_oxide_long_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            700,
+            1000
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.7,
+        "derivative": 0.15,
+        "features": 0.15,
+        "fit": 0.0
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.02,
+          "absolute_sam_threshold_rad": 0.1,
+          "minimum_absorption_depth": 0.03,
+          "minimum_margin": 0.02,
+          "confidence_threshold": 0.7
+        },
+        "balanced": {
+          "column_percentile": 0.06,
+          "absolute_sam_threshold_rad": 0.15,
+          "minimum_absorption_depth": 0.02,
+          "minimum_margin": 0.01,
+          "confidence_threshold": 0.6
+        },
+        "sensitive": {
+          "column_percentile": 0.12,
+          "absolute_sam_threshold_rad": 0.2,
+          "minimum_absorption_depth": 0.01,
+          "minimum_margin": 0.005,
+          "confidence_threshold": 0.5
+        }
+      },
+      "spatial_cleanup": {},
+      "runtime_status": "unsupported_not_implemented"
+    },
+    "silicate_tir": {
+      "display_name": "TIR Silicates (Unavailable Expert)",
+      "expert": "tir_emissivity",
+      "detection_windows_nm": [
+        [
+          7500,
+          14000
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          7500,
+          14000
+        ]
+      ],
+      "features": [
+        {
+          "id": "reststrahlen_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            8000,
+            12500
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.75,
+        "derivative": 0.15,
+        "features": 0.1,
+        "fit": 0.0
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.02,
+          "absolute_sam_threshold_rad": 0.1,
+          "minimum_absorption_depth": 0.03,
+          "minimum_margin": 0.02,
+          "confidence_threshold": 0.7
+        },
+        "balanced": {
+          "column_percentile": 0.06,
+          "absolute_sam_threshold_rad": 0.15,
+          "minimum_absorption_depth": 0.02,
+          "minimum_margin": 0.01,
+          "confidence_threshold": 0.6
+        },
+        "sensitive": {
+          "column_percentile": 0.12,
+          "absolute_sam_threshold_rad": 0.2,
+          "minimum_absorption_depth": 0.01,
+          "minimum_margin": 0.005,
+          "confidence_threshold": 0.5
+        }
+      },
+      "spatial_cleanup": {},
+      "runtime_status": "unsupported_not_implemented"
+    },
+    "amphibole_mg_fe_oh": {
+      "display_name": "Tremolite–Actinolite Amphibole Competition",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          2050,
+          2150
+        ],
+        [
+          2260,
+          2430
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          2020,
+          2450
+        ]
+      ],
+      "features": [
+        {
+          "id": "amphibole_2110_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2070,
+            2150
+          ]
+        },
+        {
+          "id": "amphibole_2315_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2285,
+            2345
+          ]
+        },
+        {
+          "id": "amphibole_2315_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2285,
+            2345
+          ]
+        },
+        {
+          "id": "amphibole_2385_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2350,
+            2420
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.55,
+        "derivative": 0.2,
+        "features": 0.25,
+        "fit": 0.0
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.015,
+          "absolute_sam_threshold_rad": 0.075,
+          "minimum_absorption_depth": 0.022,
+          "minimum_margin": 0.028,
+          "confidence_threshold": 0.66,
+          "minimum_reference_consensus": 0.7,
+          "minimum_evidence_stability": 0.74
+        },
+        "balanced": {
+          "column_percentile": 0.05,
+          "absolute_sam_threshold_rad": 0.105,
+          "minimum_absorption_depth": 0.013,
+          "minimum_margin": 0.018,
+          "confidence_threshold": 0.56,
+          "minimum_reference_consensus": 0.54,
+          "minimum_evidence_stability": 0.6
+        },
+        "sensitive": {
+          "column_percentile": 0.1,
+          "absolute_sam_threshold_rad": 0.145,
+          "minimum_absorption_depth": 0.007,
+          "minimum_margin": 0.01,
+          "confidence_threshold": 0.45,
+          "minimum_reference_consensus": 0.38,
+          "minimum_evidence_stability": 0.44
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.1,
+        "column_ratio": 1.9,
+        "column_excess": 0.03,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.76
+      }
+    },
+    "ammonium_feldspar": {
+      "display_name": "Ammonium Feldspar",
+      "expert": "swir_reflectance",
+      "detection_windows_nm": [
+        [
+          1500,
+          1600
+        ],
+        [
+          1980,
+          2160
+        ]
+      ],
+      "classification_windows_nm": [
+        [
+          1450,
+          2180
+        ]
+      ],
+      "features": [
+        {
+          "id": "ammonium_1560_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            1515,
+            1600
+          ]
+        },
+        {
+          "id": "ammonium_2045_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2000,
+            2070
+          ]
+        },
+        {
+          "id": "ammonium_2045_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2000,
+            2070
+          ]
+        },
+        {
+          "id": "ammonium_2120_center_nm",
+          "type": "center_nm",
+          "window_nm": [
+            2080,
+            2160
+          ]
+        },
+        {
+          "id": "ammonium_2120_ratio",
+          "type": "depth_ratio",
+          "window_nm": [
+            2080,
+            2160
+          ]
+        }
+      ],
+      "score_weights": {
+        "shape": 0.48,
+        "derivative": 0.2,
+        "features": 0.32,
+        "fit": 0.0
+      },
+      "domain_calibration_strength": 0.0,
+      "detection_best_k": 1,
+      "classification_best_k": 2,
+      "policies": {
+        "conservative": {
+          "column_percentile": 0.015,
+          "absolute_sam_threshold_rad": 0.085,
+          "minimum_absorption_depth": 0.022,
+          "minimum_margin": 0.018,
+          "confidence_threshold": 0.66,
+          "minimum_reference_consensus": 0.7,
+          "minimum_evidence_stability": 0.74
+        },
+        "balanced": {
+          "column_percentile": 0.05,
+          "absolute_sam_threshold_rad": 0.12,
+          "minimum_absorption_depth": 0.013,
+          "minimum_margin": 0.01,
+          "confidence_threshold": 0.56,
+          "minimum_reference_consensus": 0.54,
+          "minimum_evidence_stability": 0.6
+        },
+        "sensitive": {
+          "column_percentile": 0.1,
+          "absolute_sam_threshold_rad": 0.165,
+          "minimum_absorption_depth": 0.007,
+          "minimum_margin": 0.005,
+          "confidence_threshold": 0.45,
+          "minimum_reference_consensus": 0.38,
+          "minimum_evidence_stability": 0.44
+        }
+      },
+      "spatial_cleanup": {
+        "vertical_window": 61,
+        "min_vertical_density": 0.1,
+        "column_ratio": 1.9,
+        "column_excess": 0.03,
+        "max_lateral_support": 2,
+        "min_line_height": 15,
+        "max_line_width": 3,
+        "min_aspect": 5.0,
+        "min_component": 3,
+        "strong_evidence_protection": 0.76
+      }
+    }
+  },
+  "minerals": {
+    "calcite": {
+      "display_name_en": "Calcite",
+      "display_name_zh": "方解石",
+      "formula": "CaCO3",
+      "group": "carbonate_2300",
+      "taxonomy_group": "carbonates",
+      "spectral_family": "carbonate_2300",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*calcite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "dolomite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "validated_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2248,
+              2402
+            ]
+          ],
+          "minimum_valid_bands": 12,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "carbonate_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2330,
+                2355
+              ],
+              "balanced": [
+                2327,
+                2358
+              ],
+              "sensitive": [
+                2325,
+                2360
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.05,
+              "balanced": 0.035,
+              "sensitive": 0.02
+            }
+          }
+        }
+      }
+    },
+    "dolomite": {
+      "display_name_en": "Dolomite",
+      "display_name_zh": "白云石",
+      "formula": "CaMg(CO3)2",
+      "group": "carbonate_2300",
+      "taxonomy_group": "carbonates",
+      "spectral_family": "carbonate_2300",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*dolomite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "calcite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "validated_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2248,
+              2402
+            ]
+          ],
+          "minimum_valid_bands": 12,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "carbonate_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2302,
+                2327
+              ],
+              "balanced": [
+                2298,
+                2330
+              ],
+              "sensitive": [
+                2292,
+                2332
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.05,
+              "balanced": 0.035,
+              "sensitive": 0.02
+            }
+          }
+        }
+      }
+    },
+    "anhydrite": {
+      "display_name_en": "Anhydrite",
+      "display_name_zh": "硬石膏",
+      "formula": "CaSO4",
+      "group": "calcium_sulfates",
+      "taxonomy_group": "sulfates",
+      "spectral_family": "calcium_sulfates",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*anhydrite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "gypsum"
+      ],
+      "canonical_anchors": [],
+      "support_level": "validated_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1350,
+              1800
+            ],
+            [
+              1850,
+              2300
+            ]
+          ],
+          "minimum_valid_bands": 60,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.024,
+              "balanced": 0.015,
+              "sensitive": 0.009
+            }
+          }
+        }
+      }
+    },
+    "gypsum": {
+      "display_name_en": "Gypsum",
+      "display_name_zh": "石膏",
+      "formula": "CaSO4·2H2O",
+      "group": "calcium_sulfates",
+      "taxonomy_group": "sulfates",
+      "spectral_family": "calcium_sulfates",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*gypsum(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "anhydrite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "validated_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1350,
+              1800
+            ],
+            [
+              1850,
+              2300
+            ]
+          ],
+          "minimum_valid_bands": 60,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.024,
+              "balanced": 0.015,
+              "sensitive": 0.009
+            },
+            "minimum_feature_values": {
+              "sulfate_1750_ratio": 0.2,
+              "sulfate_1940_ratio": 0.35
+            }
+          }
+        }
+      }
+    },
+    "illite": {
+      "display_name_en": "Illite",
+      "display_name_zh": "伊利石",
+      "formula": "K-Al mica clay",
+      "group": "white_mica_illite",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "white_mica_illite",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*illite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [
+        "(?<![A-Za-z0-9])(?:smectite|smec|montmorillonite)(?![A-Za-z0-9])"
+      ],
+      "confusers": [
+        "muscovite",
+        "montmorillonite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "validated_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2100,
+              2380
+            ]
+          ],
+          "minimum_valid_bands": 24,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "aloh_2200_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2194,
+                2218
+              ],
+              "balanced": [
+                2191,
+                2221
+              ],
+              "sensitive": [
+                2188,
+                2225
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.022,
+              "balanced": 0.014,
+              "sensitive": 0.008
+            },
+            "minimum_feature_values": {
+              "white_mica_2345_ratio": 0.1
+            }
+          }
+        }
+      },
+      "phase_discrimination_note": "Illite versus muscovite remains conditional; always report the Al-OH wavelength subtype and competition margin."
+    },
+    "muscovite": {
+      "display_name_en": "Muscovite",
+      "display_name_zh": "白云母",
+      "formula": "KAl2(AlSi3O10)(OH)2",
+      "group": "white_mica_illite",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "white_mica_illite",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*muscovite(?=$|[^A-Za-z0-9])",
+        "^\\s*white[ _-]+mica(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "illite",
+        "pyrophyllite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2100,
+              2380
+            ]
+          ],
+          "minimum_valid_bands": 24,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "aloh_2200_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2192,
+                2218
+              ],
+              "balanced": [
+                2190,
+                2221
+              ],
+              "sensitive": [
+                2188,
+                2225
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.022,
+              "balanced": 0.014,
+              "sensitive": 0.008
+            },
+            "minimum_feature_values": {
+              "white_mica_2345_ratio": 0.1
+            }
+          }
+        }
+      },
+      "phase_discrimination_note": "Experimental phase label; the Al-OH wavelength subtype is the more defensible compositional output."
+    },
+    "montmorillonite": {
+      "display_name_en": "Montmorillonite",
+      "display_name_zh": "蒙脱石",
+      "formula": "Smectite clay",
+      "group": "smectites",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "smectites",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*montmor(?:illonite)?(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [
+        "(?<![A-Za-z0-9])illite(?![A-Za-z0-9])"
+      ],
+      "confusers": [
+        "illite",
+        "kaolinite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "validated_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1350,
+              1455
+            ],
+            [
+              1850,
+              1985
+            ],
+            [
+              2100,
+              2256
+            ]
+          ],
+          "minimum_valid_bands": 35,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "smectite_aloh_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2196,
+                2222
+              ],
+              "balanced": [
+                2192,
+                2227
+              ],
+              "sensitive": [
+                2188,
+                2232
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.024,
+              "balanced": 0.015,
+              "sensitive": 0.009
+            },
+            "minimum_feature_values": {
+              "smectite_1400_ratio": 0.15,
+              "smectite_aloh_ratio": 0.15
+            }
+          }
+        }
+      }
+    },
+    "kaolinite": {
+      "display_name_en": "Kaolinite",
+      "display_name_zh": "高岭石",
+      "formula": "Al2Si2O5(OH)4",
+      "group": "kaolin_2170_2205",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "kaolin_2170_2205",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*kaolinite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [
+        "(?<![A-Za-z0-9])halloysite(?![A-Za-z0-9])"
+      ],
+      "confusers": [
+        "dickite",
+        "illite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "validated_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2140,
+              2228
+            ]
+          ],
+          "minimum_valid_bands": 10,
+          "maximum_effective_fwhm_nm": 20,
+          "feature_gate": {
+            "center_feature": "kaolin_short_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2155,
+                2173
+              ],
+              "balanced": [
+                2152,
+                2177
+              ],
+              "sensitive": [
+                2148,
+                2180
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.026,
+              "balanced": 0.016,
+              "sensitive": 0.009
+            },
+            "minimum_feature_values": {
+              "kaolin_short_ratio": 0.3,
+              "kaolin_long_ratio": 0.45
+            }
+          }
+        }
+      }
+    },
+    "dickite": {
+      "display_name_en": "Dickite",
+      "display_name_zh": "地开石",
+      "formula": "Al2Si2O5(OH)4",
+      "group": "kaolin_2170_2205",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "kaolin_2170_2205",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*dickite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "kaolinite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2120,
+              2240
+            ]
+          ],
+          "minimum_valid_bands": 14,
+          "maximum_effective_fwhm_nm": 20,
+          "feature_gate": {
+            "center_feature": "kaolin_short_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2169,
+                2185
+              ],
+              "balanced": [
+                2166,
+                2188
+              ],
+              "sensitive": [
+                2162,
+                2190
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.026,
+              "balanced": 0.016,
+              "sensitive": 0.009
+            },
+            "minimum_feature_values": {
+              "kaolin_short_ratio": 0.3,
+              "kaolin_long_ratio": 0.45
+            }
+          }
+        }
+      }
+    },
+    "pyrophyllite": {
+      "display_name_en": "Pyrophyllite",
+      "display_name_zh": "叶蜡石",
+      "formula": "Al2Si4O10(OH)2",
+      "group": "al_oh_2165",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "al_oh_2165",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*pyrophyllite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "kaolinite",
+        "muscovite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2100,
+              2380
+            ]
+          ],
+          "minimum_valid_bands": 24,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "pyrophyllite_2165_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2155,
+                2175
+              ],
+              "balanced": [
+                2150,
+                2180
+              ],
+              "sensitive": [
+                2145,
+                2185
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.026,
+              "balanced": 0.016,
+              "sensitive": 0.009
+            },
+            "minimum_feature_values": {
+              "pyrophyllite_2315_ratio": 0.1
+            }
+          }
+        }
+      }
+    },
+    "chlorite": {
+      "display_name_en": "Chlorite",
+      "display_name_zh": "绿泥石",
+      "formula": "Mg-Fe phyllosilicate",
+      "group": "mg_fe_oh",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "mg_fe_oh",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*chlorite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "epidote"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2200,
+              2400
+            ]
+          ],
+          "minimum_valid_bands": 15,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "chlorite_2325_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2310,
+                2348
+              ],
+              "balanced": [
+                2305,
+                2353
+              ],
+              "sensitive": [
+                2298,
+                2358
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.026,
+              "balanced": 0.016,
+              "sensitive": 0.009
+            },
+            "minimum_feature_values": {
+              "chlorite_2250_ratio": 0.08,
+              "chlorite_2325_ratio": 0.18
+            }
+          }
+        }
+      }
+    },
+    "alunite": {
+      "display_name_en": "Alunite",
+      "display_name_zh": "明矾石",
+      "formula": "KAl3(SO4)2(OH)6",
+      "group": "acid_sulfates",
+      "taxonomy_group": "sulfates",
+      "spectral_family": "acid_sulfates",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*alunite(?=$|[^A-Za-z0-9])",
+        "^\\s*(?:potassium|sodium)[ _-]+alunite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [
+        "(?<![A-Za-z0-9])jarosite(?![A-Za-z0-9])"
+      ],
+      "confusers": [
+        "kaolinite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1400,
+              1800
+            ],
+            [
+              2050,
+              2250
+            ]
+          ],
+          "minimum_valid_bands": 35,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "alunite_2170_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2148,
+                2218
+              ],
+              "balanced": [
+                2142,
+                2221
+              ],
+              "sensitive": [
+                2135,
+                2225
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.028,
+              "balanced": 0.017,
+              "sensitive": 0.01
+            },
+            "minimum_feature_values": {
+              "alunite_1480_ratio": 0.18,
+              "alunite_1760_ratio": 0.1
+            }
+          }
+        }
+      }
+    },
+    "epidote": {
+      "display_name_en": "Epidote",
+      "display_name_zh": "绿帘石",
+      "formula": "Ca2(Al,Fe)3(SiO4)3(OH)",
+      "group": "epidote_family",
+      "taxonomy_group": "hydrothermal_silicates",
+      "spectral_family": "epidote_family",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*epidote(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "chlorite",
+        "calcite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1500,
+              1585
+            ],
+            [
+              2200,
+              2360
+            ]
+          ],
+          "minimum_valid_bands": 20,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "epidote_2330_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2312,
+                2348
+              ],
+              "balanced": [
+                2307,
+                2353
+              ],
+              "sensitive": [
+                2300,
+                2358
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.028,
+              "balanced": 0.017,
+              "sensitive": 0.01
+            },
+            "minimum_feature_values": {
+              "epidote_1545_ratio": 0.1,
+              "epidote_2250_ratio": 0.08
+            }
+          }
+        }
+      }
+    },
+    "hematite": {
+      "display_name_en": "Hematite",
+      "display_name_zh": "赤铁矿",
+      "formula": "Fe2O3",
+      "group": "fe_oxide_family",
+      "taxonomy_group": "iron_oxides",
+      "spectral_family": "fe_oxide_family",
+      "recognition_enabled": false,
+      "name_patterns": [
+        "^\\s*hematite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "goethite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "family_only_rgb_nir",
+      "experts": {
+        "rgb_nir_fe_oxide": {
+          "required_windows_nm": [
+            [
+              450,
+              1000
+            ]
+          ],
+          "minimum_valid_bands": 30,
+          "maximum_effective_fwhm_nm": 20
+        }
+      },
+      "limitation": "Mineral-level recognition is disabled; current data can provide only auxiliary iron-oxide-family evidence."
+    },
+    "goethite": {
+      "display_name_en": "Goethite",
+      "display_name_zh": "针铁矿",
+      "formula": "FeO(OH)",
+      "group": "fe_oxide_family",
+      "taxonomy_group": "iron_oxides",
+      "spectral_family": "fe_oxide_family",
+      "recognition_enabled": false,
+      "name_patterns": [
+        "^\\s*goethite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "hematite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "family_only_rgb_nir",
+      "experts": {
+        "rgb_nir_fe_oxide": {
+          "required_windows_nm": [
+            [
+              450,
+              1000
+            ]
+          ],
+          "minimum_valid_bands": 30,
+          "maximum_effective_fwhm_nm": 20
+        }
+      },
+      "limitation": "Mineral-level recognition is disabled; current data can provide only auxiliary iron-oxide-family evidence."
+    },
+    "quartz": {
+      "display_name_en": "Quartz",
+      "display_name_zh": "石英",
+      "formula": "SiO2",
+      "group": "silicate_tir",
+      "taxonomy_group": "anhydrous_silicates",
+      "spectral_family": "silicate_tir",
+      "recognition_enabled": false,
+      "name_patterns": [
+        "^\\s*quartz(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [],
+      "canonical_anchors": [],
+      "support_level": "unsupported_no_tir",
+      "experts": {
+        "tir_emissivity": {
+          "required_windows_nm": [
+            [
+              7500,
+              14000
+            ]
+          ],
+          "minimum_valid_bands": 30,
+          "maximum_effective_fwhm_nm": 250
+        }
+      },
+      "limitation": "Recognition is disabled because there is no TIR sensor and no compatible emissivity reference set."
+    },
+    "jarosite": {
+      "display_name_en": "Jarosite",
+      "display_name_zh": "黄钾铁矾",
+      "formula": "KFe3(SO4)2(OH)6",
+      "group": "acid_sulfates",
+      "taxonomy_group": "sulfates",
+      "spectral_family": "acid_sulfates",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*jarosite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "alunite",
+        "goethite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1400,
+              1530
+            ],
+            [
+              1810,
+              1900
+            ],
+            [
+              2180,
+              2300
+            ]
+          ],
+          "minimum_valid_bands": 30,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "jarosite_2265_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2248,
+                2282
+              ],
+              "balanced": [
+                2240,
+                2290
+              ],
+              "sensitive": [
+                2230,
+                2300
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.026,
+              "balanced": 0.016,
+              "sensitive": 0.009
+            },
+            "minimum_feature_values": {
+              "jarosite_1470_ratio": 0.1,
+              "jarosite_1850_ratio": 0.06,
+              "jarosite_2265_ratio": 0.12
+            }
+          }
+        }
+      }
+    },
+    "nontronite": {
+      "display_name_en": "Nontronite",
+      "display_name_zh": "绿脱石",
+      "formula": "Na0.3Fe2(Si,Al)4O10(OH)2·nH2O",
+      "group": "smectites",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "smectites",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*nontronite(?=$|[^A-Za-z0-9])",
+        "^\\s*notronite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "montmorillonite",
+        "sepiolite",
+        "vermiculite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1350,
+              1455
+            ],
+            [
+              1850,
+              1985
+            ],
+            [
+              2240,
+              2420
+            ]
+          ],
+          "minimum_valid_bands": 35,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "smectite_2290_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2278,
+                2302
+              ],
+              "balanced": [
+                2272,
+                2308
+              ],
+              "sensitive": [
+                2265,
+                2315
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.024,
+              "balanced": 0.015,
+              "sensitive": 0.009
+            },
+            "minimum_feature_values": {
+              "smectite_1400_ratio": 0.1,
+              "smectite_1900_ratio": 0.12,
+              "smectite_2290_ratio": 0.14
+            }
+          }
+        }
+      }
+    },
+    "talc": {
+      "display_name_en": "Talc",
+      "display_name_zh": "滑石",
+      "formula": "Mg3Si4O10(OH)2",
+      "group": "mg_fe_oh",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "mg_fe_oh",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*talc(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "chlorite",
+        "phlogopite",
+        "sepiolite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2260,
+              2490
+            ]
+          ],
+          "minimum_valid_bands": 20,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "mgfe_2325_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2295,
+                2322
+              ],
+              "balanced": [
+                2288,
+                2328
+              ],
+              "sensitive": [
+                2280,
+                2335
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.025,
+              "balanced": 0.015,
+              "sensitive": 0.008
+            },
+            "minimum_feature_values": {
+              "mgfe_2380_ratio": 0.08,
+              "mgfe_2465_ratio": 0.04
+            }
+          }
+        }
+      }
+    },
+    "tremolite": {
+      "display_name_en": "Tremolite",
+      "display_name_zh": "透闪石",
+      "formula": "Ca2Mg5Si8O22(OH)2",
+      "group": "amphibole_mg_fe_oh",
+      "taxonomy_group": "amphiboles",
+      "spectral_family": "amphibole_mg_fe_oh",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*tremolite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "actinolite",
+        "talc",
+        "chlorite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2050,
+              2150
+            ],
+            [
+              2260,
+              2430
+            ]
+          ],
+          "minimum_valid_bands": 25,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "amphibole_2315_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2302,
+                2324
+              ],
+              "balanced": [
+                2298,
+                2328
+              ],
+              "sensitive": [
+                2292,
+                2334
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.024,
+              "balanced": 0.014,
+              "sensitive": 0.008
+            },
+            "minimum_feature_values": {
+              "amphibole_2110_ratio": 0.05,
+              "amphibole_2385_ratio": 0.1
+            }
+          }
+        }
+      },
+      "phase_discrimination_note": "Experimental conditional split from actinolite; require a strong competition margin and geological review."
+    },
+    "actinolite": {
+      "display_name_en": "Actinolite",
+      "display_name_zh": "阳起石",
+      "formula": "Ca2(Mg,Fe)5Si8O22(OH)2",
+      "group": "amphibole_mg_fe_oh",
+      "taxonomy_group": "amphiboles",
+      "spectral_family": "amphibole_mg_fe_oh",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*actinolite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "tremolite",
+        "chlorite",
+        "epidote"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2050,
+              2150
+            ],
+            [
+              2260,
+              2430
+            ]
+          ],
+          "minimum_valid_bands": 25,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "amphibole_2315_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2308,
+                2332
+              ],
+              "balanced": [
+                2302,
+                2337
+              ],
+              "sensitive": [
+                2296,
+                2342
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.024,
+              "balanced": 0.014,
+              "sensitive": 0.008
+            },
+            "minimum_feature_values": {
+              "amphibole_2110_ratio": 0.05,
+              "amphibole_2385_ratio": 0.08
+            }
+          }
+        }
+      },
+      "phase_discrimination_note": "Experimental conditional split from tremolite; require a strong competition margin and geological review."
+    },
+    "biotite": {
+      "display_name_en": "Biotite",
+      "display_name_zh": "黑云母",
+      "formula": "K(Mg,Fe)3AlSi3O10(F,OH)2",
+      "group": "mg_fe_oh",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "mg_fe_oh",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*biotite(?=$|[^A-Za-z0-9])",
+        "^\\s*black[ _-]+mica(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "phlogopite",
+        "chlorite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2240,
+              2440
+            ]
+          ],
+          "minimum_valid_bands": 18,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "mgfe_2325_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2290,
+                2350
+              ],
+              "balanced": [
+                2285,
+                2356
+              ],
+              "sensitive": [
+                2280,
+                2360
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.016,
+              "balanced": 0.01,
+              "sensitive": 0.006
+            },
+            "minimum_feature_values": {
+              "mgfe_2380_ratio": 0.035
+            }
+          }
+        }
+      },
+      "phase_discrimination_note": "Weak SWIR features require reference consensus and geological review."
+    },
+    "phlogopite": {
+      "display_name_en": "Phlogopite",
+      "display_name_zh": "金云母",
+      "formula": "KMg3AlSi3O10(F,OH)2",
+      "group": "mg_fe_oh",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "mg_fe_oh",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*phlogopite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "biotite",
+        "talc",
+        "chlorite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2210,
+              2420
+            ]
+          ],
+          "minimum_valid_bands": 18,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "mgfe_2325_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2312,
+                2340
+              ],
+              "balanced": [
+                2305,
+                2348
+              ],
+              "sensitive": [
+                2298,
+                2355
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.022,
+              "balanced": 0.013,
+              "sensitive": 0.007
+            },
+            "minimum_feature_values": {
+              "chlorite_2250_ratio": 0.05,
+              "mgfe_2380_ratio": 0.07
+            }
+          }
+        }
+      }
+    },
+    "siderite": {
+      "display_name_en": "Siderite",
+      "display_name_zh": "菱铁矿",
+      "formula": "FeCO3",
+      "group": "carbonate_2300",
+      "taxonomy_group": "carbonates",
+      "spectral_family": "carbonate_2300",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*siderite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "calcite",
+        "dolomite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              2248,
+              2402
+            ]
+          ],
+          "minimum_valid_bands": 12,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "carbonate_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2328,
+                2350
+              ],
+              "balanced": [
+                2324,
+                2355
+              ],
+              "sensitive": [
+                2320,
+                2360
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.045,
+              "balanced": 0.03,
+              "sensitive": 0.018
+            },
+            "minimum_feature_values": {
+              "carbonate_1945_ratio": 0.04
+            }
+          }
+        }
+      },
+      "phase_discrimination_note": "The 2.33 µm carbonate feature overlaps calcite; phase output is conditional on full-shape competition."
+    },
+    "sepiolite": {
+      "display_name_en": "Sepiolite",
+      "display_name_zh": "海泡石",
+      "formula": "Mg4Si6O15(OH)2·6H2O",
+      "group": "smectites",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "smectites",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*sepiolite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "talc",
+        "nontronite",
+        "vermiculite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1350,
+              1455
+            ],
+            [
+              1850,
+              1985
+            ],
+            [
+              2260,
+              2420
+            ]
+          ],
+          "minimum_valid_bands": 35,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "smectite_2290_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2302,
+                2328
+              ],
+              "balanced": [
+                2296,
+                2334
+              ],
+              "sensitive": [
+                2290,
+                2340
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.022,
+              "balanced": 0.013,
+              "sensitive": 0.007
+            },
+            "minimum_feature_values": {
+              "smectite_1900_ratio": 0.12,
+              "smectite_2390_ratio": 0.1
+            }
+          }
+        }
+      }
+    },
+    "vermiculite": {
+      "display_name_en": "Vermiculite",
+      "display_name_zh": "蛭石",
+      "formula": "(Mg,Fe,Al)3(Al,Si)4O10(OH)2·4H2O",
+      "group": "smectites",
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "smectites",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*vermiculite(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "montmorillonite",
+        "nontronite",
+        "sepiolite",
+        "chlorite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1350,
+              1455
+            ],
+            [
+              1850,
+              1985
+            ],
+            [
+              2260,
+              2420
+            ]
+          ],
+          "minimum_valid_bands": 35,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "smectite_2290_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2298,
+                2335
+              ],
+              "balanced": [
+                2292,
+                2340
+              ],
+              "sensitive": [
+                2285,
+                2345
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.022,
+              "balanced": 0.013,
+              "sensitive": 0.007
+            },
+            "minimum_feature_values": {
+              "smectite_1400_ratio": 0.1,
+              "smectite_1900_ratio": 0.12,
+              "smectite_2390_ratio": 0.08
+            }
+          }
+        }
+      }
+    },
+    "buddingtonite": {
+      "display_name_en": "Buddingtonite",
+      "display_name_zh": "水铵长石",
+      "formula": "NH4AlSi3O8",
+      "group": "ammonium_feldspar",
+      "taxonomy_group": "ammonium_minerals",
+      "spectral_family": "ammonium_feldspar",
+      "recognition_enabled": true,
+      "name_patterns": [
+        "^\\s*buddingtonite(?=$|[^A-Za-z0-9])",
+        "^\\s*ammonium[ _-]+feldspar(?=$|[^A-Za-z0-9])"
+      ],
+      "reject_patterns": [],
+      "confusers": [
+        "muscovite",
+        "alunite"
+      ],
+      "canonical_anchors": [],
+      "support_level": "experimental_swir",
+      "experts": {
+        "swir_reflectance": {
+          "required_windows_nm": [
+            [
+              1500,
+              1600
+            ],
+            [
+              1980,
+              2160
+            ]
+          ],
+          "minimum_valid_bands": 25,
+          "maximum_effective_fwhm_nm": 25,
+          "feature_gate": {
+            "center_feature": "ammonium_2045_center_nm",
+            "center_window_nm_by_policy": {
+              "conservative": [
+                2028,
+                2060
+              ],
+              "balanced": [
+                2022,
+                2065
+              ],
+              "sensitive": [
+                2015,
+                2070
+              ]
+            },
+            "minimum_absorption_depth_by_policy": {
+              "conservative": 0.022,
+              "balanced": 0.013,
+              "sensitive": 0.007
+            },
+            "minimum_feature_values": {
+              "ammonium_1560_ratio": 0.06,
+              "ammonium_2045_ratio": 0.12,
+              "ammonium_2120_ratio": 0.08
+            }
+          }
+        }
+      }
+    }
+  },
+  "recognition_reserve_registry": "mineral_recognition_reserve_v5.json"
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "application_version": "5.3.0",
+  "project": {
+    "name": "CoreSpec_V5_Project",
+    "description": "CoreSpec Mapper V5 automatic balanced mapping",
+    "non_destructive": true
+  },
+  "inputs": {
+    "analysis_image": "PATH/TO/SWIR_OR_HARMONIZED_CUBE.dat",
+    "analysis_domain": "auto",
+    "data_physics": "reflectance",
+    "input_is_smoothed": false,
+    "auto_discover_companions": true,
+    "rgb": null,
+    "nir": null,
+    "swir": null
+  },
+  "mask": {
+    "mode": "automatic",
+    "engine": "integrated_core_foreground_v2",
+    "path": null,
+    "minimum_component_pixels": 64,
+    "minimum_mask_fraction": 0.05,
+    "minimum_interior_pixel_fraction": 0.65,
+    "edge_guard_pixels": 2,
+    "approval": {
+      "required": true,
+      "approved": false,
+      "reviewer": null,
+      "reviewed_at": null,
+      "notes": null
+    }
+  },
+  "minerals": {
+    "requested": [
+      "calcite",
+      "dolomite",
+      "anhydrite",
+      "gypsum",
+      "illite",
+      "montmorillonite",
+      "kaolinite"
+    ],
+    "include_internal_confusers": true
+  },
+  "mode": {
+    "engine": "adaptive_v5",
+    "profile": "balanced",
+    "automatic": true,
+    "write_all_profiles": true
+  },
+  "advanced": {
+    "user_overrides_enabled": false,
+    "preprocessing": {
+      "sg_window": 11,
+      "sg_polyorder": 2
+    },
+    "sampling": {
+      "blocks": 12,
+      "block_rows": 64,
+      "maximum_sample_rows": 128
+    },
+    "execution": {
+      "chunk_rows": 64
+    },
+    "library_ensemble": {
+      "maximum_representatives_per_mineral": 4
+    },
+    "artifact_control": {
+      "edge_width": 2
+    }
+  }
+}

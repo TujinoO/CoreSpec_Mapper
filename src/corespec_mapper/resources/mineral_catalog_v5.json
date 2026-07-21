@@ -1,0 +1,1370 @@
+{
+  "version": "5.1.0",
+  "schema_version": 1,
+  "description": "CoreSpec Mapper V5.1 curated mineral taxonomy and sensor-aware spectral capability catalog",
+  "experts": {
+    "swir_reflectance": {
+      "display_name": "SWIR Reflectance Expert",
+      "implemented": true,
+      "data_physics": [
+        "reflectance"
+      ],
+      "nominal_domain": "swir"
+    },
+    "rgb_nir_fe_oxide": {
+      "display_name": "RGB-NIR Iron-Oxide Family Evidence",
+      "implemented": false,
+      "data_physics": [
+        "reflectance"
+      ],
+      "nominal_domain": "rgb+nir",
+      "limitation": "Current NIR begins at 691 nm and RGB is not a calibrated hyperspectral VNIR measurement."
+    },
+    "vnir_reflectance": {
+      "display_name": "Full VNIR Reflectance Expert",
+      "implemented": false,
+      "data_physics": [
+        "reflectance"
+      ],
+      "nominal_domain": "vnir"
+    },
+    "tir_emissivity": {
+      "display_name": "TIR Emissivity Expert",
+      "implemented": false,
+      "data_physics": [
+        "emissivity"
+      ],
+      "nominal_domain": "tir"
+    }
+  },
+  "taxonomy_groups": {
+    "carbonates": {
+      "display_name_en": "Carbonates",
+      "display_name_zh": "碳酸盐矿物",
+      "members": [
+        "calcite",
+        "dolomite",
+        "siderite"
+      ]
+    },
+    "sulfates": {
+      "display_name_en": "Sulfates",
+      "display_name_zh": "硫酸盐矿物",
+      "members": [
+        "anhydrite",
+        "gypsum",
+        "alunite",
+        "jarosite"
+      ]
+    },
+    "phyllosilicates": {
+      "display_name_en": "Hydrous Phyllosilicates",
+      "display_name_zh": "含水层状硅酸盐",
+      "members": [
+        "illite",
+        "muscovite",
+        "montmorillonite",
+        "kaolinite",
+        "dickite",
+        "pyrophyllite",
+        "chlorite",
+        "nontronite",
+        "talc",
+        "biotite",
+        "phlogopite",
+        "sepiolite",
+        "vermiculite"
+      ]
+    },
+    "hydrothermal_silicates": {
+      "display_name_en": "Other Hydrothermal Silicates",
+      "display_name_zh": "其他热液硅酸盐",
+      "members": [
+        "epidote"
+      ]
+    },
+    "iron_oxides": {
+      "display_name_en": "Iron Oxides and Hydroxides",
+      "display_name_zh": "铁氧化物与氢氧化物",
+      "members": [
+        "hematite",
+        "goethite"
+      ]
+    },
+    "anhydrous_silicates": {
+      "display_name_en": "Anhydrous Silicates",
+      "display_name_zh": "无水硅酸盐",
+      "members": [
+        "quartz"
+      ]
+    },
+    "amphiboles": {
+      "display_name_en": "Amphiboles",
+      "display_name_zh": "角闪石族",
+      "members": [
+        "tremolite",
+        "actinolite"
+      ]
+    },
+    "ammonium_minerals": {
+      "display_name_en": "Ammonium Minerals",
+      "display_name_zh": "铵质矿物",
+      "members": [
+        "buddingtonite"
+      ]
+    }
+  },
+  "spectral_families": {
+    "carbonate_2300": {
+      "display_name_en": "2.3 um Carbonates",
+      "display_name_zh": "2.3微米碳酸盐族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "calcite",
+        "dolomite",
+        "siderite"
+      ]
+    },
+    "calcium_sulfates": {
+      "display_name_en": "Calcium Sulfates",
+      "display_name_zh": "钙质硫酸盐族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "anhydrite",
+        "gypsum"
+      ]
+    },
+    "white_mica_illite": {
+      "display_name_en": "White Mica and Illite",
+      "display_name_zh": "白云母—伊利石族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "illite",
+        "muscovite"
+      ],
+      "subtype_axis": "Al-OH center: short <2201 nm; neutral 2201-2209 nm; long >=2209 nm"
+    },
+    "smectites": {
+      "display_name_en": "Smectites",
+      "display_name_zh": "蒙皂石族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "montmorillonite",
+        "nontronite",
+        "sepiolite",
+        "vermiculite"
+      ]
+    },
+    "kaolin_2170_2205": {
+      "display_name_en": "Kaolin Doublet Minerals",
+      "display_name_zh": "高岭石双峰族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "kaolinite",
+        "dickite"
+      ]
+    },
+    "al_oh_2165": {
+      "display_name_en": "Short-Wavelength Al-OH",
+      "display_name_zh": "短波Al-OH族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "pyrophyllite"
+      ]
+    },
+    "mg_fe_oh": {
+      "display_name_en": "Mg-Fe-OH Phyllosilicates",
+      "display_name_zh": "镁铁羟基层状硅酸盐族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "chlorite",
+        "talc",
+        "biotite",
+        "phlogopite"
+      ]
+    },
+    "acid_sulfates": {
+      "display_name_en": "Acid Sulfates",
+      "display_name_zh": "酸性硫酸盐族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "alunite",
+        "jarosite"
+      ]
+    },
+    "epidote_family": {
+      "display_name_en": "Epidote Family",
+      "display_name_zh": "绿帘石族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "epidote"
+      ]
+    },
+    "fe_oxide_family": {
+      "display_name_en": "Iron-Oxide Family",
+      "display_name_zh": "铁氧化物族",
+      "expert": "rgb_nir_fe_oxide",
+      "competition_members": [
+        "hematite",
+        "goethite"
+      ]
+    },
+    "silicate_tir": {
+      "display_name_en": "TIR Silicates",
+      "display_name_zh": "热红外硅酸盐族",
+      "expert": "tir_emissivity",
+      "competition_members": [
+        "quartz"
+      ]
+    },
+    "amphibole_mg_fe_oh": {
+      "display_name_en": "Mg-Fe-OH Amphiboles",
+      "display_name_zh": "镁铁羟基角闪石族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "tremolite",
+        "actinolite"
+      ]
+    },
+    "ammonium_feldspar": {
+      "display_name_en": "Ammonium Feldspar",
+      "display_name_zh": "铵长石族",
+      "expert": "swir_reflectance",
+      "competition_members": [
+        "buddingtonite"
+      ]
+    }
+  },
+  "minerals": {
+    "calcite": {
+      "display_name_en": "Calcite",
+      "display_name_zh": "方解石",
+      "formula": "CaCO3",
+      "primary_aliases": [
+        "calcite"
+      ],
+      "taxonomy_group": "carbonates",
+      "spectral_family": "carbonate_2300",
+      "alteration_roles": [
+        "carbonate",
+        "vein",
+        "replacement"
+      ],
+      "support_level": "validated_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2248,
+          2402
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2335,
+          "range": [
+            2325,
+            2360
+          ],
+          "kind": "CO3"
+        }
+      ],
+      "confusers": [
+        "dolomite"
+      ]
+    },
+    "dolomite": {
+      "display_name_en": "Dolomite",
+      "display_name_zh": "白云石",
+      "formula": "CaMg(CO3)2",
+      "primary_aliases": [
+        "dolomite"
+      ],
+      "taxonomy_group": "carbonates",
+      "spectral_family": "carbonate_2300",
+      "alteration_roles": [
+        "carbonate",
+        "replacement"
+      ],
+      "support_level": "validated_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2248,
+          2402
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2318,
+          "range": [
+            2288,
+            2330
+          ],
+          "kind": "CO3"
+        }
+      ],
+      "confusers": [
+        "calcite"
+      ]
+    },
+    "anhydrite": {
+      "display_name_en": "Anhydrite",
+      "display_name_zh": "硬石膏",
+      "formula": "CaSO4",
+      "primary_aliases": [
+        "anhydrite"
+      ],
+      "taxonomy_group": "sulfates",
+      "spectral_family": "calcium_sulfates",
+      "alteration_roles": [
+        "sulfate",
+        "evaporite"
+      ],
+      "support_level": "validated_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1350,
+          1800
+        ],
+        [
+          1850,
+          2300
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1444
+        },
+        {
+          "center": 1940
+        },
+        {
+          "center": 2212
+        }
+      ],
+      "confusers": [
+        "gypsum"
+      ]
+    },
+    "gypsum": {
+      "display_name_en": "Gypsum",
+      "display_name_zh": "石膏",
+      "formula": "CaSO4·2H2O",
+      "primary_aliases": [
+        "gypsum"
+      ],
+      "taxonomy_group": "sulfates",
+      "spectral_family": "calcium_sulfates",
+      "alteration_roles": [
+        "hydrated_sulfate",
+        "evaporite"
+      ],
+      "support_level": "validated_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1350,
+          1800
+        ],
+        [
+          1850,
+          2300
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1448
+        },
+        {
+          "center": 1493
+        },
+        {
+          "center": 1748
+        },
+        {
+          "center": 1945
+        },
+        {
+          "center": 2215
+        }
+      ],
+      "confusers": [
+        "anhydrite"
+      ]
+    },
+    "illite": {
+      "display_name_en": "Illite",
+      "display_name_zh": "伊利石",
+      "formula": "K-Al mica clay",
+      "primary_aliases": [
+        "illite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "white_mica_illite",
+      "alteration_roles": [
+        "phyllic",
+        "argillic"
+      ],
+      "support_level": "validated_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2100,
+          2380
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2205,
+          "range": [
+            2188,
+            2225
+          ],
+          "kind": "Al-OH"
+        },
+        {
+          "center": 2350
+        }
+      ],
+      "confusers": [
+        "muscovite",
+        "montmorillonite"
+      ]
+    },
+    "muscovite": {
+      "display_name_en": "Muscovite",
+      "display_name_zh": "白云母",
+      "formula": "KAl2(AlSi3O10)(OH)2",
+      "primary_aliases": [
+        "muscovite",
+        "white mica"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "white_mica_illite",
+      "alteration_roles": [
+        "phyllic",
+        "potassic"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2100,
+          2380
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2205,
+          "range": [
+            2188,
+            2225
+          ],
+          "kind": "Al-OH"
+        },
+        {
+          "center": 2345
+        }
+      ],
+      "confusers": [
+        "illite",
+        "pyrophyllite"
+      ]
+    },
+    "montmorillonite": {
+      "display_name_en": "Montmorillonite",
+      "display_name_zh": "蒙脱石",
+      "formula": "Smectite clay",
+      "primary_aliases": [
+        "montmorillonite",
+        "montmor"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "smectites",
+      "alteration_roles": [
+        "argillic",
+        "weathering"
+      ],
+      "support_level": "validated_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1350,
+          1450
+        ],
+        [
+          1850,
+          1980
+        ],
+        [
+          2100,
+          2256
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1413
+        },
+        {
+          "center": 1905
+        },
+        {
+          "center": 2210,
+          "kind": "Al-OH"
+        }
+      ],
+      "confusers": [
+        "illite",
+        "kaolinite"
+      ]
+    },
+    "kaolinite": {
+      "display_name_en": "Kaolinite",
+      "display_name_zh": "高岭石",
+      "formula": "Al2Si2O5(OH)4",
+      "primary_aliases": [
+        "kaolinite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "kaolin_2170_2205",
+      "alteration_roles": [
+        "argillic",
+        "advanced_argillic"
+      ],
+      "support_level": "validated_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2140,
+          2225
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2170,
+          "kind": "Al-OH_doublet"
+        },
+        {
+          "center": 2205,
+          "kind": "Al-OH_doublet"
+        }
+      ],
+      "confusers": [
+        "dickite",
+        "illite"
+      ]
+    },
+    "dickite": {
+      "display_name_en": "Dickite",
+      "display_name_zh": "地开石",
+      "formula": "Al2Si2O5(OH)4",
+      "primary_aliases": [
+        "dickite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "kaolin_2170_2205",
+      "alteration_roles": [
+        "advanced_argillic",
+        "hydrothermal"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2120,
+          2240
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2175,
+          "kind": "Al-OH_doublet"
+        },
+        {
+          "center": 2205,
+          "kind": "Al-OH_doublet"
+        }
+      ],
+      "confusers": [
+        "kaolinite"
+      ]
+    },
+    "pyrophyllite": {
+      "display_name_en": "Pyrophyllite",
+      "display_name_zh": "叶蜡石",
+      "formula": "Al2Si4O10(OH)2",
+      "primary_aliases": [
+        "pyrophyllite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "al_oh_2165",
+      "alteration_roles": [
+        "advanced_argillic"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2100,
+          2380
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2165,
+          "kind": "Al-OH"
+        },
+        {
+          "center": 2315
+        }
+      ],
+      "confusers": [
+        "kaolinite",
+        "muscovite"
+      ]
+    },
+    "chlorite": {
+      "display_name_en": "Chlorite",
+      "display_name_zh": "绿泥石",
+      "formula": "Mg-Fe phyllosilicate",
+      "primary_aliases": [
+        "chlorite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "mg_fe_oh",
+      "alteration_roles": [
+        "propylitic",
+        "greenschist"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2200,
+          2400
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2245
+        },
+        {
+          "center": 2325,
+          "kind": "Mg-Fe-OH"
+        },
+        {
+          "center": 2370
+        }
+      ],
+      "confusers": [
+        "epidote",
+        "serpentine",
+        "biotite"
+      ]
+    },
+    "alunite": {
+      "display_name_en": "Alunite",
+      "display_name_zh": "明矾石",
+      "formula": "KAl3(SO4)2(OH)6",
+      "primary_aliases": [
+        "alunite",
+        "potassium alunite",
+        "sodium alunite"
+      ],
+      "taxonomy_group": "sulfates",
+      "spectral_family": "acid_sulfates",
+      "alteration_roles": [
+        "advanced_argillic",
+        "acid_sulfate"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1400,
+          1800
+        ],
+        [
+          2050,
+          2250
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1481
+        },
+        {
+          "center": 1764
+        },
+        {
+          "center": 2160
+        },
+        {
+          "center": 2209
+        }
+      ],
+      "confusers": [
+        "kaolinite",
+        "jarosite"
+      ]
+    },
+    "epidote": {
+      "display_name_en": "Epidote",
+      "display_name_zh": "绿帘石",
+      "formula": "Ca2(Al,Fe)3(SiO4)3(OH)",
+      "primary_aliases": [
+        "epidote"
+      ],
+      "taxonomy_group": "hydrothermal_silicates",
+      "spectral_family": "epidote_family",
+      "alteration_roles": [
+        "propylitic",
+        "skarn"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1500,
+          1580
+        ],
+        [
+          2200,
+          2350
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1546
+        },
+        {
+          "center": 2252
+        },
+        {
+          "center": 2332
+        }
+      ],
+      "confusers": [
+        "chlorite",
+        "calcite"
+      ]
+    },
+    "hematite": {
+      "display_name_en": "Hematite",
+      "display_name_zh": "赤铁矿",
+      "formula": "Fe2O3",
+      "primary_aliases": [
+        "hematite"
+      ],
+      "taxonomy_group": "iron_oxides",
+      "spectral_family": "fe_oxide_family",
+      "alteration_roles": [
+        "oxidation",
+        "gossan"
+      ],
+      "support_level": "family_only_rgb_nir",
+      "recognition_enabled": false,
+      "required_windows_nm": [
+        [
+          450,
+          1000
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 511
+        },
+        {
+          "center": 549
+        },
+        {
+          "center": 899
+        }
+      ],
+      "confusers": [
+        "goethite"
+      ],
+      "limitation": "Current field NIR covers only 691-1000 nm; mineral-level separation is unsupported."
+    },
+    "goethite": {
+      "display_name_en": "Goethite",
+      "display_name_zh": "针铁矿",
+      "formula": "FeO(OH)",
+      "primary_aliases": [
+        "goethite"
+      ],
+      "taxonomy_group": "iron_oxides",
+      "spectral_family": "fe_oxide_family",
+      "alteration_roles": [
+        "oxidation",
+        "gossan"
+      ],
+      "support_level": "family_only_rgb_nir",
+      "recognition_enabled": false,
+      "required_windows_nm": [
+        [
+          450,
+          1000
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 499
+        },
+        {
+          "center": 673
+        },
+        {
+          "center": 894
+        }
+      ],
+      "confusers": [
+        "hematite"
+      ],
+      "limitation": "Current field NIR covers only 691-1000 nm; mineral-level separation is unsupported."
+    },
+    "quartz": {
+      "display_name_en": "Quartz",
+      "display_name_zh": "石英",
+      "formula": "SiO2",
+      "primary_aliases": [
+        "quartz"
+      ],
+      "taxonomy_group": "anhydrous_silicates",
+      "spectral_family": "silicate_tir",
+      "alteration_roles": [
+        "silicification",
+        "vein"
+      ],
+      "support_level": "unsupported_no_tir",
+      "recognition_enabled": false,
+      "required_windows_nm": [
+        [
+          7500,
+          14000
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "range": [
+            8000,
+            9500
+          ],
+          "kind": "Si-O_Reststrahlen"
+        }
+      ],
+      "confusers": [
+        "feldspar"
+      ],
+      "limitation": "No TIR sensor is present and the bundled JHU mineral spectra are biconical reflectance, not compatible emissivity references."
+    },
+    "jarosite": {
+      "display_name_en": "Jarosite",
+      "display_name_zh": "黄钾铁矾",
+      "formula": "KFe3(SO4)2(OH)6",
+      "primary_aliases": [
+        "jarosite"
+      ],
+      "taxonomy_group": "sulfates",
+      "spectral_family": "acid_sulfates",
+      "alteration_roles": [
+        "acid_sulfate",
+        "oxidation",
+        "gossan"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1400,
+          1530
+        ],
+        [
+          1810,
+          1900
+        ],
+        [
+          2180,
+          2300
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1470
+        },
+        {
+          "center": 1855
+        },
+        {
+          "center": 2265,
+          "range": [
+            2215,
+            2300
+          ],
+          "kind": "Fe-OH/SO4"
+        }
+      ],
+      "confusers": [
+        "alunite",
+        "goethite"
+      ]
+    },
+    "nontronite": {
+      "display_name_en": "Nontronite",
+      "display_name_zh": "绿脱石",
+      "formula": "Na0.3Fe2(Si,Al)4O10(OH)2·nH2O",
+      "primary_aliases": [
+        "nontronite",
+        "notronite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "smectites",
+      "alteration_roles": [
+        "argillic",
+        "weathering",
+        "ferric_smectite"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1350,
+          1455
+        ],
+        [
+          1850,
+          1985
+        ],
+        [
+          2240,
+          2420
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1415
+        },
+        {
+          "center": 1905
+        },
+        {
+          "center": 2290,
+          "kind": "Fe-OH"
+        },
+        {
+          "center": 2400
+        }
+      ],
+      "confusers": [
+        "montmorillonite",
+        "sepiolite",
+        "vermiculite"
+      ]
+    },
+    "talc": {
+      "display_name_en": "Talc",
+      "display_name_zh": "滑石",
+      "formula": "Mg3Si4O10(OH)2",
+      "primary_aliases": [
+        "talc"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "mg_fe_oh",
+      "alteration_roles": [
+        "talc_carbonate",
+        "magnesian",
+        "hydrothermal"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2260,
+          2490
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2290
+        },
+        {
+          "center": 2312,
+          "kind": "Mg-OH"
+        },
+        {
+          "center": 2388
+        },
+        {
+          "center": 2465
+        }
+      ],
+      "confusers": [
+        "chlorite",
+        "phlogopite",
+        "sepiolite"
+      ]
+    },
+    "tremolite": {
+      "display_name_en": "Tremolite",
+      "display_name_zh": "透闪石",
+      "formula": "Ca2Mg5Si8O22(OH)2",
+      "primary_aliases": [
+        "tremolite"
+      ],
+      "taxonomy_group": "amphiboles",
+      "spectral_family": "amphibole_mg_fe_oh",
+      "alteration_roles": [
+        "calc_silicate",
+        "skarn",
+        "metamorphic"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2050,
+          2150
+        ],
+        [
+          2260,
+          2430
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2110
+        },
+        {
+          "center": 2315,
+          "kind": "Mg-OH"
+        },
+        {
+          "center": 2385
+        }
+      ],
+      "confusers": [
+        "actinolite",
+        "talc",
+        "chlorite"
+      ]
+    },
+    "actinolite": {
+      "display_name_en": "Actinolite",
+      "display_name_zh": "阳起石",
+      "formula": "Ca2(Mg,Fe)5Si8O22(OH)2",
+      "primary_aliases": [
+        "actinolite"
+      ],
+      "taxonomy_group": "amphiboles",
+      "spectral_family": "amphibole_mg_fe_oh",
+      "alteration_roles": [
+        "propylitic",
+        "greenschist",
+        "metamorphic"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2050,
+          2150
+        ],
+        [
+          2260,
+          2430
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2115
+        },
+        {
+          "center": 2318,
+          "kind": "Mg-Fe-OH"
+        },
+        {
+          "center": 2385
+        }
+      ],
+      "confusers": [
+        "tremolite",
+        "chlorite",
+        "epidote"
+      ]
+    },
+    "biotite": {
+      "display_name_en": "Biotite",
+      "display_name_zh": "黑云母",
+      "formula": "K(Mg,Fe)3AlSi3O10(F,OH)2",
+      "primary_aliases": [
+        "biotite",
+        "black mica"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "mg_fe_oh",
+      "alteration_roles": [
+        "potassic",
+        "metamorphic",
+        "magmatic"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2240,
+          2440
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2300
+        },
+        {
+          "center": 2350,
+          "kind": "Mg-Fe-OH"
+        },
+        {
+          "center": 2410
+        }
+      ],
+      "confusers": [
+        "phlogopite",
+        "chlorite"
+      ]
+    },
+    "phlogopite": {
+      "display_name_en": "Phlogopite",
+      "display_name_zh": "金云母",
+      "formula": "KMg3AlSi3O10(F,OH)2",
+      "primary_aliases": [
+        "phlogopite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "mg_fe_oh",
+      "alteration_roles": [
+        "potassic",
+        "skarn",
+        "metamorphic"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2210,
+          2420
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 2245
+        },
+        {
+          "center": 2325,
+          "kind": "Mg-OH"
+        },
+        {
+          "center": 2378
+        }
+      ],
+      "confusers": [
+        "biotite",
+        "talc",
+        "chlorite"
+      ]
+    },
+    "siderite": {
+      "display_name_en": "Siderite",
+      "display_name_zh": "菱铁矿",
+      "formula": "FeCO3",
+      "primary_aliases": [
+        "siderite"
+      ],
+      "taxonomy_group": "carbonates",
+      "spectral_family": "carbonate_2300",
+      "alteration_roles": [
+        "carbonate",
+        "replacement",
+        "iron_carbonate"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          2248,
+          2402
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1945
+        },
+        {
+          "center": 2335,
+          "range": [
+            2320,
+            2360
+          ],
+          "kind": "CO3"
+        }
+      ],
+      "confusers": [
+        "calcite",
+        "dolomite"
+      ]
+    },
+    "sepiolite": {
+      "display_name_en": "Sepiolite",
+      "display_name_zh": "海泡石",
+      "formula": "Mg4Si6O15(OH)2·6H2O",
+      "primary_aliases": [
+        "sepiolite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "smectites",
+      "alteration_roles": [
+        "argillic",
+        "weathering",
+        "magnesian"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1350,
+          1455
+        ],
+        [
+          1850,
+          1985
+        ],
+        [
+          2260,
+          2420
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1415
+        },
+        {
+          "center": 1915
+        },
+        {
+          "center": 2315,
+          "kind": "Mg-OH"
+        },
+        {
+          "center": 2388
+        }
+      ],
+      "confusers": [
+        "talc",
+        "nontronite",
+        "vermiculite"
+      ]
+    },
+    "vermiculite": {
+      "display_name_en": "Vermiculite",
+      "display_name_zh": "蛭石",
+      "formula": "(Mg,Fe,Al)3(Al,Si)4O10(OH)2·4H2O",
+      "primary_aliases": [
+        "vermiculite"
+      ],
+      "taxonomy_group": "phyllosilicates",
+      "spectral_family": "smectites",
+      "alteration_roles": [
+        "weathering",
+        "hydrothermal",
+        "hydrated_clay"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1350,
+          1455
+        ],
+        [
+          1850,
+          1985
+        ],
+        [
+          2260,
+          2420
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1390
+        },
+        {
+          "center": 1925
+        },
+        {
+          "center": 2315,
+          "kind": "Mg-Fe-OH"
+        },
+        {
+          "center": 2395
+        }
+      ],
+      "confusers": [
+        "montmorillonite",
+        "nontronite",
+        "sepiolite",
+        "chlorite"
+      ]
+    },
+    "buddingtonite": {
+      "display_name_en": "Buddingtonite",
+      "display_name_zh": "水铵长石",
+      "formula": "NH4AlSi3O8",
+      "primary_aliases": [
+        "buddingtonite",
+        "ammonium feldspar"
+      ],
+      "taxonomy_group": "ammonium_minerals",
+      "spectral_family": "ammonium_feldspar",
+      "alteration_roles": [
+        "ammonium_alteration",
+        "hydrothermal",
+        "feldspar_replacement"
+      ],
+      "support_level": "experimental_swir",
+      "recognition_enabled": true,
+      "required_windows_nm": [
+        [
+          1500,
+          1600
+        ],
+        [
+          1980,
+          2160
+        ]
+      ],
+      "key_features_nm": [
+        {
+          "center": 1560
+        },
+        {
+          "center": 2045,
+          "range": [
+            2025,
+            2060
+          ],
+          "kind": "NH4"
+        },
+        {
+          "center": 2122,
+          "kind": "NH4"
+        }
+      ],
+      "confusers": [
+        "muscovite",
+        "alunite"
+      ]
+    }
+  },
+  "recognition_reserve_registry": "mineral_recognition_reserve_v5.json"
+}

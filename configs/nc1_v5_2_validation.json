@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "application_version": "5.3.0",
+  "project": {
+    "name": "NC1_V5_2_Validated",
+    "description": "NC-1 validated-recipe regression project",
+    "non_destructive": true
+  },
+  "inputs": {
+    "analysis_image": "F:/NC-1-31_40/FILL/SWIR_SG",
+    "analysis_domain": "swir",
+    "data_physics": "reflectance",
+    "input_is_smoothed": true,
+    "rgb": "F:/NC-1-31_40/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1/RGB-20260702_164852-00000.dat",
+    "nir": "F:/NC-1-31_40/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1/NIR-20260702_164856-00000.hdr",
+    "swir": "F:/NC-1-31_40/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1/SWIR-20260702_164852-00000.dat"
+  },
+  "mask": {
+    "mode": "external",
+    "engine": "auto",
+    "path": "F:/NC-1-31_40/FILL/mask_SG",
+    "minimum_component_pixels": 64,
+    "minimum_mask_fraction": 0.05,
+    "minimum_interior_pixel_fraction": 0.65,
+    "edge_guard_pixels": 2,
+    "approval": {
+      "required": true,
+      "approved": true,
+      "reviewer": "NC-1 manual experiment",
+      "reviewed_at": "2026-07-20",
+      "notes": "Frozen same-grid mask used for V5.2 algorithm isolation and regression."
+    }
+  },
+  "minerals": {
+    "requested": ["calcite", "dolomite", "anhydrite", "gypsum", "illite", "montmorillonite", "kaolinite"],
+    "include_internal_confusers": true
+  },
+  "mode": {
+    "engine": "validated_v3",
+    "profile": "balanced",
+    "automatic": false,
+    "write_all_profiles": true
+  },
+  "advanced": {
+    "preprocessing": {"sg_window": 11, "sg_polyorder": 2},
+    "sampling": {"blocks": 12, "block_rows": 64, "maximum_sample_rows": 128},
+    "execution": {"chunk_rows": 64},
+    "library_ensemble": {"maximum_representatives_per_mineral": 4},
+    "artifact_control": {"edge_width": 2},
+    "validation": {
+      "v3_profiles": {
+        "balanced": "E:/Code/CoreSpec_Mapper/configs/nc1_v3.json",
+        "sensitive": "E:/Code/CoreSpec_Mapper/configs/nc1_v3_relaxed.json"
+      },
+      "baseline_root": "F:/NC-1-31_40/Result/2026_07_02_16_48_52-NC-1-31.0_40.0-1,717.0_2,023.1_result",
+      "baseline_mask": "F:/NC-1-31_40/FILL/mask_SG",
+      "baseline_profile_subdirs": {
+        "balanced": "Result_Balanced",
+        "sensitive": "Result_Relaxed"
+      },
+      "group_minerals": {
+        "carbonates": ["Calcite", "Dolomite"],
+        "sulfates": ["Anhydrite", "Gypsum"],
+        "clays": ["Illite", "Montmorillonite", "Kaolinite"]
+      },
+      "classification_gate": {
+        "minimum_iou": 0.90,
+        "minimum_precision": 0.90,
+        "minimum_recall": 0.90,
+        "maximum_area_difference_fraction": 0.10
+      }
+    }
+  }
+}
