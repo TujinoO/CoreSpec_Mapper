@@ -6,6 +6,7 @@ import numpy as np
 from corespec_mapper.artifacts import (
     edge_risk_score,
     filter_artifacts,
+    low_exposure_high_density_column_mask,
     repeated_segment_column_stripe_mask,
 )
 from corespec_mapper.catalog import FeatureDefinition, GroupDefinition, MineralCatalog, MineralDefinition
@@ -443,6 +444,37 @@ class V4ReferenceAndArtifactTests(unittest.TestCase):
         )
         self.assertEqual(np.count_nonzero(cleaned), 0)
         self.assertGreater(counts["residual_column_band_removed"], 0)
+
+    def test_low_exposure_isolated_column_is_removed(self):
+        valid = np.ones((400, 40), dtype=bool)
+        valid[:, 8] = False
+        valid[120:160, 8] = True
+        candidate = np.zeros_like(valid)
+        candidate[123:157, 8] = True
+
+        removed, record = low_exposure_high_density_column_mask(
+            candidate, valid, {}, policy="balanced"
+        )
+
+        self.assertEqual(record["columns"], [8])
+        self.assertEqual(record["candidate_removed_pixels"], 34)
+        self.assertTrue(np.array_equal(removed, candidate))
+
+    def test_low_exposure_column_preserves_lateral_crossing(self):
+        valid = np.ones((400, 40), dtype=bool)
+        valid[:, 8] = False
+        valid[120:160, 8] = True
+        candidate = np.zeros_like(valid)
+        candidate[123:157, 8] = True
+        candidate[140:146, 5:12] = True
+
+        removed, _ = low_exposure_high_density_column_mask(
+            candidate, valid, {}, policy="balanced"
+        )
+        cleaned = candidate & ~removed
+
+        self.assertTrue(np.all(cleaned[140:146, 5:12]))
+        self.assertFalse(cleaned[130, 8])
 
     def test_local_geologic_patch_crossing_risky_column_is_preserved(self):
         valid = np.ones((160, 40), dtype=bool)

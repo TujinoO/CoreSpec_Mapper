@@ -335,6 +335,102 @@ def repeated_segment_column_stripe_mask(
     }
 
 
+def low_exposure_high_density_column_mask(
+    candidate: np.ndarray,
+    valid_mask: np.ndarray,
+    settings: Mapping[str, Any],
+    *,
+    policy: str,
+) -> tuple[np.ndarray, dict[str, Any]]:
+    """Remove isolated responses in detector columns with very little exposure.
+
+    A column that intersects only a small edge sliver of the foreground can
+    evade repetition-based fixed-column detection, yet show a misleadingly
+    high classified fraction inside one depth interval. This detector requires
+    low valid exposure, enough candidates, strong local density excess, and no
+    lateral or oblique candidate support.
+    """
+    selected = np.asarray(candidate, dtype=bool)
+    valid = np.asarray(valid_mask, dtype=bool)
+    if selected.shape != valid.shape or selected.ndim != 2:
+        raise ValueError("Candidate and valid mask must be matching 2D arrays")
+    removed = np.zeros_like(selected)
+    valid_count = np.sum(valid, axis=0)
+    positive_valid = valid_count[valid_count > 0]
+    if not np.any(selected) or positive_valid.size == 0:
+        return removed, {"candidate_removed_pixels": 0, "columns": []}
+
+    reference_exposure = float(np.median(positive_valid))
+    exposure_fraction = float(settings.get("low_exposure_column_fraction", 0.10))
+    minimum_valid = max(8, int(settings.get("low_exposure_minimum_valid_pixels", 32)))
+    minimum_candidate = max(4, int(settings.get("low_exposure_minimum_candidate_pixels", 12)))
+    density_threshold = float(
+        settings.get(
+            "low_exposure_density_by_policy",
+            {"conservative": 0.15, "balanced": 0.15, "sensitive": 0.18},
+        ).get(policy, 0.15)
+    )
+    ratio_threshold = float(settings.get("low_exposure_local_ratio", 3.0))
+    excess_threshold = float(settings.get("low_exposure_local_excess", 0.10))
+    radius = max(3, int(settings.get("low_exposure_neighborhood_radius", 6)))
+    guard = max(0, min(radius - 1, int(settings.get("low_exposure_peak_guard", 0))))
+    candidate_count = np.sum(selected, axis=0)
+    density = np.divide(
+        candidate_count,
+        valid_count,
+        out=np.zeros(selected.shape[1], dtype=np.float64),
+        where=valid_count > 0,
+    )
+    flagged: list[int] = []
+    for column in range(selected.shape[1]):
+        if (
+            valid_count[column] < minimum_valid
+            or valid_count[column] > exposure_fraction * reference_exposure
+            or candidate_count[column] < minimum_candidate
+            or density[column] < density_threshold
+        ):
+            continue
+        left = density[max(0, column - radius) : max(0, column - guard)]
+        right = density[
+            min(selected.shape[1], column + guard + 1) :
+            min(selected.shape[1], column + radius + 1)
+        ]
+        neighborhood = np.concatenate((left, right))
+        local = float(np.median(neighborhood)) if neighborhood.size else 0.0
+        if (
+            density[column] - local < excess_threshold
+            or density[column] / max(local, 0.005) < ratio_threshold
+        ):
+            continue
+
+        support_radius = max(1, int(settings.get("low_exposure_support_radius", 3)))
+        row_tolerance = max(0, int(settings.get("low_exposure_row_tolerance", 2)))
+        left_support = selected[:, max(0, column - support_radius) : column]
+        right_support = selected[
+            :, column + 1 : min(selected.shape[1], column + support_radius + 1)
+        ]
+        external_rows = np.zeros(selected.shape[0], dtype=bool)
+        if left_support.size:
+            external_rows |= np.any(left_support, axis=1)
+        if right_support.size:
+            external_rows |= np.any(right_support, axis=1)
+        if row_tolerance:
+            window = 2 * row_tolerance + 1
+            external_rows = np.lib.stride_tricks.sliding_window_view(
+                np.pad(external_rows, (row_tolerance, row_tolerance), mode="constant"),
+                window,
+            ).any(axis=1)
+        column_removed = selected[:, column] & ~external_rows
+        if np.any(column_removed):
+            removed[:, column] = column_removed
+            flagged.append(column)
+    return removed, {
+        "candidate_removed_pixels": int(np.count_nonzero(removed)),
+        "columns": flagged,
+        "reference_valid_exposure": reference_exposure,
+    }
+
+
 def filter_artifacts(
     labels: np.ndarray,
     confidence: np.ndarray,
@@ -396,6 +492,8 @@ def filter_artifacts(
         "repeated_segment_column_count": 0,
         "dominant_repeated_corridor_count": 0,
         "maximum_segment_repetition": 0,
+        "low_exposure_column_removed": 0,
+        "low_exposure_column_count": 0,
     }
     for class_id in range(1, int(np.max(source)) + 1):
         class_mask = source == class_id
@@ -461,6 +559,25 @@ def filter_artifacts(
         counts["small_component_removed"] += int(np.count_nonzero(weak & ~kept_weak))
         class_mask = strong | kept_weak
         output[class_mask] = class_id
+
+    # Complement the repetition detector with a narrow edge-exposure audit.
+    # It catches columns that touch only a small foreground sliver in one depth
+    # interval and therefore have neither global repetition nor reliable risk.
+    for class_id in range(1, int(np.max(output)) + 1):
+        class_mask = output == class_id
+        low_exposure_mask, low_exposure_record = low_exposure_high_density_column_mask(
+            class_mask,
+            valid,
+            settings,
+            policy=policy,
+        )
+        low_exposure_mask &= class_mask
+        stripe_mask |= low_exposure_mask
+        output[low_exposure_mask] = 0
+        counts["low_exposure_column_removed"] += int(
+            low_exposure_record["candidate_removed_pixels"]
+        )
+        counts["low_exposure_column_count"] += len(low_exposure_record["columns"])
 
     output_group = output > 0
     column_valid = np.maximum(np.sum(valid, axis=0), 1)

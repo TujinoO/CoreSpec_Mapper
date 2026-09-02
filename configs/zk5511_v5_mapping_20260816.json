@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "application_version": "5.3.0",
+  "project": {
+    "name": "ZK5511_20260816",
+    "description": "ZK5511 SWIR alteration-mineral mapping with approved engineering foreground mask",
+    "non_destructive": true
+  },
+  "inputs": {
+    "analysis_image": "F:/2026_07_30_14_22-ZK5511-1.0_38.0-0.0_196.3/SWIR-ZK5511-1.0_38.0-0.0_196.3-REF.dat",
+    "analysis_domain": "swir",
+    "data_physics": "reflectance",
+    "input_is_smoothed": false,
+    "auto_discover_companions": false,
+    "rgb": null,
+    "nir": "F:/2026_07_30_14_22-ZK5511-1.0_38.0-0.0_196.3/VNIR-ZK5511-1.0_38.0-0.0_196.3-REF.dat",
+    "swir": "F:/2026_07_30_14_22-ZK5511-1.0_38.0-0.0_196.3/SWIR-ZK5511-1.0_38.0-0.0_196.3-REF.dat"
+  },
+  "mask": {
+    "mode": "external",
+    "engine": "integrated_core_foreground_v2",
+    "path": "E:/Grp_data/CoreSpec_Mapper_Data/01_保留科研成果与验证证据/ZK5511_mask_engineering_20260816/swir_depth_qc_v3/ZK5511_SWIR_engineered.dat",
+    "minimum_component_pixels": 64,
+    "minimum_mask_fraction": 0.05,
+    "minimum_interior_pixel_fraction": 0.65,
+    "edge_guard_pixels": 2,
+    "approval": {
+      "required": true,
+      "approved": true,
+      "reviewer": "engineering_depth_coverage_gate",
+      "reviewed_at": "2026-08-16",
+      "notes": "SWIR mask depth-coverage gate passed; SHA256 0B56572C6F2FA87160A3310B9614387F65EF21264EB302063C6EE0469AEA7B11."
+    }
+  },
+  "minerals": {
+    "requested": [
+      "calcite",
+      "dolomite",
+      "anhydrite",
+      "gypsum",
+      "illite",
+      "montmorillonite",
+      "kaolinite"
+    ],
+    "include_internal_confusers": true
+  },
+  "mode": {
+    "engine": "adaptive_v5",
+    "profile": "balanced",
+    "automatic": true,
+    "write_all_profiles": true
+  },
+  "advanced": {
+    "user_overrides_enabled": false,
+    "preprocessing": {
+      "sg_window": 11,
+      "sg_polyorder": 2
+    },
+    "sampling": {
+      "blocks": 12,
+      "block_rows": 64,
+      "maximum_sample_rows": 128
+    },
+    "execution": {
+      "chunk_rows": 64
+    },
+    "library_ensemble": {
+      "maximum_representatives_per_mineral": 4
+    },
+    "artifact_control": {
+      "edge_width": 2
+    }
+  }
+}

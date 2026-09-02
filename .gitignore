@@ -24,7 +24,11 @@ validation_runs/
 .codex_runs/
 .codex_audit/
 artifacts/
+tasks/
 *.aux.xml
+
+# Generated document copies; Markdown sources remain versioned
+docs/*.docx
 
 # Local packaging runtimes and generated release trees
 tools/

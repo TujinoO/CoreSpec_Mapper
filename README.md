@@ -1,7 +1,17 @@
 # CoreSpec Mapper
 
+**面向岩心高光谱影像的可配置、可复现、可审计矿物证据填图软件。**
+
+CoreSpec Mapper 提供 SWIR 矿物候选识别、材料掩膜、标准谱优选、自适应阈值、空间伪影控制、三档证据输出和中文桌面工作流，同时保留配置、阈值、输入指纹、质量报告与运行清单，适合科研验证、方法复现和受控工程应用。
+
+> 科学边界：工程质量等级、自动化测试或历史弱标签回归均不等同于矿物学准确率。没有独立 XRD、拉曼、薄片或点光谱真值时，输出应表述为矿物光谱证据或经验异常候选。
+
 > 当前稳定版本：**V5.3.0 Stable**（2026-07-21）
-> Windows 10/11 x64 · 当前用户安装 · CPU 独立运行 · 144 项自动化测试通过
+> Windows 10/11 x64 · 当前用户安装 · CPU 独立运行 · 当前源码 155 项测试通过、3 项条件性跳过（2026-09-02）
+
+## 数据与成果存储
+
+源码仓库不作为原始高光谱数据、中间栅格、实验迭代、运行成果、渲染 QA、构建树或本地打包环境的长期存储位置。新运行应使用仓库外的专用数据目录，例如 `D:\CoreSpec_Mapper_Data\runs`；分类、保留边界、清理审计与恢复方法见 [数据与成果外置存储规范](docs/CoreSpec_Mapper_数据与成果外置存储规范_2026-09-02.md)。
 
 ## 版本与下载
 
@@ -172,29 +182,36 @@ NC-1 全景验证配置为 `configs/nc1_v5_2_validation.json`。它保留通用�
 
 ## CLI
 
+先设置仓库外的统一结果根目录：
+
+```powershell
+$CoreSpecRunRoot = "D:\CoreSpec_Mapper_Data\runs"
+New-Item -ItemType Directory -Path $CoreSpecRunRoot -Force | Out-Null
+```
+
 查看 V5 Catalog、能力和数据库统计：
 
 ```powershell
 corespec v5-catalog
-corespec v5-catalog --output output/v5_catalog.json
+corespec v5-catalog --output (Join-Path $CoreSpecRunRoot "v5_catalog.json")
 ```
 
 执行冻结基准比较：
 
 ```powershell
-corespec v5-validate --config configs/nc1_v5_2_regression.example.json --output output/regression.json
+corespec v5-validate --config configs/nc1_v5_2_regression.example.json --output (Join-Path $CoreSpecRunRoot "regression.json")
 ```
 
 审计输入、掩膜、传感器和内置标准谱：
 
 ```powershell
-corespec v5-audit --config configs/v5_default.json --output output/v5_audit.json
+corespec v5-audit --config configs/v5_default.json --output (Join-Path $CoreSpecRunRoot "v5_audit.json")
 ```
 
 导出本次传感器的标准谱选择：
 
 ```powershell
-corespec v5-library --config configs/v5_default.json --output output/v5_library.json
+corespec v5-library --config configs/v5_default.json --output (Join-Path $CoreSpecRunRoot "v5_library.json")
 ```
 
 完整运行：
@@ -202,7 +219,7 @@ corespec v5-library --config configs/v5_default.json --output output/v5_library.
 ```powershell
 corespec v5-run `
   --config configs/v5_default.json `
-  --output-root output `
+  --output-root $CoreSpecRunRoot `
   --run-id core_v5_run
 ```
 
@@ -211,9 +228,9 @@ corespec v5-run `
 V3/V4 命令继续保留，便于历史复算：
 
 ```powershell
-corespec v4-audit --config configs/nc1_v4.json --output output/v4_audit.json
-corespec v4-run --config configs/nc1_v4.json --output-root output --run-id legacy_v4
-corespec v3-pilot --config configs/nc1_v3.json --output output/v3_pilot
+corespec v4-audit --config configs/nc1_v4.json --output (Join-Path $CoreSpecRunRoot "v4_audit.json")
+corespec v4-run --config configs/nc1_v4.json --output-root $CoreSpecRunRoot --run-id legacy_v4
+corespec v3-pilot --config configs/nc1_v3.json --output (Join-Path $CoreSpecRunRoot "v3_pilot")
 ```
 
 ## 标准输出

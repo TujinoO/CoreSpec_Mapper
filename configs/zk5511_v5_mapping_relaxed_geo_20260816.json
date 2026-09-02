@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "application_version": "5.3.0",
+  "project": {
+    "name": "ZK5511_20260816_RELAXED_GEO",
+    "description": "ZK5511 SWIR relaxed alteration-mineral mapping with geological spatial controls",
+    "non_destructive": true
+  },
+  "inputs": {
+    "analysis_image": "F:/2026_07_30_14_22-ZK5511-1.0_38.0-0.0_196.3/SWIR-ZK5511-1.0_38.0-0.0_196.3-REF.dat",
+    "analysis_domain": "swir",
+    "data_physics": "reflectance",
+    "input_is_smoothed": false,
+    "auto_discover_companions": false,
+    "rgb": null,
+    "nir": "F:/2026_07_30_14_22-ZK5511-1.0_38.0-0.0_196.3/VNIR-ZK5511-1.0_38.0-0.0_196.3-REF.dat",
+    "swir": "F:/2026_07_30_14_22-ZK5511-1.0_38.0-0.0_196.3/SWIR-ZK5511-1.0_38.0-0.0_196.3-REF.dat"
+  },
+  "mask": {
+    "mode": "external",
+    "engine": "integrated_core_foreground_v2",
+    "path": "E:/Grp_data/CoreSpec_Mapper_Data/01_保留科研成果与验证证据/ZK5511_mask_engineering_20260816/swir_depth_qc_v3/ZK5511_SWIR_engineered.dat",
+    "minimum_component_pixels": 64,
+    "minimum_mask_fraction": 0.05,
+    "minimum_interior_pixel_fraction": 0.65,
+    "edge_guard_pixels": 2,
+    "approval": {
+      "required": true,
+      "approved": true,
+      "reviewer": "engineering_depth_coverage_gate",
+      "reviewed_at": "2026-08-16",
+      "notes": "Reuse approved SWIR mask; relaxed mineral thresholds do not relax foreground or detector-artifact controls."
+    }
+  },
+  "minerals": {
+    "requested": [
+      "calcite",
+      "dolomite",
+      "anhydrite",
+      "gypsum",
+      "illite",
+      "montmorillonite",
+      "kaolinite"
+    ],
+    "include_internal_confusers": true
+  },
+  "mode": {
+    "engine": "adaptive_v5",
+    "profile": "balanced",
+    "automatic": true,
+    "write_all_profiles": true
+  },
+  "advanced": {
+    "user_overrides_enabled": true,
+    "preprocessing": {
+      "sg_window": 11,
+      "sg_polyorder": 2
+    },
+    "sampling": {
+      "blocks": 12,
+      "block_rows": 64,
+      "maximum_sample_rows": 128
+    },
+    "execution": {
+      "chunk_rows": 64
+    },
+    "library_ensemble": {
+      "maximum_representatives_per_mineral": 4
+    },
+    "artifact_control": {
+      "edge_width": 2
+    }
+  },
+  "threshold_trial": {
+    "overrides": {
+      "carbonate_2300": {
+        "conservative": {"column_percentile": 0.06, "absolute_sam_threshold_rad": 0.12},
+        "balanced": {"column_percentile": 0.10, "absolute_sam_threshold_rad": 0.14},
+        "sensitive": {"column_percentile": 0.12, "absolute_sam_threshold_rad": 0.15}
+      },
+      "calcium_sulfates": {
+        "conservative": {"column_percentile": 0.06, "absolute_sam_threshold_rad": 0.13},
+        "balanced": {"column_percentile": 0.085, "absolute_sam_threshold_rad": 0.16},
+        "sensitive": {"column_percentile": 0.10, "absolute_sam_threshold_rad": 0.18}
+      },
+      "white_mica_illite": {
+        "conservative": {"column_percentile": 0.065, "absolute_sam_threshold_rad": 0.10},
+        "balanced": {"column_percentile": 0.095, "absolute_sam_threshold_rad": 0.125},
+        "sensitive": {"column_percentile": 0.11, "absolute_sam_threshold_rad": 0.14}
+      },
+      "smectites": {
+        "conservative": {"column_percentile": 0.05, "absolute_sam_threshold_rad": 0.105},
+        "balanced": {"column_percentile": 0.085, "absolute_sam_threshold_rad": 0.135},
+        "sensitive": {"column_percentile": 0.10, "absolute_sam_threshold_rad": 0.155}
+      },
+      "kaolin_2170_2205": {
+        "conservative": {"column_percentile": 0.045, "absolute_sam_threshold_rad": 0.09},
+        "balanced": {"column_percentile": 0.075, "absolute_sam_threshold_rad": 0.11},
+        "sensitive": {"column_percentile": 0.09, "absolute_sam_threshold_rad": 0.125}
+      }
+    }
+  }
+}
